@@ -340,12 +340,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d9e0924333c7a46828006171bb8b09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depth: 20
+  depth: 14
   width: 256
   height: 256
   offsetX: 100
   offsetY: 100
-  scale: 20
+  scale: 25.9
   Regions:
   - name: Water
     height: 0.4
