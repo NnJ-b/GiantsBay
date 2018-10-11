@@ -1,16 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-public class MapGeneratorEditor : MonoBehaviour {
+[CustomEditor (typeof (MapGenerator))]
+public class MapGeneratorEditor : Editor {
+    
+    public override void OnInspectorGUI()
+    {
+        MapGenerator mapGen = (MapGenerator)target;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+        if(DrawDefaultInspector())
+        {
+            if (mapGen.autoUpdate)
+            {
+                mapGen.Generatemap();
+            }
+        }
+        
+        if(GUILayout.Button("Generate"))
+        {
+            mapGen.Generatemap();
+        }
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
