@@ -12,17 +12,20 @@ public class TerrainGenerator : MonoBehaviour {
 
     public float scale = 20f;
 
+    public terrainType[] Regions;
 
     private void Start()
     {
         offsetX = Random.Range(0, 999f);
         offsetY = Random.Range(0, 999f);
+        Terrain terrain = GetComponent<Terrain>();
+        terrain.terrainData = GenerateTerrain(terrain.terrainData);
+        terrain.renderer.
     }
 
     void Update ()
     {
-        Terrain terrain = GetComponent<Terrain>();
-        terrain.terrainData = GenerateTerrain(terrain.terrainData);
+        
         
 	}
 	
@@ -71,9 +74,18 @@ public class TerrainGenerator : MonoBehaviour {
 
                 float value = Mathf.Max(Mathf.Abs(u), Mathf.Abs(v));
                 map[x, y] = value;
+                Debug.Log(value);
             }
         }
 
         return map;
+    }
+
+    [System.Serializable]
+    public struct terrainType
+    {
+        public string name;
+        public float height;
+        public Color color;
     }
 }
