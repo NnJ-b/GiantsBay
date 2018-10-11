@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour {
 
-    public enum DrawMode{NoiseMap, ColorMap,Mesh};
+    public enum DrawMode{NoiseMap, ColorMap,Mesh,FalloffMap};
     public DrawMode drawMode;
 
     public int mapWidth;
@@ -19,9 +19,21 @@ public class MapGenerator : MonoBehaviour {
     public int seed;
     public Vector2 offset;
 
+    public bool useFalloff;
+
+    public float meshHeightMultiplyer;
+    public AnimationCurve meshHeightCurve;
+
     public bool autoUpdate;
 
     public TerrainType[] regions;
+
+    public float[,] falloffMap;
+
+    private void Awake()
+    {
+        falloffMap = FalloffGenerator.GenerateFalloffMap(mapWidth, mapHeight);
+    }
 
     public void Generatemap()
     {
@@ -32,6 +44,10 @@ public class MapGenerator : MonoBehaviour {
         {
             for (int x = 0; x < mapWidth; x++)
             {
+                if(useFalloff)
+                {
+                    noiseMap[x, y] = Mathf.Clamp01(noiseMap[x, y] - falloffMap[x, y]);
+                }
                 float currentHeight = noiseMap[x, y];
                 for (int i = 0; i < regions.Length; i++)
                 {
@@ -55,7 +71,11 @@ public class MapGenerator : MonoBehaviour {
         }
         else if(drawMode == DrawMode.Mesh)
         {
-            display.DrawMesh(MeshGenerator.GenerateTerrainMesh(noiseMap), TextureGenerator.TextureFromColorMap(colorMap, mapWidth, mapHeight));
+            display.DrawMesh(MeshGenerator.GenerateTerrainMesh(noiseMap,meshHeightMultiplyer,meshHeightCurve), TextureGenerator.TextureFromColorMap(colorMap, mapWidth, mapHeight));
+        }
+        else if(drawMode == DrawMode.FalloffMap)
+        {
+            display.DrawTexture(TextureGenerator.TextureFromHeightMap(FalloffGenerator.GenerateFalloffMap(mapWidth, mapHeight)));
         }
     }
 
@@ -77,6 +97,7 @@ public class MapGenerator : MonoBehaviour {
         {
             octives = 0;
         }
+        falloffMap = FalloffGenerator.GenerateFalloffMap(mapWidth, mapHeight);
     }
 
     [System.Serializable]
