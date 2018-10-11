@@ -347,12 +347,12 @@ MonoBehaviour:
   offsetY: 100
   scale: 20
   Regions:
-  - name: water
+  - name: Water
     height: 0.4
-    color: {r: 0.127759, g: 0.35543883, b: 0.8207547, a: 1}
+    color: {r: 0.05540227, g: 0.39883116, b: 0.7830189, a: 1}
   - name: Sand
     height: 0.6
-    color: {r: 0.990566, g: 0.8459842, b: 0.58406013, a: 1}
-  - name: grass
+    color: {r: 1, g: 0.85202, b: 0.36320752, a: 1}
+  - name: Grass
     height: 1
-    color: {r: 0.09852261, g: 0.7735849, b: 0.11214681, a: 1}
+    color: {r: 0, g: 1, b: 0.11449838, a: 1}

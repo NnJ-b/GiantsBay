@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour {
-    public int depth;
+    public int depth = 20;
     public int width = 256;
     public int height = 256;
 
@@ -20,26 +20,22 @@ public class TerrainGenerator : MonoBehaviour {
         offsetY = Random.Range(0, 999f);
         Terrain terrain = GetComponent<Terrain>();
         terrain.terrainData = GenerateTerrain(terrain.terrainData);
-        terrain.renderer.
     }
 
-    void Update ()
-    {
-        
-        
-	}
-	
-	TerrainData GenerateTerrain(TerrainData TData)
+    TerrainData GenerateTerrain(TerrainData TData)
     {
         TData.heightmapResolution = width + 1;
 
         TData.size = new Vector3(width, depth, height);
 
-        TData.SetHeights(0, 0, GenerateHeights());
+        float[,] heights = GenerateHeights();
+        TData.SetHeights(0, 0, heights);
+        GenerateCollorMap(TData);
+        //TData.SetAlphamaps(0, 0, GenerateCollorMap());
         return TData;
     }
 
-    float[,] GenerateHeights()
+    public float[,] GenerateHeights()
     {
         float[,] heights = new float[width, height];
         for (int x = 0; x < width; x++)
@@ -59,6 +55,30 @@ public class TerrainGenerator : MonoBehaviour {
         float yCord = (float)y / height * scale + offsetY;
 
         return Mathf.PerlinNoise(xCord, yCord);
+    }
+
+    void GenerateCollorMap(TerrainData TData)
+    {
+        float[,,] map = new float[TData.alphamapWidth, TData.alphamapHeight, 2];      
+        
+        for (int x = 0; x < TData.alphamapWidth; x++)
+        {
+            for (int y = 0; y < TData.alphamapHeight; y++)
+            {
+               if(TData.GetHeight(x,y) >.5)
+                {
+                    map[x, y, 0] = 1;
+                    map[x, y, 1] = 0;
+                }else
+                {
+                    map[x, y, 0] = 0;
+                    map[x, y, 1] = 1;
+                }
+                
+            }
+        }
+        TData.SetAlphamaps(0, 0, map);
+        //return map;
     }
 
     float[,] GenerateFalloffMap()
