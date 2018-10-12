@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour {
     private Camera camera;
+
+    public NavMeshAgent navMeshAgent;
+    public float rayDistance = 500;
+    public float spawnOffset=.5f;
 
     public LayerMask ground;
 
@@ -18,7 +23,7 @@ public class PlayerController : MonoBehaviour {
         {
             if(hit.collider.tag == "Ground")
             {
-                transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+                transform.position = new Vector3(transform.position.x, hit.point.y+spawnOffset, transform.position.z);
             }
         }
     }
@@ -28,7 +33,13 @@ public class PlayerController : MonoBehaviour {
         {
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-
+            if (Physics.Raycast(ray, out hit, rayDistance, ground))
+            {
+                if(hit.collider.tag == "Ground")
+                {
+                    navMeshAgent.SetDestination(hit.point);
+                }
+            }
         }
 	}
 }

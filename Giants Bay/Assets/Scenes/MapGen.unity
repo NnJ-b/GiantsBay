@@ -293,6 +293,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28602c902cbbd9d4b94588557ff2c7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 482695375}
+  rayDistance: 500
+  spawnOffset: 0.5
   ground:
     serializedVersion: 2
     m_Bits: 512
@@ -358,6 +361,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d9d1e6403f490842a1c134f081947dc, type: 2}
   m_IsPrefabAsset: 0
+--- !u!195 &482695375 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 195183007329285278, guid: 0d9d1e6403f490842a1c134f081947dc,
+    type: 2}
+  m_PrefabInternal: {fileID: 482695374}
 --- !u!1 &802040529
 GameObject:
   m_ObjectHideFlags: 0
