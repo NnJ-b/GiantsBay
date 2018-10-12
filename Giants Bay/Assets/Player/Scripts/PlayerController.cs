@@ -4,22 +4,26 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour {
-    private Camera camera;
 
+    private Camera cam;
+
+    [Header("Ray Trace ")]
     public NavMeshAgent navMeshAgent;
     public float rayDistance = 500;
-    public float spawnOffset=.5f;
+    public LayerMask walkable;
 
-    public LayerMask ground;
+    [Header("Spawn")]
+    public float spawnOffset = 1f;
 
-	void Start () {
-        camera = Camera.main;
+
+    void Start () {
+        cam = Camera.main;
 	}
     private void Awake()
     {
         Ray ray = new Ray(transform.position, Vector3.down);
         RaycastHit hit;
-        if(Physics.Raycast(ray,out hit, Mathf.Infinity, ground))
+        if(Physics.Raycast(ray,out hit, Mathf.Infinity, walkable))
         {
             if(hit.collider.tag == "Ground")
             {
@@ -31,9 +35,9 @@ public class PlayerController : MonoBehaviour {
     void Update () {
 		if(Input.GetMouseButtonDown(0))
         {
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, rayDistance, ground))
+            if (Physics.Raycast(ray, out hit, rayDistance, walkable))
             {
                 if(hit.collider.tag == "Ground")
                 {

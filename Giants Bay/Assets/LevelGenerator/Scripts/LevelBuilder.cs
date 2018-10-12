@@ -14,6 +14,5 @@ public class LevelBuilder : MonoBehaviour {
     {
         mapGenerator.Generatemap();
         navGenerator.BuildNavMesh(navMeshSurface);
-
     }
 }
