@@ -358,6 +358,11 @@ Prefab:
       propertyPath: m_Radius
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 23365300523757328, guid: 0d9d1e6403f490842a1c134f081947dc,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f6c78f507937c6f4fa277d1d66291dd6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d9d1e6403f490842a1c134f081947dc, type: 2}
   m_IsPrefabAsset: 0
