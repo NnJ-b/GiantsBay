@@ -21,5 +21,8 @@ public class MapDisplay : MonoBehaviour {
         meshCollider.sharedMesh = mesh;
         meshFilter.sharedMesh = mesh;
         meshRenderer.sharedMaterial.mainTexture = texture;
+
     }
+
+
 }
