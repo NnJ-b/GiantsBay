@@ -25,10 +25,10 @@ public class PlayerController : MonoBehaviour {
         RaycastHit hit;
         if(Physics.Raycast(ray,out hit, Mathf.Infinity, walkable))
         {
-            if(hit.collider.tag == "Ground")
-            {
+            //if(hit.collider.tag == "Ground")
+            //{
                 transform.position = new Vector3(transform.position.x, hit.point.y+spawnOffset, transform.position.z);
-            }
+            //}
         }
     }
 

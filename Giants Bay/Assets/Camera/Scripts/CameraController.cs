@@ -5,6 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
     [Header("References")]
     public GameObject player;
+    public LayerMask collisionMask;
+
 
     [Header("Camera Location")]
     public float zoom;
@@ -15,13 +17,15 @@ public class CameraController : MonoBehaviour {
     [Range(0.0001f, 1)]
     public float camSmooth = 1f;
 
+   
+
+
     [Header("Camera Rotation")]
     public bool allowCamRotation;
-    [Range(.001f,2)]
+    [Range(.001f, 2)]
     public float rotationSpeed = 2f;
-    
-	
-	void Update () {        
+
+    void Update () {        
         //check for mousewheel for zoom
         if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
         {
@@ -38,19 +42,16 @@ public class CameraController : MonoBehaviour {
         if(allowCamRotation)
         {
             float rotation = Input.GetAxis("Horizontal") * rotationSpeed * -1;
-            Quaternion camTurnAngle = Quaternion.AngleAxis(rotation, Vector3.up);
-            Ray ray = new Ray(player.transform.position + (camTurnAngle * offset) * zoom, Vector3.forward);
-            float sphereRadius = 2f;
-            if(Physics.SphereCast(ray, sphereRadius,Mathf.Infinity,null))
-            offset = camTurnAngle * offset;
-        }
+            CamRotation(rotation); 
+        }     
+        
+        
 
         //maintain position with player
         Vector3 newPos = player.transform.position + offset * zoom;
         transform.position = Vector3.Slerp(transform.position, newPos, camSmooth);
         transform.LookAt(player.transform);
-
-    }
+    }   
 
 
     void ClampZoom()
@@ -65,4 +66,10 @@ public class CameraController : MonoBehaviour {
             zoom = minZoom;
         }
     }
+
+    private void CamRotation(float rotation)
+    {
+        Quaternion camTurnAngle = Quaternion.AngleAxis(rotation, Vector3.up);
+        offset = camTurnAngle * offset;              
+    }    
 }
