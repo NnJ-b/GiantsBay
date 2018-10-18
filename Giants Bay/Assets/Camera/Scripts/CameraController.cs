@@ -39,6 +39,9 @@ public class CameraController : MonoBehaviour {
         {
             float rotation = Input.GetAxis("Horizontal") * rotationSpeed * -1;
             Quaternion camTurnAngle = Quaternion.AngleAxis(rotation, Vector3.up);
+            Ray ray = new Ray(player.transform.position + (camTurnAngle * offset) * zoom, Vector3.forward);
+            float sphereRadius = 2f;
+            if(Physics.SphereCast(ray, sphereRadius,Mathf.Infinity,null))
             offset = camTurnAngle * offset;
         }
 
