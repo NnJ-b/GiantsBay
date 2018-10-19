@@ -9,7 +9,7 @@ public class GiantController : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public Animator animator;
 
-    private Transform player;
+    private GameObject player;
 
     [Header("Animation Controls (DNM)")]
     public bool attacking;
@@ -21,20 +21,20 @@ public class GiantController : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
         navMeshAgent.speed = speed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (DistanceToPlayer() < navMeshAgent.stoppingDistance)
+        if (DistanceToPlayer() <= navMeshAgent.stoppingDistance)
         {
             animator.SetBool("Attacking", true);
         }
         else
         {
-            navMeshAgent.SetDestination(player.position);
+            navMeshAgent.SetDestination(player.transform.position);
             animator.SetBool("Attacking", false);
         }
 
@@ -62,7 +62,7 @@ public class GiantController : MonoBehaviour
     {
         if (player != null)
         {
-            return Vector3.Distance(transform.position, player.position);
+            return Vector3.Distance(transform.position, player.transform.position);
         }
         else
         {
@@ -73,7 +73,7 @@ public class GiantController : MonoBehaviour
 
     public bool HitDetection()
     {
-        if(DistanceToPlayer() < navMeshAgent.stoppingDistance)
+        if(DistanceToPlayer() <= navMeshAgent.stoppingDistance)
         {
             return true;
         }
