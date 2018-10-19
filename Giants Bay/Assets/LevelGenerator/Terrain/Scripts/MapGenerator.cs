@@ -6,8 +6,11 @@ public class MapGenerator : MonoBehaviour {
     public DrawMode drawMode;
 
     public int mapWidth;
+    private int TargetMapWidth;
     public int mapHeight;
+    private int TargetMapHeight;
     public float noiseScale;
+    public float lerpSpeed;
 
     public int octives;
     [Range(0,1)]
@@ -31,6 +34,39 @@ public class MapGenerator : MonoBehaviour {
     private void Awake()
     {
         falloffMap = FalloffGenerator.GenerateFalloffMap(mapWidth, mapHeight);
+    }
+
+    public void NewMap()
+    {
+        seed = Random.Range(-100000, 100000);
+        falloffMap = FalloffGenerator.GenerateFalloffMap(mapWidth, mapHeight);
+        Generatemap();
+    }
+
+    public void ToSmall()
+    {
+        mapWidth = 100;
+        mapHeight = 100;
+        falloffMap = FalloffGenerator.GenerateFalloffMap(mapWidth, mapHeight);
+        Generatemap();
+
+    }
+
+    public void ToMedium()
+    {
+        mapWidth = 200;
+        mapHeight = 200;
+        falloffMap = FalloffGenerator.GenerateFalloffMap(mapWidth, mapHeight);
+        Generatemap();
+
+    }
+    public void ToLarge()
+    {
+        mapWidth = 255;
+        mapHeight = 255;
+        falloffMap = FalloffGenerator.GenerateFalloffMap(mapWidth, mapHeight);
+        Generatemap();
+
     }
 
     public void Generatemap()
@@ -74,7 +110,7 @@ public class MapGenerator : MonoBehaviour {
         else if(drawMode == DrawMode.FalloffMap)
         {
             display.DrawTexture(TextureGenerator.TextureFromHeightMap(FalloffGenerator.GenerateFalloffMap(mapWidth, mapHeight)));
-        }
+        }       
     }
 
     private void OnValidate()

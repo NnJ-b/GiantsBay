@@ -504,15 +504,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bab7f2a6b1f73643b5d71ff45698e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawMode: 1
+  drawMode: 2
   mapWidth: 100
   mapHeight: 100
   noiseScale: 10
+  lerpSpeed: 0
   octives: 4
   persistance: 0.168
   lacunarity: 2
-  seed: 128
-  offset: {x: 21.1, y: 2.6}
+  seed: 192
+  offset: {x: 0, y: 0}
   useFalloff: 1
   meshHeightMultiplyer: 10
   meshHeightCurve:

@@ -17,6 +17,7 @@ public class GiantController : MonoBehaviour
 
     [Header("Controls")]
     public float speed =2.5f;
+    public int damageAmount = 10;
 
     // Use this for initialization
     void Awake()
@@ -51,7 +52,7 @@ public class GiantController : MonoBehaviour
         {
             if(HitDetection())
             {
-                //hit player
+                player.GetComponent<PlayerController>().TakeDamage(damageAmount);
                 Debug.Log("I'm Hit!");
             }
             checkHitDetection = false;

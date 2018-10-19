@@ -50,8 +50,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1938600207109508}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 570, z: -640}
+  m_LocalRotation: {x: 0.6176135, y: 0.000000014901163, z: 0.000000014901163, w: 0.7864818}
+  m_LocalPosition: {x: 0, y: 1500, z: -366.10052}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4871657375558670}
@@ -130,4 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 5
-  camera: {fileID: 20865079172087302}
+  cam: {fileID: 20865079172087302}
+  zoomSpeed: 0.1
+  zoomDistance: 800

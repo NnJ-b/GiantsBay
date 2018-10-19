@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour {
 
     private Camera cam;
 
+    private int health = 100;
+
     [Header("Ray Trace ")]
     public NavMeshAgent navMeshAgent;
     public float rayDistance = 500;
@@ -16,9 +18,11 @@ public class PlayerController : MonoBehaviour {
     public float spawnOffset = 1f;
 
 
-    void Start () {
+    void Start ()
+    {
         cam = Camera.main;
 	}
+
     private void Awake()
     {
         Ray ray = new Ray(transform.position, Vector3.down);
@@ -32,7 +36,8 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void Update () {
+    void Update ()
+    {
 		if(Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -46,4 +51,10 @@ public class PlayerController : MonoBehaviour {
             }
         }
 	}
+
+    public void TakeDamage(int damageAmount)
+    {
+        health = health - damageAmount;
+        Debug.Log(health);
+    }
 }
