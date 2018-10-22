@@ -6,7 +6,7 @@ public class Interactable : MonoBehaviour {
 
     public bool focused;
 
-    public PlayerController player;
+    public PlayerController playerController;
 
     public virtual void Interact()
     {
@@ -15,9 +15,9 @@ public class Interactable : MonoBehaviour {
 
     public void Update()
     {
-        if(player != null)
+        if(playerController != null)
         {
-            if(Vector3.Distance(transform.position, player.transform.position) < player.navMeshAgent.stoppingDistance)
+            if(Vector3.Distance(transform.position, playerController.transform.position) <= playerController.navMeshAgent.stoppingDistance * 1.2f)
             {
                 Interact();
             }
@@ -25,10 +25,10 @@ public class Interactable : MonoBehaviour {
     }
 
 
-    public void Focus(PlayerController _player)
+    public void Focus(PlayerController controller)
     {
         focused = true;
-        player = _player;
+        playerController = controller;
     }
 
     public void StopFocus()

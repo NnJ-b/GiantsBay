@@ -512,7 +512,7 @@ MonoBehaviour:
   octives: 4
   persistance: 0.168
   lacunarity: 2
-  seed: 192
+  seed: 133
   offset: {x: 0, y: 0}
   useFalloff: 1
   meshHeightMultiplyer: 10

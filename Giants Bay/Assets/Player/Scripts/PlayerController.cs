@@ -18,12 +18,20 @@ public class PlayerController : MonoBehaviour {
     public float spawnOffset = 1f;
 
     [Header("Navigation")]
+    public float speed;
     public Interactable selected = null;
     public Interactable previouslySelected = null;
-    public bool attacking;
+    public bool follow;
     public bool interacting;
     public float stopingDistanceInteractable;
     public float stopingdistanceEnemy;
+
+    [Header("Animation Controlls (DNM)")]
+    public Animator animator;
+    public bool attacking = false;
+    public bool endAttack = false;
+    public bool startAttack = false;
+    public bool attackReady = false;
 
 
     void Start ()
@@ -33,6 +41,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Awake()
     {
+        //settles (Temporary)
         Ray ray = new Ray(transform.position, Vector3.down);
         RaycastHit hit;
         if(Physics.Raycast(ray,out hit, Mathf.Infinity, Interactable))
@@ -43,25 +52,44 @@ public class PlayerController : MonoBehaviour {
 
     void Update ()
     {
+        Navigation();
+        Attack();
+    }
+
+    public void AnimationState()
+    {
+        //close enought to attack?
+        if (DistanceToEnemy() <= navMeshAgent.stoppingDistance * 1.2f)
+        {
+            animator.SetBool("Attacking", true);
+        }
+        else
+        {
+            animator.SetBool("Attacking", false);
+        }
+    }
+
+    public void Navigation()
+    {
         //raycast
-		if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, rayDistance, Interactable))
             {
-                if(hit.collider.tag == "Ground")
+                if (hit.collider.tag == "Ground")
                 {
                     navMeshAgent.stoppingDistance = 0f;
                     navMeshAgent.SetDestination(hit.point);
-                    attacking = false;
+                    follow = false;
                     interacting = false;
                     previouslySelected = selected;
                     selected = null;
                 }
-                if(hit.collider.tag == "Enemy")
+                if (hit.collider.tag == "Enemy")
                 {
-                    attacking = true;
+                    follow = true;
                     interacting = false;
                     previouslySelected = selected;
                     selected = hit.transform.gameObject.GetComponent<Interactable>();
@@ -71,7 +99,7 @@ public class PlayerController : MonoBehaviour {
                 }
                 if (hit.collider.tag == "Interactable")
                 {
-                    attacking = false;
+                    follow = false;
                     interacting = true;
                     navMeshAgent.stoppingDistance = stopingDistanceInteractable;
                     previouslySelected = selected;
@@ -82,23 +110,77 @@ public class PlayerController : MonoBehaviour {
                 }
             }
 
-
+            //checks if selected changed
             if (selected != previouslySelected && previouslySelected != null)
             {
                 previouslySelected.StopFocus();
-            }            
+            }
         }
 
-        if (attacking == true)
+        //selected an enemy?
+        if (follow == true)
         {
+            //checks to start animation
+            AnimationState();
+            //updates destination everyframe
             navMeshAgent.SetDestination(selected.transform.position);
         }
+    }
 
+    private void Attack()
+    {
+        //stop moving
+        if (attacking)
+        {
+            navMeshAgent.speed = 0f;
+        }
+        //start Moving
+        else
+        {
+            navMeshAgent.speed = speed;
+        }
 
+        //Gets Attack Ready
+        if (startAttack)
+        {
+            attackReady = true;
+        }
+
+        //Attacks
+        if (endAttack && attackReady)
+        {
+            //check Distance after animation
+            if (HitDetection())
+            {
+                //aplly Damage
+                Debug.Log("HitGiant");
+            }
+            attackReady = false;          
+        }
+    }
+
+    public bool HitDetection()
+    {
+        //close enough to hit?
+        if (DistanceToEnemy() <= navMeshAgent.stoppingDistance * 1.2f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public float DistanceToEnemy()
+    {
+        //how far is the enemy?
+        return Vector3.Distance(transform.position, selected.transform.position);
     }
 
     public void TakeDamage(int damageAmount)
     {
+        //ouch
         health = health - damageAmount;
         Debug.Log(health);
     }   

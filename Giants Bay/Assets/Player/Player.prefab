@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4719044653018854}
   - component: {fileID: 33017095447608364}
   - component: {fileID: 23365300523757328}
+  - component: {fileID: 95875024973317702}
   - component: {fileID: 136829874404921532}
   - component: {fileID: 195183007329285278}
   - component: {fileID: 114779965694875326}
@@ -86,6 +87,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1617889981511400}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &95875024973317702
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617889981511400}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a88d5a1006bdb524c9aecde60aadadf3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114779965694875326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,10 +122,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2560
   spawnOffset: 0.5
+  speed: 3.5
   selected: {fileID: 0}
+  previouslySelected: {fileID: 0}
   follow: 0
+  interacting: 0
   stopingDistanceInteractable: 2
   stopingdistanceEnemy: 3
+  animator: {fileID: 95875024973317702}
+  attacking: 0
+  endAttack: 0
+  startAttack: 0
+  attackReady: 0
 --- !u!136 &136829874404921532
 CapsuleCollider:
   m_ObjectHideFlags: 1

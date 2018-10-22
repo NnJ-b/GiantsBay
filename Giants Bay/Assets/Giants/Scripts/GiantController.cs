@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class GiantController : MonoBehaviour
+public class GiantController : Interactable
 {
     [Header("References")]
     public NavMeshAgent navMeshAgent;
@@ -22,15 +22,13 @@ public class GiantController : MonoBehaviour
     public float speed =2.5f;
     public int damageAmount = 10;
 
-    // Use this for initialization
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         navMeshAgent.speed = speed;
     }
 
-    // Update is called once per frame
-    void Update()
+    new void Update()
     {
         Move();
 
@@ -39,7 +37,8 @@ public class GiantController : MonoBehaviour
 
     private void Move()
     {
-        if (DistanceToPlayer() <= navMeshAgent.stoppingDistance)
+        //close enough to attack?
+        if (DistanceToPlayer() <= navMeshAgent.stoppingDistance * 1.2f)
         {
             animator.SetBool("Attacking", true);
         }
@@ -48,6 +47,11 @@ public class GiantController : MonoBehaviour
             navMeshAgent.SetDestination(player.transform.position);
             animator.SetBool("Attacking", false);
         }
+    }
+
+    public override void Interact()
+    {
+        base.Interact();
     }
 
     private void Attack()
@@ -98,7 +102,7 @@ public class GiantController : MonoBehaviour
 
     public bool HitDetection()
     {
-        if(DistanceToPlayer() <= navMeshAgent.stoppingDistance)
+        if(DistanceToPlayer() <= navMeshAgent.stoppingDistance * 1.2f)
         {
             return true;
         }

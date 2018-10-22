@@ -116,6 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31cae72b9852364bbfc89fea5b33da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  focused: 0
+  playerController: {fileID: 0}
   navMeshAgent: {fileID: 195143610839940006}
   animator: {fileID: 95884440590724442}
   attacking: 0
