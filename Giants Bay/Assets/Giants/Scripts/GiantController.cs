@@ -12,8 +12,10 @@ public class GiantController : MonoBehaviour
     private GameObject player;
 
     [Header("Animation Controls (DNM)")]
-    public bool attacking;
-    public bool checkHitDetection;
+    public bool attacking = false;
+    public bool endAttack = false;
+    public bool startAttack = false;
+
 
     [Header("Controls")]
     public float speed =2.5f;
@@ -48,14 +50,14 @@ public class GiantController : MonoBehaviour
             navMeshAgent.speed = speed;
         }
 
-        if (checkHitDetection)
+        if (endAttack)
         {
             if(HitDetection())
             {
                 player.GetComponent<PlayerController>().TakeDamage(damageAmount);
                 Debug.Log("I'm Hit!");
             }
-            checkHitDetection = false;
+            endAttack = false;
         }
     }
 

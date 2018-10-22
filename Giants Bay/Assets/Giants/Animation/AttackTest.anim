@@ -169,7 +169,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.98333335
+        time: 1
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -180,7 +180,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: checkHitDetection
+    attribute: endAttack
     path: 
     classID: 114
     script: {fileID: 11500000, guid: f31cae72b9852364bbfc89fea5b33da2, type: 3}
@@ -222,7 +222,7 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
-      attribute: 1197797378
+      attribute: 3150676884
       script: {fileID: 11500000, guid: f31cae72b9852364bbfc89fea5b33da2, type: 3}
       typeID: 114
       customType: 0
@@ -409,7 +409,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.98333335
+        time: 1
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -420,7 +420,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: checkHitDetection
+    attribute: endAttack
     path: 
     classID: 114
     script: {fileID: 11500000, guid: f31cae72b9852364bbfc89fea5b33da2, type: 3}
