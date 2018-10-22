@@ -25,9 +25,9 @@ GameObject:
   - component: {fileID: 195143610839940006}
   - component: {fileID: 95884440590724442}
   - component: {fileID: 114349417603718078}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Giant
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1878147096046148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.85, y: 65.9, z: 127.9}
+  m_LocalPosition: {x: 4.85, y: 66.72, z: 127.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -119,7 +119,9 @@ MonoBehaviour:
   navMeshAgent: {fileID: 195143610839940006}
   animator: {fileID: 95884440590724442}
   attacking: 0
-  checkHitDetection: 0
+  endAttack: 0
+  startAttack: 0
+  attackReady: 0
   speed: 2.5
   damageAmount: 10
 --- !u!136 &136418867475499120

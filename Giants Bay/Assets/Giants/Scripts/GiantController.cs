@@ -15,6 +15,7 @@ public class GiantController : MonoBehaviour
     public bool attacking = false;
     public bool endAttack = false;
     public bool startAttack = false;
+    public bool attackReady = false;
 
 
     [Header("Controls")]
@@ -31,6 +32,13 @@ public class GiantController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Move();
+
+        Attack();
+    }
+
+    private void Move()
+    {
         if (DistanceToPlayer() <= navMeshAgent.stoppingDistance)
         {
             animator.SetBool("Attacking", true);
@@ -40,24 +48,37 @@ public class GiantController : MonoBehaviour
             navMeshAgent.SetDestination(player.transform.position);
             animator.SetBool("Attacking", false);
         }
+    }
 
+    private void Attack()
+    {
+        //stop moving
         if (attacking)
         {
             navMeshAgent.speed = 0f;
         }
+        //start Moving
         else
         {
             navMeshAgent.speed = speed;
         }
 
-        if (endAttack)
+        //Gets Attack Ready
+        if (startAttack)
         {
-            if(HitDetection())
+            attackReady = true;
+        }
+
+        //Attacks
+        if (endAttack && attackReady)
+        {
+            //check Distance after animation
+            if (HitDetection())
             {
+                //aplly Damage
                 player.GetComponent<PlayerController>().TakeDamage(damageAmount);
-                Debug.Log("I'm Hit!");
             }
-            endAttack = false;
+            attackReady = false;
         }
     }
 
@@ -69,6 +90,7 @@ public class GiantController : MonoBehaviour
         }
         else
         {
+            //Place holder number
             return -2;
         }
     }
