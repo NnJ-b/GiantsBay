@@ -26,6 +26,11 @@ public class PlayerController : MonoBehaviour {
     public float stopingDistanceInteractable;
     public float stopingdistanceEnemy;
 
+    [Header("Combat")]
+    public float baseDamage = 5f;
+    public float damageAdder;
+    private float damagePerHit;
+
     [Header("Animation Controlls (DNM)")]
     public Animator animator;
     public bool attacking = false;
@@ -48,6 +53,8 @@ public class PlayerController : MonoBehaviour {
         {
             transform.position = new Vector3(transform.position.x, hit.point.y+spawnOffset, transform.position.z);
         }
+
+        CalculateDamage();
     }
 
     void Update ()
@@ -153,7 +160,8 @@ public class PlayerController : MonoBehaviour {
             if (HitDetection())
             {
                 //aplly Damage
-                Debug.Log("HitGiant");
+                selected.TakeDamage(damagePerHit);
+                Debug.Log("hit" + selected.name);
             }
             attackReady = false;          
         }
@@ -175,7 +183,14 @@ public class PlayerController : MonoBehaviour {
     public float DistanceToEnemy()
     {
         //how far is the enemy?
-        return Vector3.Distance(transform.position, selected.transform.position);
+        if (selected != null)
+        {
+            return Vector3.Distance(transform.position, selected.transform.position);
+        }
+        else
+        {
+            return 2000f;
+        }
     }
 
     public void TakeDamage(int damageAmount)
@@ -184,4 +199,9 @@ public class PlayerController : MonoBehaviour {
         health = health - damageAmount;
         Debug.Log(health);
     }   
+
+    public void CalculateDamage()
+    {
+        damagePerHit = baseDamage + damageAdder;
+    }
 }

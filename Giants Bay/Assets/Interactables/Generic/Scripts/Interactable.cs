@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interactable : MonoBehaviour {
 
     public bool focused;
+    public float health;
 
     public PlayerController playerController;
 
@@ -22,8 +23,28 @@ public class Interactable : MonoBehaviour {
                 Interact();
             }
         }
+
+        CheckHealth();
     }
 
+    public void TakeDamage(float damageAmount)
+    {
+        health = health - damageAmount;
+        Debug.Log(health + ": " + name);
+    }
+
+    public void CheckHealth()
+    {
+        if(health <= 0f)
+        {
+            Die();
+        }
+    }
+
+    public virtual void Die()
+    {
+        Destroy(gameObject);
+    }
 
     public void Focus(PlayerController controller)
     {

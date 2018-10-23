@@ -129,6 +129,7 @@ MonoBehaviour:
   interacting: 0
   stopingDistanceInteractable: 2
   stopingdistanceEnemy: 3
+  damagePerHit: 5
   animator: {fileID: 95875024973317702}
   attacking: 0
   endAttack: 0
