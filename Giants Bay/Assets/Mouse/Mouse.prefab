@@ -823,6 +823,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   navMeshAgent: {fileID: 195845616539573640}
   distanceToGetAway: 50
+  animator: {fileID: 95349332070132768}
 --- !u!137 &137874788367450208
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

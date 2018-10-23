@@ -9,6 +9,7 @@ public class MouseController : Interactable {
     [Header("References")]
     public NavMeshAgent navMeshAgent;
     public float distanceToGetAway = 50f;
+    public Animator animator;
 
     private bool stolen = false;
     private GameObject player;
@@ -38,6 +39,9 @@ public class MouseController : Interactable {
         {
             Destroy(gameObject);
         }
+
+        //set animation speed
+        animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
 	}
 
     public void Move()
