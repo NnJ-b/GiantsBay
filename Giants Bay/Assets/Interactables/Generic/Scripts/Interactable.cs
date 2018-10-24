@@ -9,6 +9,15 @@ public class Interactable : MonoBehaviour {
 
     public PlayerController playerController;
 
+    public void Awake()
+    {
+        //to make sure interactable objects dont die
+        if(health == 0)
+        {
+            health = 1f;
+        }
+    }
+
     public virtual void Interact()
     {
         Debug.Log("Interacted with" + transform.name);
@@ -18,7 +27,7 @@ public class Interactable : MonoBehaviour {
     {
         if(playerController != null)
         {
-            if(Vector3.Distance(transform.position, playerController.transform.position) <= playerController.navMeshAgent.stoppingDistance * 1.2f)
+            if(Vector3.Distance(transform.position, playerController.transform.position) <= playerController.navMeshAgent.stoppingDistance*1.2f)
             {
                 Interact();
             }

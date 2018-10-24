@@ -38,7 +38,7 @@ public class GiantController : Interactable
     private void Move()
     {
         //close enough to attack?
-        if (DistanceToPlayer() <= navMeshAgent.stoppingDistance * 1.2f)
+        if (DistanceToPlayer() <= navMeshAgent.stoppingDistance*1.2f)
         {
             animator.SetBool("Attacking", true);
         }
@@ -102,7 +102,7 @@ public class GiantController : Interactable
 
     public bool HitDetection()
     {
-        if(DistanceToPlayer() <= navMeshAgent.stoppingDistance * 1.2f)
+        if(DistanceToPlayer() <= navMeshAgent.stoppingDistance * 1.5f)
         {
             return true;
         }

@@ -11,11 +11,13 @@ public class SettlerSpawner : MonoBehaviour {
     
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        mapGenerator = GameObject.FindGameObjectWithTag("MapGenerator").GetComponent<MapGenerator>();
+
         for (int i = 0; i < settlerCount; i++)
         {
-            Vector3 position = new Vector3(Random.Range(mapGenerator.mapWidth * 10 / -2, mapGenerator.mapWidth * 10 / 2), 500f, Random.Range(mapGenerator.mapHeight * 10 / -2, mapGenerator.mapHeight * 10 / 2));
-            GameObject instance = Instantiate(settler, position, Quaternion.identity);
+            Spawn();
         }
 
 	}
@@ -24,4 +26,10 @@ public class SettlerSpawner : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void Spawn()
+    {
+        Vector3 position = new Vector3(Random.Range(mapGenerator.mapWidth * 10 / -2, mapGenerator.mapWidth * 10 / 2), 1000, Random.Range(mapGenerator.mapHeight * 10 / -2, mapGenerator.mapHeight * 10 / 2));
+        Instantiate(settler, position, Quaternion.identity);
+    }
 }

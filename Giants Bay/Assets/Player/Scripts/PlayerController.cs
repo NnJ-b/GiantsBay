@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Navigation")]
     public float speed;
+    [SerializeField]
     public Interactable selected = null;
     public Interactable previouslySelected = null;
     public bool follow;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour {
     public float baseDamage = 5f;
     public float damageAdder;
     private float damagePerHit;
+    public float range;
 
     [Header("Animation Controlls")]
     public Animator animator;
@@ -52,7 +54,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start ()
     {
-        cam = Camera.main;
+        cam = Camera.main;        
 	}
 
     private void Awake()
@@ -63,6 +65,11 @@ public class PlayerController : MonoBehaviour {
         if(Physics.Raycast(ray,out hit, Mathf.Infinity, Interactable))
         {
             transform.position = new Vector3(transform.position.x, hit.point.y+spawnOffset, transform.position.z);
+        }
+        //checks range
+        if (range < stopingDistanceInteractable)
+        {
+            range = stopingDistanceInteractable;
         }
 
         CalculateDamage();
@@ -78,7 +85,7 @@ public class PlayerController : MonoBehaviour {
     public void AnimationState()
     {
         //close enought to attack?
-        if (DistanceToEnemy() <= navMeshAgent.stoppingDistance * 1.2f)
+        if (DistanceToEnemy() <= navMeshAgent.stoppingDistance*1.2f)
         {
             animator.SetBool("Attacking", true);
         }
@@ -144,6 +151,10 @@ public class PlayerController : MonoBehaviour {
             //updates destination everyframe
             navMeshAgent.SetDestination(selected.transform.position);
         }
+        else
+        {
+            animator.SetBool("Attacking", false);
+        }
     }
 
     private void Attack()
@@ -173,7 +184,6 @@ public class PlayerController : MonoBehaviour {
             {
                 //aplly Damage
                 selected.TakeDamage(damagePerHit);
-                Debug.Log("hit" + selected.name);
             }
             attackReady = false;          
         }
@@ -182,7 +192,7 @@ public class PlayerController : MonoBehaviour {
     public bool HitDetection()
     {
         //close enough to hit?
-        if (DistanceToEnemy() <= navMeshAgent.stoppingDistance * 1.2f)
+        if (DistanceToEnemy() <= range)
         {
             return true;
         }

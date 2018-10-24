@@ -21,7 +21,6 @@ public class SettlerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, walkable))
         {
-            //ObjectsToSpawn toSpawn = objectsToSpawn[Random.Range(0, objectsToSpawn.Length)];
             Vector3 hitPoint = new Vector3(transform.position.x, hit.point.y, transform.position.z);
 
             List<ObjectsToSpawn> inRange = new List<ObjectsToSpawn>();
@@ -37,52 +36,24 @@ public class SettlerController : MonoBehaviour
                     }
                 }
             }
+
             if (inRange.Count > 0)
             {
                 //get Randome Object in range
                 ObjectsToSpawn toSpawn = inRange[Random.Range(0, inRange.Count)];
                 //settle
-                Instantiate(toSpawn.prefab, new Vector3(transform.position.x, hitPoint.y + toSpawn.spawnOffset, transform.position.z), Quaternion.identity);
-                Destroy(this.gameObject);
+                Instantiate(toSpawn.prefab, new Vector3(hitPoint.x, hitPoint.y + toSpawn.spawnOffset, hitPoint.z), Quaternion.identity);
+                Destroy(gameObject);
             }
             else
             {
-                spawner.settlerCount++;
+                spawner.Spawn();
                 Destroy(this.gameObject);
-            }
-
-            /*         
-            //needs to be optomized! choose object based on location not check location for objects.
-            if (hitPoint.y > toSpawn.minHeightSpawnable)
-            {
-                if (hitPoint.y < toSpawn.maxHeightSpawnable)
-                {
-                    //settle
-                    Instantiate(toSpawn.prefab, hitPoint, Quaternion.identity);
-                    Destroy(this.gameObject);
-                }
-                else
-                {
-                    spawner.settlerCount++;
-                    Destroy(this.gameObject);
-                }                
-            }
-            else
-            {
-                spawner.settlerCount++;
-                Destroy(this.gameObject);
-            }
+            }           
         }
         else
         {
-            spawner.settlerCount++;
-            Destroy(this.gameObject);
-        }
-        */
-        }
-        else
-        {
-            spawner.settlerCount++;
+            spawner.Spawn();
             Destroy(this.gameObject);
         }
     }

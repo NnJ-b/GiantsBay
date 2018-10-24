@@ -52,5 +52,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapGenerator: {fileID: 0}
-  settlerCount: 10
+  settlerCount: 20
   settler: {fileID: 1586662804860514, guid: 81124e35f9d2f3840936a3ff07d1935a, type: 2}

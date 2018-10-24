@@ -10,9 +10,12 @@ public class LevelBuilder : MonoBehaviour {
     public NavMeshGenerator navGenerator;
     public NavMeshSurface navMeshSurface;
 
+    public GameObject spawner;
+
     private void Awake()
     {
         mapGenerator.Generatemap();
         navGenerator.BuildNavMesh(navMeshSurface);
+        Instantiate(spawner, Vector3.zero, Quaternion.identity);
     }
 }

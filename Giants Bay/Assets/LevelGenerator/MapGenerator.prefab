@@ -493,6 +493,7 @@ MonoBehaviour:
   mapGenerator: {fileID: 114918251363545592}
   navGenerator: {fileID: 114392196740106516}
   navMeshSurface: {fileID: 114655813585898368}
+  spawner: {fileID: 1701608333666798, guid: f3e380f8635d0fb4ab8d68fd2fe967de, type: 2}
 --- !u!114 &114918251363545592
 MonoBehaviour:
   m_ObjectHideFlags: 1

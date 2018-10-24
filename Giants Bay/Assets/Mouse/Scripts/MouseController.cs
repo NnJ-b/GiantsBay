@@ -62,7 +62,7 @@ public class MouseController : Interactable {
 
     public void Steal()
     {
-        if (DistanceToPlayer() <= navMeshAgent.stoppingDistance * 1.2f)
+        if (DistanceToPlayer() <= navMeshAgent.stoppingDistance*1.2f)
         {
             //stealSomething
             stolen = true;
