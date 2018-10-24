@@ -129,12 +129,17 @@ MonoBehaviour:
   interacting: 0
   stopingDistanceInteractable: 2
   stopingdistanceEnemy: 3
-  damagePerHit: 5
+  baseDamage: 5
+  damageAdder: 0
   animator: {fileID: 95875024973317702}
+  sizeLerpSpeed: 0.39
   attacking: 0
   endAttack: 0
   startAttack: 0
   attackReady: 0
+  boosters: 0
+  boosterEffect: 150
+  boostMultiplyer: 1
 --- !u!136 &136829874404921532
 CapsuleCollider:
   m_ObjectHideFlags: 1

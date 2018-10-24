@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 
     private Camera cam;
 
+    [Tooltip("Between 0-100")]
     private int health = 100;
 
     [Header("Ray Trace ")]
@@ -31,12 +32,22 @@ public class PlayerController : MonoBehaviour {
     public float damageAdder;
     private float damagePerHit;
 
-    [Header("Animation Controlls (DNM)")]
+    [Header("Animation Controlls")]
     public Animator animator;
+    [Range(.001f,1)]
+    public float sizeLerpSpeed;
     public bool attacking = false;
     public bool endAttack = false;
     public bool startAttack = false;
     public bool attackReady = false;
+
+    [Header("Colectables")]
+    public int boosters;
+    [Tooltip("The Higher the value to longer it will take to reach the asymptote")]
+    [Range(10, 150)]
+    public int boosterEffect;
+    [Tooltip("raises the asymptote")]
+    public float boostMultiplyer = 1;
 
 
     void Start ()
@@ -61,6 +72,7 @@ public class PlayerController : MonoBehaviour {
     {
         Navigation();
         Attack();
+        ChangeSize();
     }
 
     public void AnimationState()
@@ -203,5 +215,27 @@ public class PlayerController : MonoBehaviour {
     public void CalculateDamage()
     {
         damagePerHit = baseDamage + damageAdder;
+    }
+
+    public float CalculateBoosterEffect()
+    {
+        if(boosters > 0f)
+        {
+            float y = boosters + boosterEffect;
+            float x = (boosters / y);
+            float z = x * boostMultiplyer;
+            return z;
+        }
+        else
+        {
+            return 0f;
+        }
+    }
+
+    public void ChangeSize()
+    {
+        float x = 1 + CalculateBoosterEffect();
+
+        transform.localScale = Vector3.Slerp(transform.localScale, new Vector3(x, x, x), sizeLerpSpeed);
     }
 }
