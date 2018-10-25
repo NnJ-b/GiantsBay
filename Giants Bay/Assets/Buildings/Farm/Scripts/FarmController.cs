@@ -5,7 +5,9 @@ using UnityEngine;
 public class FarmController : Interactable {
 
     public int boosters;
-    public float productionRate;
+    public float productionRate = 60f;
+    [Range(0, 1)]
+    public float productionModifyer = 1f;
 
     private void OnEnable()
     {
@@ -15,7 +17,8 @@ public class FarmController : Interactable {
     public override void Interact()
     {
         base.Interact();
-
+        playerController.boosters += boosters;
+        boosters = 0;
     }
 
     IEnumerator ProduceBoosters()
@@ -24,7 +27,7 @@ public class FarmController : Interactable {
         {
             Debug.Log("StartedCoroutine");
             boosters++;
-            yield return new WaitForSeconds(productionRate);
+            yield return new WaitForSeconds(productionRate*productionModifyer);
         }
     }
 

@@ -11,8 +11,10 @@ public class BuildSiteController : Interactable {
         base.Interact();
         Debug.Log("Override!!");
 
-        //temporary Spawning
+        //temporary Spawning Should allow to chose
         Instantiate(farmPreFab,transform.position,Quaternion.identity);
+
+
         Destroy(gameObject);
     }
 

@@ -21,8 +21,9 @@ public class GiantController : Interactable
     [Header("Controls")]
     public float speed =2.5f;
     public int damageAmount = 10;
+    public int slaves = 0;
 
-    void Awake()
+    new void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         navMeshAgent.speed = speed;
