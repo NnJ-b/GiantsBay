@@ -111,6 +111,6 @@ MonoBehaviour:
   focused: 0
   health: 0
   playerController: {fileID: 0}
-  interactableRange: 1.5
+  interactableRange: 3
   treasureMax: 10
   treasureMin: 30

@@ -7,18 +7,25 @@ public class FarmController : Interactable {
     public int boosters;
     public float productionRate;
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine("ProduceBoosters");
     }
 
-    IEnumerable ProduceBoosters()
+    public override void Interact()
     {
-        boosters++;
-        yield return new WaitForSeconds(productionRate); 
+        base.Interact();
+
     }
 
-
-
+    IEnumerator ProduceBoosters()
+    {
+        while (true)
+        {
+            Debug.Log("StartedCoroutine");
+            boosters++;
+            yield return new WaitForSeconds(productionRate);
+        }
+    }
 
 }

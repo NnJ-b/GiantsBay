@@ -111,6 +111,6 @@ MonoBehaviour:
   focused: 0
   health: 0
   playerController: {fileID: 0}
-  interactableRange: 0
+  interactableRange: 5
   boosters: 0
   productionRate: 1
