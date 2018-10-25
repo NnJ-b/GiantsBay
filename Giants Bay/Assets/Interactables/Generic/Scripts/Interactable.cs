@@ -32,8 +32,6 @@ public class Interactable : MonoBehaviour {
                 Interact();
             }
         }
-
-        CheckHealth();
     }
 
     public void TakeDamage(float damageAmount)
@@ -52,6 +50,7 @@ public class Interactable : MonoBehaviour {
 
     public virtual void Die()
     {
+        Debug.Log("Die: " + name);
         Destroy(gameObject);
     }
 

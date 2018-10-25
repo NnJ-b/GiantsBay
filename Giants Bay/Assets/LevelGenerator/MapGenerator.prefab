@@ -478,7 +478,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 062a285279de3764f97a8e7844d99f74, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 1ee4323fc0392c5418477c7dd7daf92a, type: 2}
 --- !u!114 &114707945632634970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -513,7 +513,7 @@ MonoBehaviour:
   octives: 4
   persistance: 0.168
   lacunarity: 2
-  seed: 133
+  seed: 155
   offset: {x: 0, y: 0}
   useFalloff: 1
   meshHeightMultiplyer: 10
@@ -522,7 +522,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: -0.00409317
-      value: -0.5009155
+      value: -0.5102997
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -531,16 +531,16 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 0.24736929
-      value: 0.03931272
-      inSlope: Infinity
+      value: 0.029928565
+      inSlope: 2.367524
       outSlope: -0.019325428
       tangentMode: 1
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.71833515
       outWeight: 1
     - serializedVersion: 3
       time: 0.46783155
-      value: 0.100316934
+      value: 0.09093278
       inSlope: 0.35096544
       outSlope: 0.35096544
       tangentMode: 0
@@ -549,7 +549,7 @@ MonoBehaviour:
       outWeight: 0.9628103
     - serializedVersion: 3
       time: 0.65402895
-      value: 0.15082175
+      value: 0.14143759
       inSlope: 0.11132134
       outSlope: 0.11132134
       tangentMode: 0
@@ -558,7 +558,7 @@ MonoBehaviour:
       outWeight: 0.9543572
     - serializedVersion: 3
       time: 0.81851804
-      value: 0.6303317
+      value: 0.62094754
       inSlope: 1.6593019
       outSlope: 1.6593019
       tangentMode: 0
@@ -567,7 +567,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
+      value: 0.99061584
       inSlope: 2.0369425
       outSlope: 2.0369425
       tangentMode: 34
@@ -580,10 +580,10 @@ MonoBehaviour:
   autoUpdate: 1
   regions:
   - name: DeepWater
-    height: 0.2
+    height: 0.23
     color: {r: 0.07102172, g: 0.3015406, b: 0.7169812, a: 1}
   - name: ShalowWater
-    height: 0.3
+    height: 0.36
     color: {r: 0.1462264, g: 0.7440982, b: 1, a: 1}
   - name: SandBeach
     height: 0.38
@@ -597,11 +597,11 @@ MonoBehaviour:
   - name: Grass2
     height: 0.52
     color: {r: 0.06244393, g: 0.5943396, b: 0, a: 1}
-  - name: Rock
+  - name: Grass3
     height: 0.69
-    color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
+    color: {r: 0, g: 0.735849, b: 0.040163673, a: 1}
   - name: Rock2
-    height: 0.8
+    height: 0.78
     color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
   - name: Snow
     height: 1

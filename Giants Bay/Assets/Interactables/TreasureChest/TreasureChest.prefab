@@ -103,7 +103,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1123945760113878}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6cbc806b8860594bb88bbb01ab75d4e, type: 3}
   m_Name: 
@@ -111,3 +111,5 @@ MonoBehaviour:
   focused: 0
   health: 0
   playerController: {fileID: 0}
+  treasureMax: 10
+  treasureMin: 1

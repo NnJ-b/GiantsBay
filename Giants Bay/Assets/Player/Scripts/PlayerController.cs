@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Colectables")]
     public int boosters;
     [Tooltip("The Higher the value to longer it will take to reach the asymptote")]
-    [Range(10, 150)]
+    [Range(10, 1000)]
     public int boosterEffect;
     [Tooltip("raises the asymptote")]
     public float boostMultiplyer = 1;
@@ -67,9 +67,9 @@ public class PlayerController : MonoBehaviour {
             transform.position = new Vector3(transform.position.x, hit.point.y+spawnOffset, transform.position.z);
         }
         //checks range
-        if (range < stopingDistanceInteractable)
+        if (range < stopingdistanceEnemy)
         {
-            range = stopingDistanceInteractable;
+            range = stopingdistanceEnemy * 1.2f;
         }
 
         CalculateDamage();
@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //selected an enemy?
-        if (follow == true)
+        if (follow == true && selected !=null)
         {
             //checks to start animation
             AnimationState();
@@ -184,6 +184,7 @@ public class PlayerController : MonoBehaviour {
             {
                 //aplly Damage
                 selected.TakeDamage(damagePerHit);
+                selected.CheckHealth();
             }
             attackReady = false;          
         }
