@@ -119,6 +119,7 @@ MonoBehaviour:
   focused: 0
   health: 100
   playerController: {fileID: 0}
+  interactableRange: 4
   navMeshAgent: {fileID: 195143610839940006}
   animator: {fileID: 95884440590724442}
   attacking: 0

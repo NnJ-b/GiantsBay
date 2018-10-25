@@ -9,6 +9,8 @@ public class Interactable : MonoBehaviour {
 
     public PlayerController playerController;
 
+    public float interactableRange;
+
     public void Awake()
     {
         //to make sure interactable objects dont die
@@ -32,6 +34,12 @@ public class Interactable : MonoBehaviour {
                 Interact();
             }
         }
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.position, interactableRange);
     }
 
     public void TakeDamage(float damageAmount)

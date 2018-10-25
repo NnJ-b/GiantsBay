@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
     public float baseDamage = 5f;
     public float damageAdder;
     private float damagePerHit;
-    public float range;
+    public float rangeMultiplyer = 1;
 
     [Header("Animation Controlls")]
     public Animator animator;
@@ -66,20 +66,29 @@ public class PlayerController : MonoBehaviour {
         {
             transform.position = new Vector3(transform.position.x, hit.point.y+spawnOffset, transform.position.z);
         }
-        //checks range
-        if (range < stopingdistanceEnemy)
-        {
-            range = stopingdistanceEnemy * 1.2f;
-        }
 
+        if(rangeMultiplyer <1f)
+        {
+            rangeMultiplyer = 1f;
+        }
+        
         CalculateDamage();
     }
 
     void Update ()
     {
+        UpdateStopingDistance();
         Navigation();
         Attack();
         ChangeSize();
+    }
+
+    public void UpdateStopingDistance()
+    {
+        if(selected != null)
+        {
+            navMeshAgent.stoppingDistance = selected.interactableRange * rangeMultiplyer * .8f;
+        }
     }
 
     public void AnimationState()
@@ -193,7 +202,7 @@ public class PlayerController : MonoBehaviour {
     public bool HitDetection()
     {
         //close enough to hit?
-        if (DistanceToEnemy() <= range)
+        if (DistanceToEnemy() <= navMeshAgent.stoppingDistance * rangeMultiplyer)
         {
             return true;
         }
