@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4338743326801418}
   - component: {fileID: 33319073466781006}
   - component: {fileID: 23468120257651772}
+  - component: {fileID: 208281884322943050}
   - component: {fileID: 65408910316815312}
   - component: {fileID: 114478666579941410}
   m_Layer: 11
@@ -113,5 +114,20 @@ MonoBehaviour:
   playerController: {fileID: 0}
   interactableRange: 5
   boosters: 0
-  productionRate: 1
+  productionRate: 60
   productionModifyer: 1
+--- !u!208 &208281884322943050
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1743512998471764}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
