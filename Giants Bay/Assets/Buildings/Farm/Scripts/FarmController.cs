@@ -17,7 +17,7 @@ public class FarmController : Interactable {
     public override void Interact()
     {
         base.Interact();
-        playerController.boosters += boosters;
+        playerController.AddBoosters(boosters);
         boosters = 0;
     }
 

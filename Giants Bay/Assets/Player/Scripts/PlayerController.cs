@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour {
 
@@ -15,6 +17,11 @@ public class PlayerController : MonoBehaviour {
     public float rayDistance = 500;
     public LayerMask Interactable;
 
+    [Header("UI References")]
+    public Slider healthBar;
+    public Slider sizeBar;
+    public TextMeshProUGUI BoooterCount;
+
     [Header("Spawn")]
     public float spawnOffset = 1f;
 
@@ -23,7 +30,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     public Interactable selected = null;
     public Interactable previouslySelected = null;
-    public bool follow;
+    public bool follow = false;
     public bool interacting;
     public float stopingDistanceInteractable;
     public float stopingdistanceEnemy;
@@ -166,6 +173,16 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    public void AddBoosters(int amount)
+    {
+        boosters += amount;
+        if(boosters < 0)
+        {
+            boosters = 0;
+        }
+        BoooterCount.SetText(boosters.ToString());
+    }
+
     private void Attack()
     {
         //stop moving
@@ -230,6 +247,9 @@ public class PlayerController : MonoBehaviour {
         //ouch
         health = health - damageAmount;
         Debug.Log(health);
+        healthBar.value = health;
+        AddBoosters(-damageAmount);
+        ChangeSize();
     }   
 
     public void CalculateDamage()
@@ -243,8 +263,7 @@ public class PlayerController : MonoBehaviour {
         {
             float y = boosters + boosterEffect;
             float x = (boosters / y);
-            float z = x * boostMultiplyer;
-            return z;
+            return x;
         }
         else
         {
@@ -254,7 +273,9 @@ public class PlayerController : MonoBehaviour {
 
     public void ChangeSize()
     {
-        float x = 1 + CalculateBoosterEffect();
+        sizeBar.value = CalculateBoosterEffect();
+        
+        float x = 1 + (CalculateBoosterEffect() * boostMultiplyer);
 
         transform.localScale = Vector3.Slerp(transform.localScale, new Vector3(x, x, x), sizeLerpSpeed);
     }
