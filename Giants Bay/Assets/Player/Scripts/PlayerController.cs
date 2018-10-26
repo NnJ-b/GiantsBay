@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour {
 
@@ -71,7 +72,7 @@ public class PlayerController : MonoBehaviour {
         RaycastHit hit;
         if(Physics.Raycast(ray,out hit, Mathf.Infinity, Interactable))
         {
-            transform.position = new Vector3(transform.position.x, hit.point.y+spawnOffset, transform.position.z);
+            transform.position = new Vector3(transform.position.x, hit.point.y + spawnOffset, transform.position.z);
         }
 
         if(rangeMultiplyer <1f)
@@ -80,6 +81,16 @@ public class PlayerController : MonoBehaviour {
         }
         
         CalculateDamage();
+    }
+
+    //MOUSEONLY!!!!!
+    private bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 
     void Update ()
@@ -116,41 +127,45 @@ public class PlayerController : MonoBehaviour {
         //raycast
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, rayDistance, Interactable))
+            //checks if over UI
+            if(!IsPointerOverUIObject())
             {
-                if (hit.collider.tag == "Ground")
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, rayDistance, Interactable))
                 {
-                    navMeshAgent.stoppingDistance = 0f;
-                    navMeshAgent.SetDestination(hit.point);
-                    follow = false;
-                    interacting = false;
-                    previouslySelected = selected;
-                    selected = null;
-                }
-                if (hit.collider.tag == "Enemy")
-                {
-                    follow = true;
-                    interacting = false;
-                    previouslySelected = selected;
-                    selected = hit.transform.gameObject.GetComponent<Interactable>();
-                    navMeshAgent.stoppingDistance = stopingdistanceEnemy;
+                    if (hit.collider.tag == "Ground")
+                    {
+                        navMeshAgent.stoppingDistance = 0f;
+                        navMeshAgent.SetDestination(hit.point);
+                        follow = false;
+                        interacting = false;
+                        previouslySelected = selected;
+                        selected = null;
+                    }
+                    if (hit.collider.tag == "Enemy")
+                    {
+                        follow = true;
+                        interacting = false;
+                        previouslySelected = selected;
+                        selected = hit.transform.gameObject.GetComponent<Interactable>();
+                        navMeshAgent.stoppingDistance = stopingdistanceEnemy;
 
-                    selected.Focus(this);
-                }
-                if (hit.collider.tag == "Interactable")
-                {
-                    follow = false;
-                    interacting = true;
-                    navMeshAgent.stoppingDistance = stopingDistanceInteractable;
-                    previouslySelected = selected;
-                    selected = hit.transform.gameObject.GetComponent<Interactable>();
-                    navMeshAgent.SetDestination(hit.point);
+                        selected.Focus(this);
+                    }
+                    if (hit.collider.tag == "Interactable")
+                    {
+                        follow = false;
+                        interacting = true;
+                        navMeshAgent.stoppingDistance = stopingDistanceInteractable;
+                        previouslySelected = selected;
+                        selected = hit.transform.gameObject.GetComponent<Interactable>();
+                        navMeshAgent.SetDestination(hit.point);
 
-                    selected.Focus(this);
+                        selected.Focus(this);
+                    }
                 }
-            }
+            }            
 
             //checks if selected changed
             if (selected != previouslySelected && previouslySelected != null)

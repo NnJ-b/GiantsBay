@@ -120,7 +120,7 @@ MonoBehaviour:
   rayDistance: 500
   Interactable:
     serializedVersion: 2
-    m_Bits: 2560
+    m_Bits: 2592
   healthBar: {fileID: 0}
   sizeBar: {fileID: 0}
   BoooterCount: {fileID: 0}

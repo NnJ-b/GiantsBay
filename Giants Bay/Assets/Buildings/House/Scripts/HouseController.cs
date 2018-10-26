@@ -8,7 +8,7 @@ public class HouseController : Interactable {
     public static List<HouseController> Homes = new List<HouseController>();
     public int CapacityPerHome = 5;
 
-    public void Awake()
+    public new void Awake()
     {
         Homes.Add(this);
         CalculateCapacity();
