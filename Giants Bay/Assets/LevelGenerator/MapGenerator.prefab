@@ -98,7 +98,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1821905628720334
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,15 +491,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bab7f2a6b1f73643b5d71ff45698e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawMode: 1
-  mapWidth: 171
+  drawMode: 2
+  mapWidth: 100
   mapHeight: 100
   noiseScale: 10
   lerpSpeed: 0
   octives: 4
-  persistance: 0.168
+  persistance: 0.085
   lacunarity: 2
-  seed: 270
+  seed: 375
   offset: {x: 0, y: 0}
   useFalloff: 1
   meshHeightMultiplyer: 10

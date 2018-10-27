@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour {
         }
         
         CalculateDamage();
+        AddBoosters(0);
     }
 
     //MOUSEONLY!!!!!

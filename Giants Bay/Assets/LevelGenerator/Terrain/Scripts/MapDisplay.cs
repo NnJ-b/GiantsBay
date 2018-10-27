@@ -15,7 +15,10 @@ public class MapDisplay : MonoBehaviour {
     public void DrawTexture(Texture2D texture)
     {
         textureRenderer.sharedMaterial.mainTexture = texture;
-        sprite.sprite = Sprite.Create(texture,new Rect(0,0,texture.width,texture.height), new Vector2(.5f,.5f));
+        if(sprite != null)
+        {
+            sprite.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(.5f, .5f));
+        }
         textureRenderer.transform.localScale = new Vector3(texture.width, 1, texture.height);
     }
     

@@ -19,7 +19,6 @@ public class CanvasController : MonoBehaviour {
     public float mimimapWidth;
     public float mimimapHeight;
 
-
     public void Start()
     {
         HideAll();
@@ -30,6 +29,8 @@ public class CanvasController : MonoBehaviour {
 
     public void Update()
     {
+        mimimapWidth = map.GetComponent<RectTransform>().rect.width;
+        mimimapHeight = map.GetComponent<RectTransform>().rect.height;
         PlayerMapLocation();
     }
 
@@ -37,15 +38,18 @@ public class CanvasController : MonoBehaviour {
     {    
         if(showingMap)
         {
-            //X-X Z-Y
+            //Calculates Location
             float x = player.position.x;
             float z = player.position.z;
+            x = Mathf.InverseLerp((mapGenerator.mapWidth * 10) / -2, (mapGenerator.mapWidth * 10) / 2, x);
+            z = Mathf.InverseLerp((mapGenerator.mapHeight * 10) / -2, (mapGenerator.mapHeight * 10) / 2, z);
+            //Apllys Location
+            playerIcon.anchoredPosition = new Vector3(Mathf.Lerp(mimimapWidth / -2, mimimapWidth / 2, x), Mathf.Lerp(mimimapHeight / -2, mimimapHeight / 2, z),1);
 
-            x = Mathf.InverseLerp(mapGenerator.mapWidth / -2, mapGenerator.mapWidth / 2, x);
-            z = Mathf.InverseLerp(mapGenerator.mapHeight / -2, mapGenerator.mapHeight / 2, z);
-            Debug.Log(x.ToString() + z.ToString());
-
-            playerIcon.position = new Vector3(Mathf.Lerp(mimimapWidth / -2, mimimapHeight / 2, x),1, Mathf.Lerp(mimimapHeight / -2, mimimapHeight / 2, z));
+            //Rotation
+            Vector3 playerIconRotation = playerIcon.transform.eulerAngles;
+            playerIconRotation.z = player.eulerAngles.y;
+            playerIcon.transform.eulerAngles = playerIconRotation;
         }    
     }
 

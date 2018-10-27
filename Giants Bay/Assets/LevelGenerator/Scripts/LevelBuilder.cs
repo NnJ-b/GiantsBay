@@ -15,12 +15,14 @@ public class LevelBuilder : MonoBehaviour {
     private void Awake()
     {
 
-        //creat the mesh
-        mapGenerator.drawMode = MapGenerator.DrawMode.Mesh;
-        mapGenerator.Generatemap();
+        
 
         //Creat The ColorMap
         mapGenerator.drawMode = MapGenerator.DrawMode.ColorMap;
+        mapGenerator.Generatemap();
+
+        //creat the mesh
+        mapGenerator.drawMode = MapGenerator.DrawMode.Mesh;
         mapGenerator.Generatemap();
 
         navGenerator.BuildNavMesh(navMeshSurface);
