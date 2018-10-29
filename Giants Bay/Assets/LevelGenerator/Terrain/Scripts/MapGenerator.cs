@@ -27,6 +27,8 @@ public class MapGenerator : MonoBehaviour {
 
     public bool autoUpdate;
 
+    public Material material;
+
     public TerrainType[] regions;
 
     public float[,] falloffMap;
@@ -107,6 +109,14 @@ public class MapGenerator : MonoBehaviour {
         else if(drawMode == DrawMode.Mesh)
         {
             display.DrawMesh(MeshGenerator.GenerateTerrainMesh(noiseMap,meshHeightMultiplyer,meshHeightCurve), TextureGenerator.TextureFromColorMap(colorMap, mapWidth, mapHeight));
+
+            if(material != null)
+            {
+                material.SetFloat("Vector1_9FDFC70B", Noise.minNoiseHeight);
+                material.SetFloat("Vector1_A0CF972C", Noise.maxNoiseHeight);
+                material.SetFloat("Vector1_CF8F2CE4", meshHeightMultiplyer);
+            }
+            
         }
         else if(drawMode == DrawMode.FalloffMap)
         {

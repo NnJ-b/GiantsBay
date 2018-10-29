@@ -4,6 +4,9 @@ using UnityEngine;
 
 public static class Noise {
 
+    public static float maxNoiseHeight = float.MinValue;
+    public static float minNoiseHeight = float.MaxValue;
+
     public static float[,] GenerateNoiseMap(int mapWidth, int mapHeight, int seed, float scale, int octives, float persistance, float lacunarity, Vector2 offset)
     {
         float[,] noiseMap = new float[mapWidth, mapHeight];
@@ -22,8 +25,8 @@ public static class Noise {
             scale = .0001f;
         }
 
-        float maxNoiseHeight = float.MinValue;
-        float minNoiseHeight = float.MaxValue;
+        //float maxNoiseHeight = float.MinValue;
+        //float minNoiseHeight = float.MaxValue;
 
         float halfWidth = mapWidth / 2f;
         float halfHeight = mapHeight / 2f;
@@ -67,7 +70,7 @@ public static class Noise {
             {
                 noiseMap[x, y] = Mathf.InverseLerp(minNoiseHeight, maxNoiseHeight, noiseMap[x, y]);
             }
-        }    
+        }         
 
         return noiseMap;
 

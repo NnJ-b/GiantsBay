@@ -156,7 +156,7 @@ Transform:
   m_GameObject: {fileID: 1492581379622056}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 556.5, y: 260.85938, z: 0}
-  m_LocalScale: {x: 171, y: 1, z: 100}
+  m_LocalScale: {x: 139, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 4133152974661756}
   m_RootOrder: 4
@@ -320,7 +320,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 3eb43bb6480d3a24fa7b33d1cbf79b32, type: 2}
+  - {fileID: 2100000, guid: 7043c68f3eba49e4d93959e20364ead5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -499,7 +499,7 @@ MonoBehaviour:
   octives: 4
   persistance: 0.085
   lacunarity: 2
-  seed: 375
+  seed: 32
   offset: {x: 0, y: 0}
   useFalloff: 1
   meshHeightMultiplyer: 10
@@ -564,31 +564,32 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   autoUpdate: 1
+  material: {fileID: 2100000, guid: 7043c68f3eba49e4d93959e20364ead5, type: 2}
   regions:
   - name: DeepWater
     height: 0.23
-    color: {r: 0.07102172, g: 0.3015406, b: 0.7169812, a: 1}
+    color: {r: 0.07102172, g: 0.3015406, b: 0.7169812, a: 0}
   - name: ShalowWater
     height: 0.36
-    color: {r: 0.1462264, g: 0.7440982, b: 1, a: 1}
+    color: {r: 0.1462264, g: 0.7440982, b: 1, a: 0.627451}
   - name: SandBeach
     height: 0.38
-    color: {r: 0.95989794, g: 1, b: 0.5613208, a: 1}
+    color: {r: 0.95989794, g: 1, b: 0.5613208, a: 0.627451}
   - name: CourseSand
     height: 0.4
-    color: {r: 0.9245283, g: 0.786155, b: 0, a: 1}
+    color: {r: 0.9245283, g: 0.786155, b: 0, a: 0.627451}
   - name: Grass
     height: 0.48
-    color: {r: 0, g: 1, b: 0.123636246, a: 1}
+    color: {r: 0, g: 1, b: 0.123636246, a: 0.627451}
   - name: Grass2
     height: 0.52
     color: {r: 0.06244393, g: 0.5943396, b: 0, a: 1}
   - name: Grass3
     height: 0.69
-    color: {r: 0, g: 0.735849, b: 0.040163673, a: 1}
+    color: {r: 0, g: 0.735849, b: 0.040163673, a: 0.627451}
   - name: Rock2
     height: 0.78
-    color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+    color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 0.627451}
   - name: Snow
     height: 1
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: 1, g: 1, b: 1, a: 0.627451}
