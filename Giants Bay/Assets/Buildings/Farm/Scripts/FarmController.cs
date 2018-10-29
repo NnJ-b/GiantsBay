@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FarmController : Interactable {
+public class FarmController : Buildings {
 
     public int boosters;
     public float productionRate = 60f;
     [Range(0, 1)]
     public float productionModifyer = 1f;
 
-    private void OnEnable()
+    
+
+    private new void Awake()
     {
+        structureType = Structure.Farm;
+        NewBuilding(this);
         StartCoroutine("ProduceBoosters");
     }
 

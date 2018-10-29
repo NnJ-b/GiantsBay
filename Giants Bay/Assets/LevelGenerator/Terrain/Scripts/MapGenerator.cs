@@ -33,9 +33,15 @@ public class MapGenerator : MonoBehaviour {
 
     public float[,] falloffMap;
 
-    private void Awake()
+
+    private void Start()
     {
-        falloffMap = FalloffGenerator.GenerateFalloffMap(mapWidth, mapHeight);
+        if(mapWidth == 0)
+        {
+            mapWidth = 100;
+            mapHeight = 100;
+        }
+
     }
 
     public void NewMap()

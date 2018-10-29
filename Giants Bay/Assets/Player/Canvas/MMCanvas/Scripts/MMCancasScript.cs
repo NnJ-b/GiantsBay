@@ -23,6 +23,18 @@ public class MMCancasScript : MonoBehaviour {
 
     public void NewGame()
     {
+        PlayerPrefs.DeleteAll();
+        SaveLoad.SaveInt("Seed", mapGenerator.seed);
+        SaveLoad.SaveInt("MapWidth", mapGenerator.mapWidth);
+        SaveLoad.SaveInt("MapHeight", mapGenerator.mapHeight);
+        SaveLoad.SaveInt("NewGame", 1);
+        Buildings.Farms.Clear();
+        Buildings.Homes.Clear();
+        SceneManager.LoadScene(1);
+    }
+
+    public void ContinueGame()
+    {
         SceneManager.LoadScene(1);
     }
 }

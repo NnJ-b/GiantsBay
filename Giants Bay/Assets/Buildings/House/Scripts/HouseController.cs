@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HouseController : Interactable {
+public class HouseController : Buildings {
 
     public static int Capacity = 1;
-    public static List<HouseController> Homes = new List<HouseController>();
     public int CapacityPerHome = 5;
 
     public new void Awake()
     {
-        Homes.Add(this);
+        structureType = Structure.House;
+        NewBuilding(this);
         CalculateCapacity();
     }
 

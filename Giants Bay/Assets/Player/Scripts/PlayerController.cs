@@ -60,11 +60,6 @@ public class PlayerController : MonoBehaviour {
     public float boostMultiplyer = 1;
 
 
-    void Start ()
-    {
-        cam = Camera.main;        
-	}
-
     private void Awake()
     {
         //settles (Temporary)
@@ -75,7 +70,12 @@ public class PlayerController : MonoBehaviour {
             transform.position = new Vector3(transform.position.x, hit.point.y + spawnOffset, transform.position.z);
         }
 
-        if(rangeMultiplyer <1f)
+        cam = Camera.main;
+
+
+        LoadPlayerValues();
+
+        if (rangeMultiplyer <1f)
         {
             rangeMultiplyer = 1f;
         }
@@ -107,6 +107,16 @@ public class PlayerController : MonoBehaviour {
         if(selected != null)
         {
             navMeshAgent.stoppingDistance = selected.interactableRange * rangeMultiplyer * .8f;
+        }
+    }
+
+    private void LoadPlayerValues()
+    {
+        boosters = SaveLoad.LoadInt("Boosters");
+        health = SaveLoad.LoadInt("Health");
+        if(health == 0)
+        {
+            health = 100;
         }
     }
 
@@ -197,6 +207,7 @@ public class PlayerController : MonoBehaviour {
             boosters = 0;
         }
         BoooterCount.SetText(boosters.ToString());
+        SaveLoad.SaveInt("Boosters", boosters);
     }
 
     private void Attack()
@@ -266,6 +277,7 @@ public class PlayerController : MonoBehaviour {
         healthBar.value = health;
         AddBoosters(-damageAmount);
         ChangeSize();
+        SaveLoad.SaveInt("Health", health);
     }   
 
     public void CalculateDamage()
