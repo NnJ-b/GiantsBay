@@ -206,7 +206,10 @@ public class PlayerController : MonoBehaviour {
         {
             boosters = 0;
         }
-        BoooterCount.SetText(boosters.ToString());
+        if (BoooterCount != null)
+        {
+            BoooterCount.SetText(boosters.ToString());
+        }
         SaveLoad.SaveInt("Boosters", boosters);
     }
 
@@ -274,7 +277,10 @@ public class PlayerController : MonoBehaviour {
         //ouch
         health = health - damageAmount;
         Debug.Log(health);
-        healthBar.value = health;
+        if(healthBar != null)
+        {
+            healthBar.value = health;
+        }
         AddBoosters(-damageAmount);
         ChangeSize();
         SaveLoad.SaveInt("Health", health);
@@ -301,8 +307,11 @@ public class PlayerController : MonoBehaviour {
 
     public void ChangeSize()
     {
-        sizeBar.value = CalculateBoosterEffect();
-        
+        if(sizeBar != null)
+        {
+            sizeBar.value = CalculateBoosterEffect();
+        }
+
         float x = 1 + (CalculateBoosterEffect() * boostMultiplyer);
 
         transform.localScale = Vector3.Slerp(transform.localScale, new Vector3(x, x, x), sizeLerpSpeed);
