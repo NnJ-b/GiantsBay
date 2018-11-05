@@ -25,6 +25,11 @@ GameObject:
   - component: {fileID: 136829874404921532}
   - component: {fileID: 195183007329285278}
   - component: {fileID: 114779965694875326}
+  - component: {fileID: 114992130628735838}
+  - component: {fileID: 114300979551672530}
+  - component: {fileID: 114614125475668058}
+  - component: {fileID: 114814488323326502}
+  - component: {fileID: 114959690553601566}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -39,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1617889981511400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.826, y: 66.1, z: 141.76}
+  m_LocalPosition: {x: 0, y: 1, z: 4.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -105,6 +110,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114300979551672530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617889981511400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a51a1109f9b644ea14f7727f1742d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boosters: 0
+  boosterEffect: 0
+  boostMultiplyer: 1
+--- !u!114 &114614125475668058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617889981511400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4601df0dff99064d95cf1c0daadc77e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  baseDamage: 5
+  damageAdder: 0
+  rangeMultiplyer: 1.6
+  attacking: 0
 --- !u!114 &114779965694875326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,34 +151,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28602c902cbbd9d4b94588557ff2c7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 195183007329285278}
-  rayDistance: 500
-  Interactable:
-    serializedVersion: 2
-    m_Bits: 2592
+  cam: {fileID: 0}
+  motor: {fileID: 0}
+  touch: {fileID: 0}
+  inventory: {fileID: 0}
+  combat: {fileID: 0}
+  animationController: {fileID: 0}
   healthBar: {fileID: 0}
   sizeBar: {fileID: 0}
   BoooterCount: {fileID: 0}
-  spawnOffset: 0.5
+--- !u!114 &114814488323326502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617889981511400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42282f6fac5f9944ba39c6d94e870140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 95875024973317702}
+  sizeLerpSpeed: 0
+  attacking: 0
+  endAttack: 0
+  startAttack: 0
+  attackReady: 0
+--- !u!114 &114959690553601566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617889981511400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f8da0a563f14c47990d47ebde940a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114992130628735838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617889981511400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc3d2e8eadee42044b8500c7eed787a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 195183007329285278}
+  rayDistance: 5000
+  Interactable:
+    serializedVersion: 2
+    m_Bits: 2560
   speed: 3.5
   selected: {fileID: 0}
   previouslySelected: {fileID: 0}
   follow: 0
   interacting: 0
-  stopingDistanceInteractable: 2
-  stopingdistanceEnemy: 3
-  baseDamage: 5
-  damageAdder: 0
-  rangeMultiplyer: 1
-  animator: {fileID: 95875024973317702}
-  sizeLerpSpeed: 0.39
-  attacking: 0
-  endAttack: 0
-  startAttack: 0
-  attackReady: 0
-  boosters: -10
-  boosterEffect: 150
-  boostMultiplyer: 1
 --- !u!136 &136829874404921532
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -21,7 +21,7 @@ public class FarmController : Buildings {
     public override void Interact()
     {
         base.Interact();
-        playerController.AddBoosters(boosters);
+        playerController.inventory.AddBoosters(boosters);
         boosters = 0;
     }
 

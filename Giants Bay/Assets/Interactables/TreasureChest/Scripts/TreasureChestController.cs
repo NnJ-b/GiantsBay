@@ -29,7 +29,7 @@ public class TreasureChestController : Interactable {
 
         if(playerController != null)
         {
-            playerController.AddBoosters(treasureAmount);
+            playerController.inventory.AddBoosters(treasureAmount);
             used = true;
         }
     }

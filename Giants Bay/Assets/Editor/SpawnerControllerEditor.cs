@@ -25,6 +25,10 @@ public class SpawnerControllerEditor : Editor {
         {
             spawnController.SpawnSite();
         }
+        if (GUILayout.Button("Spawn Human"))
+        {
+            spawnController.SpawnSite();
+        }
     }
 
 }

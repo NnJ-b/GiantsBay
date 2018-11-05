@@ -6,6 +6,8 @@ public class SpawnerController : MonoBehaviour {
 
     public GameObject TempChestPrefab;
     public GameObject TempSitePrefab;
+    public GameObject TempHumanPrefab;
+    
 
 
     private GameObject player;
@@ -36,6 +38,11 @@ public class SpawnerController : MonoBehaviour {
     public void SpawnSite()
     {
         Instantiate(TempSitePrefab, new Vector3(0, .5f, 0), Quaternion.identity);
+    }
+
+    public void SpawnHuman()
+    {
+        Instantiate(TempHumanPrefab, new Vector3(0, 1, 0), Quaternion.identity);
     }
 
 

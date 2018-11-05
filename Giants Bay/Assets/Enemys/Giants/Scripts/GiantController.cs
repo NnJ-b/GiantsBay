@@ -81,7 +81,7 @@ public class GiantController : Interactable
             if (HitDetection())
             {
                 //aplly Damage
-                player.GetComponent<PlayerController>().TakeDamage(damageAmount);
+                player.GetComponent<PlayerController>().combat.TakeDamage(damageAmount);
             }
             attackReady = false;
         }
