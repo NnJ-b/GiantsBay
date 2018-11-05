@@ -139,7 +139,6 @@ MonoBehaviour:
   baseDamage: 5
   damageAdder: 0
   rangeMultiplyer: 1.6
-  attacking: 0
 --- !u!114 &114779965694875326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,6 +156,7 @@ MonoBehaviour:
   inventory: {fileID: 0}
   combat: {fileID: 0}
   animationController: {fileID: 0}
+  followers: []
   healthBar: {fileID: 0}
   sizeBar: {fileID: 0}
   BoooterCount: {fileID: 0}
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 195183007329285278}
-  rayDistance: 5000
+  rayDistance: 500
   Interactable:
     serializedVersion: 2
     m_Bits: 2560

@@ -17,16 +17,25 @@ public class GiantController : Interactable
     public bool startAttack = false;
     public bool attackReady = false;
 
+    [Header("Slaves")]
+    public GameObject slave;
+    public int slaveCount = 1;
+    private GameObject[] slaves;
 
     [Header("Controls")]
     public float speed =2.5f;
     public int damageAmount = 10;
-    public int slaves = 0;
 
     new void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         navMeshAgent.speed = speed;
+        slaves = new GameObject[slaveCount];
+        for (int i = 0; i < slaveCount; i++)
+        {
+            slaves[i] =  Instantiate(slave, transform.position, Quaternion.identity);
+            slaves[i].GetComponent<SlaveController>().master = this;            
+        }
     }
 
     new void Update()
@@ -34,6 +43,18 @@ public class GiantController : Interactable
         Move();
 
         Attack();
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        for (int i = 0; i < slaves.Length; i++)
+        {
+            if(slaves[i] != null)
+            {
+                slaves[i].GetComponent<SlaveController>().FreeSlaves();
+            }
+        }
     }
 
     private void Move()

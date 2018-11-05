@@ -4,16 +4,6 @@ using UnityEngine;
 
 public class HumanClass : MonoBehaviour {
 
-    public float health = 10f;    
+    public float health = 10f;
 
-	// Use this for initialization
-	void Start ()
-    {
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        
-	}
 }

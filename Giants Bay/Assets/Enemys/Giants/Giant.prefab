@@ -126,6 +126,8 @@ MonoBehaviour:
   endAttack: 0
   startAttack: 0
   attackReady: 0
+  slave: {fileID: 0}
+  slaveCount: 1
   speed: 2.5
   damageAmount: 10
 --- !u!136 &136418867475499120

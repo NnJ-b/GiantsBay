@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour {
     public PlayerCombat combat;
     public PlayerAnimation animationController;
 
+    [Header("Followers")]
+    public List<FollowerController> followers = new List<FollowerController>();
+
 
     [Header("UI References")]
     public Slider healthBar;
