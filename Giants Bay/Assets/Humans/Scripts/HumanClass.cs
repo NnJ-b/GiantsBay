@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HumanClass : MonoBehaviour {
+public class HumanClass : Interactable {
 
-    public float health = 10f;
+    private void Start()
+    {
+        health = 10f;
+    }
 
 }

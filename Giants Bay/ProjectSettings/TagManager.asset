@@ -8,6 +8,7 @@ TagManager:
   - MapGenerator
   - Enemy
   - Interactable
+  - Human
   layers:
   - Default
   - TransparentFX

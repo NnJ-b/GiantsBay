@@ -76,6 +76,7 @@ public class PlayerMotor : MonoBehaviour {
                         previouslySelected = selected;
                         selected = null;
                         UpdateStopingDistance();
+                        updateFollowersDestination(hit.point);
                     }
 
                     if (hit.collider.tag == "Enemy")
@@ -86,6 +87,7 @@ public class PlayerMotor : MonoBehaviour {
                         selected = hit.transform.gameObject.GetComponent<Interactable>();
                         selected.Focus(this.controller);
                         UpdateStopingDistance();
+                        updateFollowersDestination(hit.point);
                     }
 
                     if (hit.collider.tag == "Interactable")
@@ -97,7 +99,11 @@ public class PlayerMotor : MonoBehaviour {
                         navMeshAgent.SetDestination(hit.transform.position);
                         selected.Focus(this.controller);
                         UpdateStopingDistance();
-
+                        updateFollowersDestination(hit.point);
+                    }
+                    if(hit.collider.tag == "Human")
+                    {
+                        //change human state
                     }
                 }
             }
@@ -107,6 +113,19 @@ public class PlayerMotor : MonoBehaviour {
             {
                 previouslySelected.StopFocus();
             }
+        }
+    }
+
+    public void updateFollowersDestination(Vector3 destination)
+    {
+        //updates followers Destination
+        for (int i = 0; i < controller.followers.Count; i++)
+        {
+            if (controller.followers[i].state == FollowerController.State.Follow)
+            {
+                controller.followers[i].updateNavMeshAgent(destination);
+            }
+
         }
     }
 

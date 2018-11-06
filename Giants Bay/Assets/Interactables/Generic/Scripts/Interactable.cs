@@ -25,7 +25,7 @@ public class Interactable : MonoBehaviour {
         Debug.Log("Interacted with" + transform.name);
     }
 
-    public void Update()
+    public virtual void Update()
     {
         if(playerController != null)
         {

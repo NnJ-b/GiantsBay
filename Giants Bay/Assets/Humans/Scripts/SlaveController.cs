@@ -16,22 +16,29 @@ public class SlaveController : HumanClass {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         SelectTarget();
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    public override void Update()
     {
-        if(selected != null)
+        base.Update();
+        if (selected != null)
         {
             navMeshAgent.SetDestination(selected.transform.position);
         }
-	}
-
+    }
+    
     public void SelectTarget()
     {
         if (player.followers.Count > 0)
         {
-            int i = Random.Range(0, player.followers.Count);
-            selected = player.followers[i].gameObject;
+            for (int i = 0; i < player.followers.Count; i++)
+            {
+                if(player.followers[i].targeted == false)
+                {
+                    selected = player.followers[i].gameObject;
+                    return;
+                }
+            }
+            selected = player.gameObject;
         }
         else
         {
@@ -41,7 +48,10 @@ public class SlaveController : HumanClass {
 
     public void FreeSlaves()
     {
-        GetComponent<FollowerController>().enabled = true;
+        FollowerController followerController = GetComponent<FollowerController>();
+        followerController.enabled = true;
+        followerController.gameObject.tag = "Human";
+        player.followers.Add(followerController);
         this.enabled = false;
     }
 }

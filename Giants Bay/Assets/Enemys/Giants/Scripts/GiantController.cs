@@ -34,7 +34,8 @@ public class GiantController : Interactable
         for (int i = 0; i < slaveCount; i++)
         {
             slaves[i] =  Instantiate(slave, transform.position, Quaternion.identity);
-            slaves[i].GetComponent<SlaveController>().master = this;            
+            slaves[i].GetComponent<SlaveController>().master = this;
+            slaves[i].GetComponent<SlaveController>().navMeshAgent.speed = (navMeshAgent.speed * Random.Range(.8f,1.2f));
         }
     }
 
@@ -47,14 +48,15 @@ public class GiantController : Interactable
 
     public override void Die()
     {
-        base.Die();
         for (int i = 0; i < slaves.Length; i++)
         {
-            if(slaves[i] != null)
+            if (slaves[i] != null)
             {
                 slaves[i].GetComponent<SlaveController>().FreeSlaves();
             }
         }
+        base.Die();
+       
     }
 
     private void Move()
