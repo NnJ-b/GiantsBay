@@ -47,9 +47,10 @@ public class CanvasController : MonoBehaviour {
             playerIcon.anchoredPosition = new Vector3(Mathf.Lerp(mimimapWidth / -2, mimimapWidth / 2, x), Mathf.Lerp(mimimapHeight / -2, mimimapHeight / 2, z),1);
 
             //Rotation
-            Vector3 playerIconRotation = playerIcon.transform.eulerAngles;
-            playerIconRotation.z = player.eulerAngles.y;
-            playerIcon.transform.eulerAngles = playerIconRotation;
+            playerIcon.rotation = Quaternion.Euler(0f, 0f, player.eulerAngles.y);
+            //Vector3 playerIconRotation = playerIcon.transform.eulerAngles;
+            //playerIconRotation.z = player.eulerAngles.y;
+            //playerIcon.transform.eulerAngles = playerIconRotation;
         }    
     }
 

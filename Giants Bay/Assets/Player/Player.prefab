@@ -43,9 +43,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1617889981511400}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 4.22}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0.35973895, z: -0, w: -0.933053}
+  m_LocalPosition: {x: -53.704613, y: 65.76853, z: -50.76656}
+  m_LocalScale: {x: 1.0001018, y: 1.0001018, z: 1.0001018}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a51a1109f9b644ea14f7727f1742d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boosters: 0
-  boosterEffect: 0
+  boosters: 17
+  boosterEffect: 150
   boostMultiplyer: 1
 --- !u!114 &114614125475668058
 MonoBehaviour:
@@ -151,11 +151,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  motor: {fileID: 0}
-  touch: {fileID: 0}
-  inventory: {fileID: 0}
-  combat: {fileID: 0}
-  animationController: {fileID: 0}
+  motor: {fileID: 114992130628735838}
+  touch: {fileID: 114959690553601566}
+  inventory: {fileID: 114300979551672530}
+  combat: {fileID: 114614125475668058}
+  animationController: {fileID: 114814488323326502}
   followers: []
   healthBar: {fileID: 0}
   sizeBar: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 95875024973317702}
-  sizeLerpSpeed: 0
+  sizeLerpSpeed: 0.01
   attacking: 0
   endAttack: 0
   startAttack: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   selected: {fileID: 0}
   previouslySelected: {fileID: 0}
   follow: 0
-  interacting: 0
+  interacting: 1
 --- !u!136 &136829874404921532
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -231,11 +231,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0
+  m_Speed: 3.5
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 700
-  m_StoppingDistance: 3.2
+  m_StoppingDistance: 3.8400002
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

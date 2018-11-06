@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
         }
     }   
     
-    public void ChangeSize()
+    public IEnumerator ChangeSize()
     {
         if(sizeBar != null)
         {
@@ -61,6 +61,10 @@ public class PlayerController : MonoBehaviour {
 
         float x = 1 + (inventory.CalculateBoosterEffect() * inventory.boostMultiplyer);
 
-        transform.localScale = Vector3.Slerp(transform.localScale, new Vector3(x, x, x), animationController.sizeLerpSpeed);
+        while (transform.localScale.x < x)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(x, x, x), animationController.sizeLerpSpeed);
+            yield return new WaitForEndOfFrame();
+        }  
     }
 }

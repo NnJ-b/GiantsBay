@@ -49,7 +49,7 @@ public class PlayerInventory : MonoBehaviour {
         {
             controller.BoooterCount.SetText(boosters.ToString());
         }
-
+        controller.StartCoroutine("ChangeSize");
         SaveLoad.SaveInt("Boosters", boosters);
     }
 }
