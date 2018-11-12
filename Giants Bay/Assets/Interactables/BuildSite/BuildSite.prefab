@@ -101,6 +101,8 @@ MonoBehaviour:
   playerController: {fileID: 0}
   interactableRange: 5
   farmPreFab: {fileID: 1743512998471764, guid: ada5899edad5f6f4da2bb0a68e6f4b74, type: 2}
+  HousePreFab: {fileID: 1617847889156272, guid: f10384ce8bd8ff0449e13fad5faea716,
+    type: 2}
 --- !u!135 &135716090319416594
 SphereCollider:
   m_ObjectHideFlags: 1

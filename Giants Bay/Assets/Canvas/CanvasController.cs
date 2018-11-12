@@ -13,6 +13,8 @@ public class CanvasController : MonoBehaviour {
     public Transform player;
     public RectTransform playerIcon;
 
+    public BuildSiteController buildSiteController;
+
     public bool showingMap = false;
 
 
@@ -82,4 +84,14 @@ public class CanvasController : MonoBehaviour {
     }
 
 
+
+    //button Controlls
+    public void SpawnFarm()
+    {
+        buildSiteController.SpawnFarm();
+    }
+    public void SpawnHouse()
+    {
+        buildSiteController.SpawnHouse();
+    }
 }

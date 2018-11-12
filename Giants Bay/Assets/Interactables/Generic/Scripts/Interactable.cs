@@ -70,7 +70,7 @@ public class Interactable : MonoBehaviour {
         playerController = controller;
     }
 
-    public void StopFocus()
+    public virtual void StopFocus()
     {
         focused = false;
     }

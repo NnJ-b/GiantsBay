@@ -724,14 +724,9 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1500872985231654, guid: 521206b78af260c4cbc2e85690a51273, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114555400615290492, guid: 521206b78af260c4cbc2e85690a51273,
-        type: 2}
-      propertyPath: m_Value
-      value: 0.633
+    - target: {fileID: 1186155054641074, guid: 521206b78af260c4cbc2e85690a51273, type: 2}
+      propertyPath: m_TagString
+      value: CanvasBuldingChoice
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 521206b78af260c4cbc2e85690a51273, type: 2}

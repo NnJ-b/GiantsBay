@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Interactable
   - Human
+  - Canvas
   layers:
   - Default
   - TransparentFX
