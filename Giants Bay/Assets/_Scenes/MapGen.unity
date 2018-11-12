@@ -220,10 +220,11 @@ Prefab:
       propertyPath: BoooterCount
       value: 
       objectReference: {fileID: 315888914}
-    - target: {fileID: 4719044653018854, guid: 0d9d1e6403f490842a1c134f081947dc, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 114779965694875326, guid: 0d9d1e6403f490842a1c134f081947dc,
+        type: 2}
+      propertyPath: follwerPerCapacity
+      value: 
+      objectReference: {fileID: 1662781528}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d9d1e6403f490842a1c134f081947dc, type: 2}
   m_IsPrefabAsset: 0
@@ -561,6 +562,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1205004084590940, guid: 1aab04f3b73d56b4293f0b72236ef68c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aab04f3b73d56b4293f0b72236ef68c, type: 2}
   m_IsPrefabAsset: 0
@@ -587,6 +592,12 @@ Light:
   m_CorrespondingSourceObject: {fileID: 108800892312853850, guid: 19a97972caeeea649963ab8f3b2db88a,
     type: 2}
   m_PrefabInternal: {fileID: 252681168}
+--- !u!114 &1662781528 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114810921841845946, guid: 521206b78af260c4cbc2e85690a51273,
+    type: 2}
+  m_PrefabInternal: {fileID: 1885382997}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 --- !u!1001 &1885382997
 Prefab:
   m_ObjectHideFlags: 0
@@ -704,16 +715,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224856562422175484, guid: 521206b78af260c4cbc2e85690a51273,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224856562422175484, guid: 521206b78af260c4cbc2e85690a51273,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 114933928109442228, guid: 521206b78af260c4cbc2e85690a51273,
         type: 2}
       propertyPath: m_havePropertiesChanged
@@ -724,9 +725,15 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1186155054641074, guid: 521206b78af260c4cbc2e85690a51273, type: 2}
-      propertyPath: m_TagString
-      value: CanvasBuldingChoice
+    - target: {fileID: 114810921841845946, guid: 521206b78af260c4cbc2e85690a51273,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810921841845946, guid: 521206b78af260c4cbc2e85690a51273,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 521206b78af260c4cbc2e85690a51273, type: 2}

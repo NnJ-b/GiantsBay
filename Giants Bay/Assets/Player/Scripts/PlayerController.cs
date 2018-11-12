@@ -22,13 +22,14 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Followers")]
     public List<FollowerController> followers = new List<FollowerController>();
+    public int capacity;
 
 
     [Header("UI References")]
     public Slider healthBar;
     public Slider sizeBar;
     public TextMeshProUGUI BoooterCount;
- 
+    public TextMeshProUGUI follwerPerCapacity;
     private void Awake()
     {      
         cam = Camera.main;
@@ -37,9 +38,9 @@ public class PlayerController : MonoBehaviour {
         inventory = GetComponent<PlayerInventory>();
         combat = GetComponent<PlayerCombat>();
         animationController = GetComponent<PlayerAnimation>();
+        capacity = HouseController.Capacity;
 
         LoadPlayerValues();
-
     }
 
     private void LoadPlayerValues()

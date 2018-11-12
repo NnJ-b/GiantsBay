@@ -17,7 +17,14 @@ public class HouseController : Buildings {
     void CalculateCapacity()
     {
         Capacity += CapacityPerHome;
-        Debug.Log(Capacity + ": Capacity");            
+        Debug.Log(Capacity + ": Capacity");
+        if(playerController == null)
+        {
+            playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        }
+        playerController.capacity = Capacity;
+        playerController.follwerPerCapacity.SetText(playerController.followers.Count.ToString() + "/" + Capacity);
+
     }
 
 

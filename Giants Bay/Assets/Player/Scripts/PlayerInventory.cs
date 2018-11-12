@@ -15,6 +15,7 @@ public class PlayerInventory : MonoBehaviour {
     [Tooltip("raises the asymptote")]
     public float boostMultiplyer = 1;
 
+
     private void Start()
     {
         controller = GetComponent<PlayerController>();
