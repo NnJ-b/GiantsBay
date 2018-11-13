@@ -52,6 +52,7 @@ public class SlaveController : HumanClass {
         followerController.enabled = true;
         followerController.gameObject.tag = "Human";
         player.followers.Add(followerController);
+        player.updateFollowerGUI();
         this.enabled = false;
     }
 }

@@ -68,4 +68,9 @@ public class PlayerController : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }  
     }
+
+    public void updateFollowerGUI()
+    {
+        follwerPerCapacity.SetText(followers.Count + "/" +HouseController.Capacity.ToString());
+    }
 }

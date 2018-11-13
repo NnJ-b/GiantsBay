@@ -18,13 +18,17 @@ public class HouseController : Buildings {
     {
         Capacity += CapacityPerHome;
         Debug.Log(Capacity + ": Capacity");
-        if(playerController == null)
+        UpdateFollowersGUI();
+    }
+
+    public void UpdateFollowersGUI()
+    {
+        if (playerController == null)
         {
             playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         }
         playerController.capacity = Capacity;
         playerController.follwerPerCapacity.SetText(playerController.followers.Count.ToString() + "/" + Capacity);
-
     }
 
 

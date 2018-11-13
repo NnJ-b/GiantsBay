@@ -103,7 +103,16 @@ public class PlayerMotor : MonoBehaviour {
                     }
                     if(hit.collider.tag == "Human")
                     {
-                        //change human state
+                        //check state and switch to other
+                        FollowerController.State state = hit.transform.GetComponent<FollowerController>().state;
+                        if (state == FollowerController.State.Follow)
+                        {
+                            hit.transform.GetComponent<FollowerController>().state = FollowerController.State.Idle;
+                        }
+                        else if (state == FollowerController.State.Idle)
+                        {
+                            hit.transform.GetComponent<FollowerController>().state = FollowerController.State.Follow;
+                        }
                     }
                 }
             }
