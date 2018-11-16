@@ -26,10 +26,12 @@ public class PlayerController : MonoBehaviour {
 
 
     [Header("UI References")]
+    public Canvas canvas;
     public Slider healthBar;
     public Slider sizeBar;
     public TextMeshProUGUI BoooterCount;
     public TextMeshProUGUI follwerPerCapacity;
+    public GameObject followerPopUp;
     private void Awake()
     {      
         cam = Camera.main;
@@ -72,5 +74,5 @@ public class PlayerController : MonoBehaviour {
     public void updateFollowerGUI()
     {
         follwerPerCapacity.SetText(followers.Count + "/" +HouseController.Capacity.ToString());
-    }
+    }    
 }

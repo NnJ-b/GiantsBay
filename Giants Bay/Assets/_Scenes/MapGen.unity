@@ -207,6 +207,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114779965694875326, guid: 0d9d1e6403f490842a1c134f081947dc,
         type: 2}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1885382999}
+    - target: {fileID: 114779965694875326, guid: 0d9d1e6403f490842a1c134f081947dc,
+        type: 2}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1032312527}
@@ -225,6 +230,11 @@ Prefab:
       propertyPath: follwerPerCapacity
       value: 
       objectReference: {fileID: 1662781528}
+    - target: {fileID: 114779965694875326, guid: 0d9d1e6403f490842a1c134f081947dc,
+        type: 2}
+      propertyPath: followerPopUp
+      value: 
+      objectReference: {fileID: 1885382998}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d9d1e6403f490842a1c134f081947dc, type: 2}
   m_IsPrefabAsset: 0
@@ -715,6 +725,16 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114674959253911972, guid: 521206b78af260c4cbc2e85690a51273,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114674959253911972, guid: 521206b78af260c4cbc2e85690a51273,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114933928109442228, guid: 521206b78af260c4cbc2e85690a51273,
         type: 2}
       propertyPath: m_havePropertiesChanged
@@ -734,7 +754,21 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773126062654882, guid: 521206b78af260c4cbc2e85690a51273, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 521206b78af260c4cbc2e85690a51273, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1885382998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1773126062654882, guid: 521206b78af260c4cbc2e85690a51273,
+    type: 2}
+  m_PrefabInternal: {fileID: 1885382997}
+--- !u!223 &1885382999 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 223657568673947470, guid: 521206b78af260c4cbc2e85690a51273,
+    type: 2}
+  m_PrefabInternal: {fileID: 1885382997}

@@ -158,10 +158,12 @@ MonoBehaviour:
   animationController: {fileID: 114814488323326502}
   followers: []
   capacity: 0
+  canvas: {fileID: 0}
   healthBar: {fileID: 0}
   sizeBar: {fileID: 0}
   BoooterCount: {fileID: 0}
   follwerPerCapacity: {fileID: 0}
+  followerPopUp: {fileID: 0}
 --- !u!114 &114814488323326502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -211,6 +213,7 @@ MonoBehaviour:
   previouslySelected: {fileID: 0}
   follow: 0
   interacting: 1
+  canvas: {fileID: 0}
 --- !u!136 &136829874404921532
 CapsuleCollider:
   m_ObjectHideFlags: 1

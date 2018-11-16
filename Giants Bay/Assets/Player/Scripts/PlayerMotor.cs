@@ -22,6 +22,8 @@ public class PlayerMotor : MonoBehaviour {
     public bool follow = false;
     public bool interacting;
 
+    private bool showingFollowerCanvas;
+
     private void Start()
     {
         controller = GetComponent<PlayerController>();
@@ -101,8 +103,14 @@ public class PlayerMotor : MonoBehaviour {
                         UpdateStopingDistance();
                         updateFollowersDestination(hit.point);
                     }
+
+
                     if(hit.collider.tag == "Human")
                     {
+                        controller.followerPopUp.SetActive(true);
+                        previouslySelected = selected;
+                        selected = hit.transform.gameObject.GetComponent<Interactable>();
+                        /*
                         //check state and switch to other
                         FollowerController.State state = hit.transform.GetComponent<FollowerController>().state;
                         if (state == FollowerController.State.Follow)
@@ -113,8 +121,13 @@ public class PlayerMotor : MonoBehaviour {
                         {
                             hit.transform.GetComponent<FollowerController>().state = FollowerController.State.Follow;
                         }
+                        */
                     }
-                }
+                    else
+                    {
+                        controller.followerPopUp.SetActive(false);
+                    }
+                }                
             }
 
             //checks if selected changed
@@ -143,6 +156,20 @@ public class PlayerMotor : MonoBehaviour {
         if(follow == true && selected != null)
         {
             navMeshAgent.SetDestination(selected.transform.position);
+        }
+    }
+
+    public void SetFollowerState(FollowerController.State state)
+    {
+        if(selected.gameObject.tag == "Human")
+        {
+            selected.GetComponent<FollowerController>().state = state;
+            controller.followerPopUp.SetActive(false);
+
+        }
+        else
+        {
+            controller.followerPopUp.SetActive(false);
         }
     }
 }

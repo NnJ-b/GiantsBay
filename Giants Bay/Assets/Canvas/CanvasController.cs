@@ -94,4 +94,21 @@ public class CanvasController : MonoBehaviour {
     {
         buildSiteController.SpawnHouse();
     }
+
+    public void FollowerStateFollow()
+    {
+        player.GetComponent<PlayerMotor>().SetFollowerState(FollowerController.State.Follow);
+    }
+
+    public void FollowerStateIdle()
+    {
+        player.GetComponent<PlayerMotor>().SetFollowerState(FollowerController.State.Idle);
+
+    }
+
+    public void FollowerStateScavange()
+    {
+        player.GetComponent<PlayerMotor>().SetFollowerState(FollowerController.State.Scavange);
+
+    }
 }
