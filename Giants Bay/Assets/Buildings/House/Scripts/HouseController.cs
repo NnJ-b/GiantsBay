@@ -9,6 +9,8 @@ public class HouseController : Buildings {
 
     public new void Awake()
     {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerController.canvas.GetComponent<CanvasController>().MMnewBuilding(icon, transform);
         structureType = Structure.House;
         NewBuilding(this);
         CalculateCapacity();

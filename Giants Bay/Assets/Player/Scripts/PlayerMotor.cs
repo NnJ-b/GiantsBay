@@ -109,19 +109,7 @@ public class PlayerMotor : MonoBehaviour {
                     {
                         controller.followerPopUp.SetActive(true);
                         previouslySelected = selected;
-                        selected = hit.transform.gameObject.GetComponent<Interactable>();
-                        /*
-                        //check state and switch to other
-                        FollowerController.State state = hit.transform.GetComponent<FollowerController>().state;
-                        if (state == FollowerController.State.Follow)
-                        {
-                            hit.transform.GetComponent<FollowerController>().state = FollowerController.State.Idle;
-                        }
-                        else if (state == FollowerController.State.Idle)
-                        {
-                            hit.transform.GetComponent<FollowerController>().state = FollowerController.State.Follow;
-                        }
-                        */
+                        selected = hit.transform.gameObject.GetComponent<Interactable>();                       
                     }
                     else
                     {

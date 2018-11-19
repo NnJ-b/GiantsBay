@@ -10,6 +10,9 @@ public class Buildings : Interactable {
     public static List<Buildings> Farms = new List<Buildings>();
     public static List<Buildings> Homes = new List<Buildings>();
 
+    public GameObject icon;
+
+
     public void NewBuilding(Buildings building)
     {
         if(building.structureType == Structure.Farm)
@@ -24,17 +27,16 @@ public class Buildings : Interactable {
         }
         if(building.structureType == Structure.House)
         {
+            //save
             Homes.Add(this);
             Debug.Log("Homes: " + Homes.Count);
             SaveLoad.SaveInt("HomesCount", Homes.Count);
             for (int i = 0; i < Homes.Count; i++)
             {
-                SaveLoad.SaveLocation("Home", Homes[i].transform, i);
-                /*SaveLoad.SaveFloat("Home" + i + "x", Homes[i].transform.position.x);
-                SaveLoad.SaveFloat("Home" + i + "y", Homes[i].transform.position.y);
-                SaveLoad.SaveFloat("Home" + i + "z", Homes[i].transform.position.z);*/
+                SaveLoad.SaveLocation("Home", Homes[i].transform, i);                
             }
         }
+        
     }
 
 

@@ -45,15 +45,29 @@ public class CanvasController : MonoBehaviour {
             float z = player.position.z;
             x = Mathf.InverseLerp((mapGenerator.mapWidth * 10) / -2, (mapGenerator.mapWidth * 10) / 2, x);
             z = Mathf.InverseLerp((mapGenerator.mapHeight * 10) / -2, (mapGenerator.mapHeight * 10) / 2, z);
-            //Apllys Location
+            //Apply Location
             playerIcon.anchoredPosition = new Vector3(Mathf.Lerp(mimimapWidth / -2, mimimapWidth / 2, x), Mathf.Lerp(mimimapHeight / -2, mimimapHeight / 2, z),1);
 
             //Rotation
             playerIcon.rotation = Quaternion.Euler(0f, 0f, player.eulerAngles.y);
-            //Vector3 playerIconRotation = playerIcon.transform.eulerAngles;
-            //playerIconRotation.z = player.eulerAngles.y;
-            //playerIcon.transform.eulerAngles = playerIconRotation;
+            
         }    
+    }
+
+    public void MMnewBuilding(GameObject Prefab, Transform location)
+    {
+        //Calculates Location
+        float x = location.position.x;
+        float z = location.position.z;
+        x = Mathf.InverseLerp((mapGenerator.mapWidth * 10) / -2, (mapGenerator.mapWidth * 10) / 2, x);
+        z = Mathf.InverseLerp((mapGenerator.mapHeight * 10) / -2, (mapGenerator.mapHeight * 10) / 2, z);
+        //Apply Location
+        Vector3 rectrans = new Vector3(Mathf.Lerp(mimimapWidth / -2, mimimapWidth / 2, x), Mathf.Lerp(mimimapHeight / -2, mimimapHeight / 2, z), 1);
+
+        //GameObject icon = 
+        GameObject instance = Instantiate(Prefab, rectrans, Quaternion.identity,map.transform);
+        instance.GetComponent<RectTransform>().anchoredPosition = rectrans;
+
     }
 
     public void ActivateInGame()
