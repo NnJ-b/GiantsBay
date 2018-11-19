@@ -11,10 +11,18 @@ public class BuildSiteController : Interactable {
     private GameObject canvasChild;
     private bool showingOptions = false;
 
+    public static List<BuildSiteController> BuildSites = new List<BuildSiteController>();
+
     public void Start()
     {
         canvas = GameObject.FindGameObjectWithTag("Canvas");
         canvasChild = canvas.transform.Find("BuildingOptionPopUp").gameObject;
+        BuildSites.Add(this);
+        SaveLoad.SaveInt("BuildSiteCount", BuildSites.Count);
+        for (int i = 0; i < BuildSites.Count; i++)
+        {
+            SaveLoad.SaveLocation("BuildSite", BuildSites[i].transform, i);
+        }
     }
 
     public override void Interact()
@@ -47,6 +55,12 @@ public class BuildSiteController : Interactable {
     {
         Instantiate(objectToSpawn, transform.position, Quaternion.identity);
         canvasChild.SetActive(false);
+        BuildSites.Remove(this);
+        SaveLoad.SaveInt("BuildSiteCount", BuildSites.Count);
+        for (int i = 0; i < BuildSites.Count; i++)
+        {
+            SaveLoad.SaveLocation("BuildSite", BuildSites[i].transform, i);
+        }
         Destroy(gameObject);
     }
 }

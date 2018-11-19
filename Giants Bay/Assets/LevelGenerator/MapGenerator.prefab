@@ -482,6 +482,10 @@ MonoBehaviour:
   spawner: {fileID: 1701608333666798, guid: f3e380f8635d0fb4ab8d68fd2fe967de, type: 2}
   farm: {fileID: 114478666579941410, guid: ada5899edad5f6f4da2bb0a68e6f4b74, type: 2}
   house: {fileID: 114461630161724532, guid: f10384ce8bd8ff0449e13fad5faea716, type: 2}
+  buildSite: {fileID: 114065413425991126, guid: 55c28afb79b756c4ab8bd5ec3a64cd63,
+    type: 2}
+  treasureChest: {fileID: 114154045696335728, guid: 48319cbc4c494db4c8e5255552dc5a91,
+    type: 2}
 --- !u!114 &114918251363545592
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -18,10 +18,7 @@ public class Buildings : Interactable {
             SaveLoad.SaveInt("FarmsCount", Farms.Count);
             for (int i = 0; i < Farms.Count; i++)
             {
-                SaveLoad.SaveFloat("Farm" + i + "x", Farms[i].transform.position.x);
-                SaveLoad.SaveFloat("Farm" + i + "y", Farms[i].transform.position.y);
-                SaveLoad.SaveFloat("Farm" + i + "z", Farms[i].transform.position.z);
-                Debug.Log("X: " + "Farm" + i + "x" + "   Y: " + "Farm" + i + "y" + "   Z: " + "Farm" + i + "z");
+                SaveLoad.SaveLocation("Farm", Farms[i].transform, i);
             }
 
         }
@@ -32,9 +29,10 @@ public class Buildings : Interactable {
             SaveLoad.SaveInt("HomesCount", Homes.Count);
             for (int i = 0; i < Homes.Count; i++)
             {
-                SaveLoad.SaveFloat("Home" + i + "x", Homes[i].transform.position.x);
+                SaveLoad.SaveLocation("Home", Homes[i].transform, i);
+                /*SaveLoad.SaveFloat("Home" + i + "x", Homes[i].transform.position.x);
                 SaveLoad.SaveFloat("Home" + i + "y", Homes[i].transform.position.y);
-                SaveLoad.SaveFloat("Home" + i + "z", Homes[i].transform.position.z);
+                SaveLoad.SaveFloat("Home" + i + "z", Homes[i].transform.position.z);*/
             }
         }
     }

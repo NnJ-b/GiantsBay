@@ -15,6 +15,8 @@ public class LevelBuilder : MonoBehaviour {
 
     public FarmController farm;
     public HouseController house;
+    public BuildSiteController buildSite;
+    public TreasureChestController treasureChest;
 
 
     private void Awake()
@@ -40,7 +42,7 @@ public class LevelBuilder : MonoBehaviour {
         mapGenerator.drawMode = MapGenerator.DrawMode.ColorMap;
         mapGenerator.Generatemap();
 
-        //creat the mesh NEEDS TO BE after color map!
+        //creat the mesh //NEEDS TO BE after color map!
         mapGenerator.drawMode = MapGenerator.DrawMode.Mesh;
         mapGenerator.Generatemap();
 
@@ -57,25 +59,39 @@ public class LevelBuilder : MonoBehaviour {
                 //spawn Saved Items
                 Vector3[] farmLocations = new Vector3[SaveLoad.LoadInt("FarmsCount")];
                 Vector3[] homeLocations = new Vector3[SaveLoad.LoadInt("HomesCount")];
+                Vector3[] buildSiteLocations = new Vector3[SaveLoad.LoadInt("BuildSiteCount")];
+                Vector3[] treasureChestLocations = new Vector3[SaveLoad.LoadInt("TreasureChestCount")];
 
-
+                //Spawn Farms
                 for (int i = 0; i < farmLocations.Length; i++)
                 {
-                    farmLocations[i] = new Vector3(SaveLoad.LoadFloat("Farm" + i + "x"), SaveLoad.LoadFloat("Farm" + i + "y"), SaveLoad.LoadFloat("Farm" + i + "z"));
-                }
-                for (int i = 0; i < farmLocations.Length; i++)
-                {
+                    farmLocations[i] = SaveLoad.LoadLocation("Farm", i); //new Vector3(SaveLoad.LoadFloat("Farm" + i + "x"), SaveLoad.LoadFloat("Farm" + i + "y"), SaveLoad.LoadFloat("Farm" + i + "z"));
                     Instantiate(farm, farmLocations[i], Quaternion.identity);
                 }
 
-
+                //Spawn Homes
                 for (int i = 0; i < homeLocations.Length; i++)
                 {
-                    homeLocations[i] = new Vector3(SaveLoad.LoadFloat("Home" + i + "x"), SaveLoad.LoadFloat("Home" + i + "y"), SaveLoad.LoadFloat("Home" + i + "z"));
-                }
-                for (int i = 0; i < homeLocations.Length; i++)
-                {
+                    homeLocations[i] = SaveLoad.LoadLocation("Home", i); //new Vector3(SaveLoad.LoadFloat("Home" + i + "x"), SaveLoad.LoadFloat("Home" + i + "y"), SaveLoad.LoadFloat("Home" + i + "z"));
                     Instantiate(house, homeLocations[i], Quaternion.identity);
+                }
+
+                //Spawn Buildsites
+                for (int i = 0; i < buildSiteLocations.Length; i++)
+                {
+                    buildSiteLocations[i] = SaveLoad.LoadLocation("BuildSite", i);
+                    Instantiate(buildSite, buildSiteLocations[i], Quaternion.identity);
+                }
+
+                //SpawnTreasureChest
+                for (int i = 0; i < treasureChestLocations.Length; i++)
+                {
+                    treasureChestLocations[i] = SaveLoad.LoadLocation("TreasureChest", i);
+                    TreasureChestController chest = Instantiate(treasureChest, treasureChestLocations[i], Quaternion.identity);
+                    if(SaveLoad.LoadInt("TreasureChest" + i + "used") == 1)
+                    {
+                        chest.used = true;                       
+                    }
                 }
             }
         }       
