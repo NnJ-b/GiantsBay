@@ -20,9 +20,13 @@ public class SlaveController : HumanClass {
     public override void Update()
     {
         base.Update();
-        if (selected != null)
+        if (selected != null && master.GoingHome == false)
         {
             navMeshAgent.SetDestination(selected.transform.position);
+        }
+        else
+        {
+            navMeshAgent.SetDestination(master.home.transform.position);
         }
     }
     

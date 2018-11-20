@@ -38,9 +38,14 @@ public class PlayerMotor : MonoBehaviour {
 
     public void UpdateStopingDistance()
     {
-        if (selected != null)
+        if (selected != null && follow == false)
         {
-            navMeshAgent.stoppingDistance = selected.interactableRange * controller.combat.rangeMultiplyer * .8f;
+            navMeshAgent.stoppingDistance = selected.interactableRange * .8f;
+        }
+        if(selected != null && follow == true)
+        {
+            navMeshAgent.stoppingDistance = selected.interactableRange *controller.combat.rangeMultiplyer* .8f;
+
         }
     }
     public float DistanceToEnemy()
@@ -64,7 +69,6 @@ public class PlayerMotor : MonoBehaviour {
             //checks if over UI
             if (!controller.touch.IsPointerOverUIObject())
             {
-                Debug.Log("pased test");
                 Ray ray = controller.cam.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, rayDistance, Interactable))

@@ -10,7 +10,6 @@ public class SettlerSpawner : MonoBehaviour {
 
     
 
-	// Use this for initialization
 	void Start ()
     {
         mapGenerator = GameObject.FindGameObjectWithTag("MapGenerator").GetComponent<MapGenerator>();
@@ -21,11 +20,7 @@ public class SettlerSpawner : MonoBehaviour {
         }
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 
     public void Spawn()
     {

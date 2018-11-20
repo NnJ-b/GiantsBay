@@ -122,6 +122,7 @@ MonoBehaviour:
   interactableRange: 4
   navMeshAgent: {fileID: 195143610839940006}
   animator: {fileID: 95884440590724442}
+  home: {fileID: 0}
   attacking: 0
   endAttack: 0
   startAttack: 0
@@ -130,6 +131,8 @@ MonoBehaviour:
   slaveCount: 1
   speed: 2.5
   damageAmount: 10
+  playerGetAwayDistance: 25
+  GoingHome: 0
 --- !u!136 &136418867475499120
 CapsuleCollider:
   m_ObjectHideFlags: 1

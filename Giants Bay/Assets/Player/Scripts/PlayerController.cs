@@ -74,5 +74,12 @@ public class PlayerController : MonoBehaviour {
     public void updateFollowerGUI()
     {
         follwerPerCapacity.SetText(followers.Count + "/" +HouseController.Capacity.ToString());
-    }    
+    }
+
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.position, motor.navMeshAgent.stoppingDistance);
+    }
 }

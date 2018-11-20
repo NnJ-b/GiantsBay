@@ -7,6 +7,7 @@ public class CanvasController : MonoBehaviour {
     public GameObject infoPanel;
     public GameObject mapButton;
     public GameObject map;
+    public GameObject mapImage;
 
     public MapGenerator mapGenerator;
 
@@ -31,8 +32,8 @@ public class CanvasController : MonoBehaviour {
 
     public void Update()
     {
-        mimimapWidth = map.GetComponent<RectTransform>().rect.width;
-        mimimapHeight = map.GetComponent<RectTransform>().rect.height;
+        mimimapWidth = mapImage.GetComponent<RectTransform>().rect.width;
+        mimimapHeight = mapImage.GetComponent<RectTransform>().rect.height;
         PlayerMapLocation();
     }
 

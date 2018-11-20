@@ -17,6 +17,7 @@ public class LevelBuilder : MonoBehaviour {
     public HouseController house;
     public BuildSiteController buildSite;
     public TreasureChestController treasureChest;
+    public GiantHouseController giantHouse;
 
 
     private void Awake()
@@ -61,6 +62,7 @@ public class LevelBuilder : MonoBehaviour {
                 Vector3[] homeLocations = new Vector3[SaveLoad.LoadInt("HomesCount")];
                 Vector3[] buildSiteLocations = new Vector3[SaveLoad.LoadInt("BuildSiteCount")];
                 Vector3[] treasureChestLocations = new Vector3[SaveLoad.LoadInt("TreasureChestCount")];
+                Vector3[] giantHouseLocations = new Vector3[SaveLoad.LoadInt("GiantHouseCount")];
 
                 //Spawn Farms
                 for (int i = 0; i < farmLocations.Length; i++)
@@ -92,6 +94,13 @@ public class LevelBuilder : MonoBehaviour {
                     {
                         chest.used = true;                       
                     }
+                }
+
+                //SpawnGiantCount
+                for (int i = 0; i < giantHouseLocations.Length; i++)
+                {
+                    giantHouseLocations[i] = SaveLoad.LoadLocation("GiantHouse", i);
+                    Instantiate(giantHouse, giantHouseLocations[i], Quaternion.identity);                 
                 }
             }
         }       

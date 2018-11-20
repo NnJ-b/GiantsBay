@@ -28,8 +28,8 @@ public class SpawnerController : MonoBehaviour {
         Instantiate(objectsToSpawn[i].prefab, Vector3.zero, Quaternion.identity);        
     }
 
-    #region
-    //Temporary Classes
+    #region temporary class's
+
     public void SpawnChest()
     {
         Instantiate(TempChestPrefab, new Vector3(0,.5f,0), Quaternion.identity); 

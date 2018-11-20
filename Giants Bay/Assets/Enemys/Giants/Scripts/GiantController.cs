@@ -8,7 +8,7 @@ public class GiantController : Interactable
     [Header("References")]
     public NavMeshAgent navMeshAgent;
     public Animator animator;
-
+    public GiantHouseController home;
     private GameObject player;
 
     [Header("Animation Controls (DNM)")]
@@ -25,6 +25,8 @@ public class GiantController : Interactable
     [Header("Controls")]
     public float speed =2.5f;
     public int damageAmount = 10;
+    public float playerGetAwayDistance;
+    public bool GoingHome = false;
 
     new void Awake()
     {
@@ -42,7 +44,6 @@ public class GiantController : Interactable
     new void Update()
     {
         Move();
-
         Attack();
     }
 
@@ -55,6 +56,11 @@ public class GiantController : Interactable
                 slaves[i].GetComponent<SlaveController>().FreeSlaves();
             }
         }
+        if(home != null)
+        {
+            home.Owned = false;
+        }
+
         base.Die();
        
     }
@@ -65,17 +71,19 @@ public class GiantController : Interactable
         if (DistanceToPlayer() <= navMeshAgent.stoppingDistance*1.2f)
         {
             animator.SetBool("Attacking", true);
+            GoingHome = false;
+        }
+        else if(DistanceToPlayer() >= playerGetAwayDistance)
+        {
+            GoHome();
+            GoingHome = true;
         }
         else
         {
             navMeshAgent.SetDestination(player.transform.position);
             animator.SetBool("Attacking", false);
+            GoingHome = false;
         }
-    }
-
-    public override void Interact()
-    {
-        base.Interact();
     }
 
     private void Attack()
@@ -136,6 +144,24 @@ public class GiantController : Interactable
         }
     }
 
-    
+    private void GoHome()
+    {
+        if(home != null)
+        {
+            if (Vector3.Distance(transform.position, home.transform.position) < home.interactableRange)
+            {
+                home.occupied = true;
+                for (int i = 0; i < slaves.Length; i++)
+                {
+                    Destroy(slaves[i]);
+                }
+                Destroy(gameObject);
+            }
+            else
+            {
+                navMeshAgent.SetDestination(home.transform.position);
+            }
+        }
+    }
 }
     

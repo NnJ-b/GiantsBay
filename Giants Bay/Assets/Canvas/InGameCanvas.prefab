@@ -2091,6 +2091,7 @@ MonoBehaviour:
   infoPanel: {fileID: 1180553673892566}
   mapButton: {fileID: 1424955465835876}
   map: {fileID: 1500872985231654}
+  mapImage: {fileID: 1391041621567548}
   mapGenerator: {fileID: 0}
   player: {fileID: 0}
   playerIcon: {fileID: 224954006554540558}

@@ -9,6 +9,10 @@ public class SettlerController : MonoBehaviour
     public ObjectsToSpawn[] objectsToSpawn;
     public SettlerSpawner spawner;
 
+    public float maxDistanceToAnotherInteractable = 10f;
+
+    public static List<GameObject> instances = new List<GameObject>();
+
     void Awake()
     {
         spawner = GameObject.FindGameObjectWithTag("Respawn").GetComponent<SettlerSpawner>();
@@ -25,6 +29,19 @@ public class SettlerController : MonoBehaviour
 
             List<ObjectsToSpawn> inRange = new List<ObjectsToSpawn>();
 
+            if(instances.Count > 0)
+            {
+                for (int i = 0; i < instances.Count; i++)
+                {
+                    float distance = Vector3.Distance(hitPoint, instances[i].transform.position);
+                    if(distance < maxDistanceToAnotherInteractable)
+                    {
+                        spawner.Spawn();
+                        Destroy(this.gameObject);
+                        return;
+                    }
+                }
+            }
 
             for (int i = 0; i < objectsToSpawn.Length; i++)
             {
@@ -39,10 +56,12 @@ public class SettlerController : MonoBehaviour
 
             if (inRange.Count > 0)
             {
-                //get Randome Object in range
+                //get Random Object in range
                 ObjectsToSpawn toSpawn = inRange[Random.Range(0, inRange.Count)];
                 //settle
-                Instantiate(toSpawn.prefab, new Vector3(hitPoint.x, hitPoint.y + toSpawn.spawnOffset, hitPoint.z), Quaternion.identity);
+                GameObject instance = Instantiate(toSpawn.prefab, new Vector3(hitPoint.x, hitPoint.y + toSpawn.spawnOffset, hitPoint.z), Quaternion.identity);
+                instances.Add(instance);
+                Debug.Log(instances.Count);
                 Destroy(gameObject);
             }
             else

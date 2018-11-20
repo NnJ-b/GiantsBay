@@ -29,7 +29,7 @@ public class Interactable : MonoBehaviour {
     {
         if(playerController != null)
         {
-            if(Vector3.Distance(transform.position, playerController.transform.position) <= playerController.motor.navMeshAgent.stoppingDistance*1.2f)
+            if(Vector3.Distance(transform.position, playerController.transform.position) <= interactableRange*1.2f)
             {
                 Interact();
             }

@@ -65,4 +65,10 @@ MonoBehaviour:
     spawnOffset: 0.25
     minHeightSpawnable: 61
     maxHeightSpawnable: 67
+  - nameInspectorOnly: GiantsHome
+    prefab: {fileID: 1154747308491660, guid: f969d31fada2f7d4b9cdbec656eb391d, type: 2}
+    spawnOffset: 0.25
+    minHeightSpawnable: 61
+    maxHeightSpawnable: 67
   spawner: {fileID: 0}
+  maxDistanceToAnotherInteractable: 25
