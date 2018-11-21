@@ -121,6 +121,8 @@ MonoBehaviour:
   playerController: {fileID: 0}
   interactableRange: 4
   targeted: 0
+  noFarmWarnings: {fileID: 1325963339116240, guid: 01b70d4f2d306f54394e22ebc5d5de0f,
+    type: 2}
   navMeshAgent: {fileID: 195916786181832430}
   IdleDistance: 10
   IdleUpdateSpeed: 10

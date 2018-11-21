@@ -7,6 +7,7 @@ public class FollowerController : HumanClass {
 
     private PlayerController player;
     public bool targeted = false;
+    public GameObject noFarmWarnings;
 
     [Header("Movement")]
     public NavMeshAgent navMeshAgent;
@@ -33,7 +34,7 @@ public class FollowerController : HumanClass {
 
     IEnumerator Wander()
     {
-        while(0 == 0)
+        while(true)
         {
             if(state == State.Idle)
             {
@@ -44,6 +45,18 @@ public class FollowerController : HumanClass {
                 Debug.Log("Destination: " + destination);
             }
             yield return new WaitForSeconds(IdleUpdateSpeed);
+        }
+    }
+
+    public void Scavange()
+    {
+        if(Buildings.Farms.Count > 0)
+        {
+
+        }
+        else
+        {
+            Instantiate(noFarmWarnings,player.canvas.transform.position,Quaternion.identity,player.canvas.transform);
         }
     }
 

@@ -98,7 +98,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1821905628720334
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +485,8 @@ MonoBehaviour:
   buildSite: {fileID: 114065413425991126, guid: 55c28afb79b756c4ab8bd5ec3a64cd63,
     type: 2}
   treasureChest: {fileID: 114154045696335728, guid: 48319cbc4c494db4c8e5255552dc5a91,
+    type: 2}
+  giantHouse: {fileID: 114599938131418938, guid: f969d31fada2f7d4b9cdbec656eb391d,
     type: 2}
 --- !u!114 &114918251363545592
 MonoBehaviour:

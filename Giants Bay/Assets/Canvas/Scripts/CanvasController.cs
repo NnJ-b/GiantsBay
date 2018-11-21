@@ -118,12 +118,15 @@ public class CanvasController : MonoBehaviour {
     public void FollowerStateIdle()
     {
         player.GetComponent<PlayerMotor>().SetFollowerState(FollowerController.State.Idle);
-
     }
 
     public void FollowerStateScavange()
     {
-        player.GetComponent<PlayerMotor>().SetFollowerState(FollowerController.State.Scavange);
-
+        PlayerMotor motor = player.GetComponent<PlayerMotor>();
+        motor.SetFollowerState(FollowerController.State.Scavange);
+        if(motor.selected.gameObject.tag == "Human")
+        {
+            motor.selected.GetComponent<FollowerController>().Scavange();
+        }
     }
 }
