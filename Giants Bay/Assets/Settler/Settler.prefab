@@ -57,7 +57,7 @@ MonoBehaviour:
   objectsToSpawn:
   - nameInspectorOnly: Chest
     prefab: {fileID: 1123945760113878, guid: 48319cbc4c494db4c8e5255552dc5a91, type: 2}
-    spawnOffset: 0.5
+    spawnOffset: 0
     minHeightSpawnable: 56
     maxHeightSpawnable: 60
   - nameInspectorOnly: BuildSite
