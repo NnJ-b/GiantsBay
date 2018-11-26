@@ -19,13 +19,12 @@ public class IconController : MonoBehaviour {
         {
             canvasController.followerBeingControled.assignedFarm = EventSystem.current.currentSelectedGameObject.GetComponent<IconController>().referenceBuilding.transform;
             canvasController.followerBeingControled.MoveToAssignedFarm();
+            canvasController.followerControll = false;
         }
-        else
-        {
-            int occupantCount = EventSystem.current.currentSelectedGameObject.GetComponent<IconController>().referenceBuilding.Ocupants.Count;
-            int maxCappacity = HouseController.CapacityPerHome;
-            canvasController.UpdateMapInfo(occupantCount, maxCappacity);
-        }
+        int occupantCount = EventSystem.current.currentSelectedGameObject.GetComponent<IconController>().referenceBuilding.Ocupants.Count;
+        int maxCappacity = HouseController.CapacityPerHome;
+        canvasController.UpdateMapInfo(occupantCount, maxCappacity);
+        canvasController.MMSelected = this.gameObject;
     }
 
     public void HouseIcon()

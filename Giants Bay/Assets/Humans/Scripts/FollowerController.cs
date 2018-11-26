@@ -95,7 +95,12 @@ public class FollowerController : HumanClass {
             if(Vector3.Distance(transform.position,assignedFarm.position) < assignedFarm.GetComponent<Buildings>().interactableRange *1.2)
             {
                 inFarm = true;
-                assignedFarm.GetComponent<FarmController>().Ocupants.Add(this);
+                FarmController farmController = assignedFarm.GetComponent<FarmController>();
+                farmController.Ocupants.Add(this);
+                if(canvasController.MMSelected != null && canvasController.MMSelected.gameObject == assignedFarm.gameObject)
+                {
+                    canvasController.UpdateMapInfo(farmController.Ocupants.Count, HouseController.CapacityPerHome);
+                }
                 gameObject.SetActive(false);
             }
             yield return new WaitForSeconds(5f);

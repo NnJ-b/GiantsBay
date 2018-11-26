@@ -10,6 +10,8 @@ public class CanvasController : MonoBehaviour {
     public GameObject map;
     public GameObject mapImage;
 
+    public GameObject MMSelected;
+
     public TextMeshProUGUI MapInfoCount;
 
 
