@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CanvasController : MonoBehaviour {
 
@@ -8,6 +9,9 @@ public class CanvasController : MonoBehaviour {
     public GameObject mapButton;
     public GameObject map;
     public GameObject mapImage;
+
+    public TextMeshProUGUI MapInfoCount;
+
 
     public MapGenerator mapGenerator;
 
@@ -17,6 +21,8 @@ public class CanvasController : MonoBehaviour {
     public BuildSiteController buildSiteController;
 
     public bool showingMap = false;
+    public bool followerControll = false;
+    public FollowerController followerBeingControled;
 
 
     public float mimimapWidth;
@@ -55,7 +61,7 @@ public class CanvasController : MonoBehaviour {
         }    
     }
 
-    public void MMnewBuilding(GameObject Prefab, Transform location)
+    public void MMnewBuilding(IconController Prefab, Transform location, Buildings parent)
     {
         //Calculates Location
         float x = location.position.x;
@@ -66,8 +72,9 @@ public class CanvasController : MonoBehaviour {
         Vector3 rectrans = new Vector3(Mathf.Lerp(mimimapWidth / -2, mimimapWidth / 2, x), Mathf.Lerp(mimimapHeight / -2, mimimapHeight / 2, z), 1);
 
         //GameObject icon = 
-        GameObject instance = Instantiate(Prefab, rectrans, Quaternion.identity,map.transform);
+        IconController instance = Instantiate(Prefab, rectrans, Quaternion.identity,map.transform);
         instance.GetComponent<RectTransform>().anchoredPosition = rectrans;
+        instance.referenceBuilding = parent;
 
     }
 
@@ -83,6 +90,7 @@ public class CanvasController : MonoBehaviour {
         {
             map.SetActive(false);
             showingMap = false;
+            followerControll = false;
         }
         else
         {
@@ -113,11 +121,13 @@ public class CanvasController : MonoBehaviour {
     public void FollowerStateFollow()
     {
         player.GetComponent<PlayerMotor>().SetFollowerState(FollowerController.State.Follow);
+        followerControll = false;
     }
 
     public void FollowerStateIdle()
     {
         player.GetComponent<PlayerMotor>().SetFollowerState(FollowerController.State.Idle);
+        followerControll = false;
     }
 
     public void FollowerStateScavange()
@@ -128,5 +138,10 @@ public class CanvasController : MonoBehaviour {
         {
             motor.selected.GetComponent<FollowerController>().Scavange();
         }
+    }
+
+    public void UpdateMapInfo(int occupantCount, int MaxCount)
+    {
+        MapInfoCount.SetText(occupantCount + "/" + MaxCount);
     }
 }

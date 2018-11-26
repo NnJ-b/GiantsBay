@@ -5,12 +5,12 @@ using UnityEngine;
 public class HouseController : Buildings {
 
     public static int Capacity = 1;
-    public int CapacityPerHome = 5;
+    public static int CapacityPerHome = 5;
 
     public new void Awake()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        playerController.canvas.GetComponent<CanvasController>().MMnewBuilding(icon, transform);
+        playerController.canvas.GetComponent<CanvasController>().MMnewBuilding(icon, transform, this);
         structureType = Structure.House;
         NewBuilding(this);
         CalculateCapacity();

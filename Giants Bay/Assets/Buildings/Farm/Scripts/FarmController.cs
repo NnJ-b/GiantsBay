@@ -14,7 +14,7 @@ public class FarmController : Buildings {
     private new void Awake()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        playerController.canvas.GetComponent<CanvasController>().MMnewBuilding(icon, transform);
+        playerController.canvas.GetComponent<CanvasController>().MMnewBuilding(icon, transform, this);
         structureType = Structure.Farm;
         NewBuilding(this);
         StartCoroutine("ProduceBoosters");

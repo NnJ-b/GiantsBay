@@ -10,7 +10,9 @@ public class Buildings : Interactable {
     public static List<Buildings> Farms = new List<Buildings>();
     public static List<Buildings> Homes = new List<Buildings>();
 
-    public GameObject icon;
+    public List<FollowerController> Ocupants = new List<FollowerController>();
+
+    public IconController icon;
 
 
     public void NewBuilding(Buildings building)
@@ -38,7 +40,4 @@ public class Buildings : Interactable {
         }
         
     }
-
-
-
 }

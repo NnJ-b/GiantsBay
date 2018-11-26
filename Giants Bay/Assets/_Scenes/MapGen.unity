@@ -772,12 +772,12 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114674959253911972, guid: 521206b78af260c4cbc2e85690a51273,
+    - target: {fileID: 114810921841845946, guid: 521206b78af260c4cbc2e85690a51273,
         type: 2}
       propertyPath: m_havePropertiesChanged
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114674959253911972, guid: 521206b78af260c4cbc2e85690a51273,
+    - target: {fileID: 114810921841845946, guid: 521206b78af260c4cbc2e85690a51273,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
@@ -792,12 +792,12 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114810921841845946, guid: 521206b78af260c4cbc2e85690a51273,
+    - target: {fileID: 114337039837858300, guid: 521206b78af260c4cbc2e85690a51273,
         type: 2}
       propertyPath: m_havePropertiesChanged
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114810921841845946, guid: 521206b78af260c4cbc2e85690a51273,
+    - target: {fileID: 114337039837858300, guid: 521206b78af260c4cbc2e85690a51273,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
