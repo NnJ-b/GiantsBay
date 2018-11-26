@@ -10,6 +10,7 @@ public class LevelBuilder : MonoBehaviour {
 
     public NavMeshGenerator navGenerator;
     public NavMeshSurface navMeshSurface;
+    public FoliageBuilder foliageBuilder;
 
     public GameObject spawner;
 
@@ -46,6 +47,9 @@ public class LevelBuilder : MonoBehaviour {
         //creat the mesh //NEEDS TO BE after color map!
         mapGenerator.drawMode = MapGenerator.DrawMode.Mesh;
         mapGenerator.Generatemap();
+
+        //creats the Foliage
+        foliageBuilder.BuildFoliage();
 
         if(SceneManager.GetActiveScene().name != "MainMenu")
         {
