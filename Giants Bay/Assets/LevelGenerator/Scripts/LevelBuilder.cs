@@ -19,6 +19,7 @@ public class LevelBuilder : MonoBehaviour {
     public BuildSiteController buildSite;
     public TreasureChestController treasureChest;
     public GiantHouseController giantHouse;
+    public GameObject treePrefab;
 
 
     private void Awake()
@@ -48,9 +49,6 @@ public class LevelBuilder : MonoBehaviour {
         mapGenerator.drawMode = MapGenerator.DrawMode.Mesh;
         mapGenerator.Generatemap();
 
-        //creats the Foliage
-        foliageBuilder.BuildFoliage();
-
         if(SceneManager.GetActiveScene().name != "MainMenu")
         {
             navGenerator.BuildNavMesh(navMeshSurface);
@@ -58,6 +56,8 @@ public class LevelBuilder : MonoBehaviour {
             {
                 Instantiate(spawner, Vector3.zero, Quaternion.identity);
                 SaveLoad.SaveInt("NewGame", 0);
+                //creats the Foliage
+                foliageBuilder.BuildFoliage();
             }
             else
             {
@@ -67,6 +67,7 @@ public class LevelBuilder : MonoBehaviour {
                 Vector3[] buildSiteLocations = new Vector3[SaveLoad.LoadInt("BuildSiteCount")];
                 Vector3[] treasureChestLocations = new Vector3[SaveLoad.LoadInt("TreasureChestCount")];
                 Vector3[] giantHouseLocations = new Vector3[SaveLoad.LoadInt("GiantHouseCount")];
+                Vector3[] TreeLocation = new Vector3[SaveLoad.LoadInt("TreeCount")];
 
                 //Spawn Farms
                 for (int i = 0; i < farmLocations.Length; i++)
@@ -106,8 +107,20 @@ public class LevelBuilder : MonoBehaviour {
                     giantHouseLocations[i] = SaveLoad.LoadLocation("GiantHouse", i);
                     Instantiate(giantHouse, giantHouseLocations[i], Quaternion.identity);                 
                 }
+
+                //spawnTree
+                for (int i = 0; i < TreeLocation.Length; i++)
+                {
+                    TreeLocation[i] = SaveLoad.LoadLocation("TreeLocation", i);
+                    Instantiate(treePrefab, TreeLocation[i], Quaternion.identity);
+                }
             }
-        }       
+        }
+        else
+        {
+            //creats the Foliage
+            foliageBuilder.BuildFoliage();
+        }      
 
         Destroy(this);
     }

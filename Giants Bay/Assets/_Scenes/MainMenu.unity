@@ -488,12 +488,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 33064800249821764, guid: 1aab04f3b73d56b4293f0b72236ef68c,
+    - target: {fileID: 64784392845166214, guid: 1aab04f3b73d56b4293f0b72236ef68c,
         type: 2}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1810523626}
-    - target: {fileID: 64784392845166214, guid: 1aab04f3b73d56b4293f0b72236ef68c,
+    - target: {fileID: 33064800249821764, guid: 1aab04f3b73d56b4293f0b72236ef68c,
         type: 2}
       propertyPath: m_Mesh
       value: 

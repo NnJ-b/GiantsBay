@@ -61,7 +61,6 @@ public class SettlerController : MonoBehaviour
                 //settle
                 GameObject instance = Instantiate(toSpawn.prefab, new Vector3(hitPoint.x, hitPoint.y + toSpawn.spawnOffset, hitPoint.z), Quaternion.identity);
                 instances.Add(instance);
-                Debug.Log(instances.Count);
                 Destroy(gameObject);
             }
             else

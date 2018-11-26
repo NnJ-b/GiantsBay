@@ -34,7 +34,6 @@ public class FoliageBuilder : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, terrain))
             {
                 raycastPoints.Add(hit.point);
-                Debug.Log(hit.point);
             }
         }
     }
