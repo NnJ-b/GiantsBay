@@ -20,6 +20,8 @@ public class LevelBuilder : MonoBehaviour {
     public TreasureChestController treasureChest;
     public GiantHouseController giantHouse;
     public GameObject treePrefab;
+    public GameObject rockPrefab;
+
 
 
     private void Awake()
@@ -68,6 +70,8 @@ public class LevelBuilder : MonoBehaviour {
                 Vector3[] treasureChestLocations = new Vector3[SaveLoad.LoadInt("TreasureChestCount")];
                 Vector3[] giantHouseLocations = new Vector3[SaveLoad.LoadInt("GiantHouseCount")];
                 Vector3[] TreeLocation = new Vector3[SaveLoad.LoadInt("TreeCount")];
+                Vector3[] RockLocation = new Vector3[SaveLoad.LoadInt("RockCount")];
+
 
                 //Spawn Farms
                 for (int i = 0; i < farmLocations.Length; i++)
@@ -113,6 +117,13 @@ public class LevelBuilder : MonoBehaviour {
                 {
                     TreeLocation[i] = SaveLoad.LoadLocation("TreeLocation", i);
                     Instantiate(treePrefab, TreeLocation[i], Quaternion.identity);
+                }
+
+                //SpawnRock
+                for (int i = 0; i < RockLocation.Length; i++)
+                {
+                    RockLocation[i] = SaveLoad.LoadLocation("RockLocation", i);
+                    Instantiate(rockPrefab, RockLocation[i], Quaternion.identity);
                 }
             }
         }

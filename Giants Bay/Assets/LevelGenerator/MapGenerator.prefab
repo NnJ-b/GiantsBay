@@ -451,6 +451,11 @@ MonoBehaviour:
     spawnOffset: 0
     minHeightSpawnable: 61
     maxHeightSpawnable: 63
+  - nameInspectorOnly: Rock
+    prefab: {fileID: 1266700578951058, guid: a5963ce8febd80e49a4a153f14edb9db, type: 2}
+    spawnOffset: 1
+    minHeightSpawnable: 61
+    maxHeightSpawnable: 63
 --- !u!114 &114392196740106516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -515,6 +520,7 @@ MonoBehaviour:
   giantHouse: {fileID: 114599938131418938, guid: f969d31fada2f7d4b9cdbec656eb391d,
     type: 2}
   treePrefab: {fileID: 1858101374190550, guid: 7a7fff39008c518498e9477ba30b0152, type: 2}
+  rockPrefab: {fileID: 1266700578951058, guid: a5963ce8febd80e49a4a153f14edb9db, type: 2}
 --- !u!114 &114918251363545592
 MonoBehaviour:
   m_ObjectHideFlags: 1

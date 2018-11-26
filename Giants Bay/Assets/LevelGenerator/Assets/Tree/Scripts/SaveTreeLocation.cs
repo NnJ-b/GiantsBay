@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SaveLocation : MonoBehaviour {
+public class SaveTreeLocation : MonoBehaviour {
 
     public static List<GameObject> Trees = new List<GameObject>();
 
