@@ -109,6 +109,9 @@ MonoBehaviour:
   minZoom: 1.5
   zoomSpeed: 0.1
   offset: {x: 8.5, y: 7, z: 0}
-  camSmooth: 1
+  elevation: 0
+  maxElevation: 10
+  minElevation: -5
+  camSmooth: 0.419
   allowCamRotation: 1
   rotationSpeed: 1
