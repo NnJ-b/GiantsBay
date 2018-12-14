@@ -25,9 +25,37 @@ public class MapDisplay : MonoBehaviour {
     public void DrawMesh(MeshData meshData, Texture2D texture)
     {
         Mesh mesh = meshData.CreatMesh();
+
+        //flat Shading
+        Vector3[] oldVerts = mesh.vertices;
+        int[] triangles = mesh.triangles;
+        Vector3[] vertices = new Vector3[triangles.Length];
+        //t
+        Color32[] colors = new Color32[vertices.Length];
+        
+        for (int i = 0; i < triangles.Length; i++)
+        {
+            vertices[i] = oldVerts[triangles[i]];
+            triangles[i] = i;                
+        }
+
+        //t
+        for (int i = 0; i < colors.Length; i+=3)
+        {
+            colors[i] = new Color(Random.Range(0, 1), Random.Range(0, 1), Random.Range(0, 1));
+        }
+
+
+        mesh.vertices = vertices;
+        mesh.triangles = triangles;
+        mesh.RecalculateBounds();
+        mesh.RecalculateNormals();
+        mesh.colors32 = colors;
+
+        //apply new triangles
         meshCollider.sharedMesh = mesh;
         meshFilter.sharedMesh = mesh;
-        meshRenderer.sharedMaterial.mainTexture = texture;
+        //meshRenderer.sharedMaterial.mainTexture = texture;
 
     }
 

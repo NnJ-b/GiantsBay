@@ -122,6 +122,8 @@ public class MapGenerator : MonoBehaviour {
                 material.SetFloat("Vector1_A0CF972C", Noise.maxNoiseHeight);
                 material.SetFloat("Vector1_CF8F2CE4", meshHeightMultiplyer);
             }
+
+
             
         }
         else if(drawMode == DrawMode.FalloffMap)
