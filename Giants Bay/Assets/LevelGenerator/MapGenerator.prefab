@@ -426,6 +426,19 @@ MonoBehaviour:
   meshFilter: {fileID: 33064800249821764}
   meshRenderer: {fileID: 23393391692777194}
   meshCollider: {fileID: 64784392845166214}
+  terrains:
+  - name: Alpha
+    height: 1
+    color: {r: 0, g: 0, b: 0, a: 1}
+  - name: Blue
+    height: 1.6
+    color: {r: 0, g: 0, b: 1, a: 0}
+  - name: Green
+    height: 2.4
+    color: {r: 0, g: 1, b: 0, a: 0}
+  - name: Red
+    height: 4.5
+    color: {r: 1, g: 0, b: 0, a: 0}
   sprite: {fileID: 0}
 --- !u!114 &114112056979819220
 MonoBehaviour:
@@ -494,7 +507,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 1ee4323fc0392c5418477c7dd7daf92a, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 7bbf0baacad215b4f9256cd744cf2354, type: 2}
 --- !u!114 &114707945632634970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -540,10 +553,10 @@ MonoBehaviour:
   octives: 4
   persistance: 0.085
   lacunarity: 2
-  seed: 119
+  seed: 95
   offset: {x: 0, y: 0}
   useFalloff: 1
-  meshHeightMultiplyer: 10
+  meshHeightMultiplyer: 12
   meshHeightCurve:
     serializedVersion: 2
     m_Curve:
@@ -584,22 +597,22 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.9543572
     - serializedVersion: 3
-      time: 0.81851804
-      value: 0.62094754
-      inSlope: 1.6593019
-      outSlope: 1.6593019
+      time: 0.8143524
+      value: 0.37705106
+      inSlope: 2.6905947
+      outSlope: 2.6905947
       tangentMode: 0
       weightedMode: 0
       inWeight: 1
-      outWeight: 0.33333334
+      outWeight: 0.565588
     - serializedVersion: 3
-      time: 1
-      value: 0.99061584
-      inSlope: 2.0369425
-      outSlope: 2.0369425
-      tangentMode: 34
+      time: 0.9958191
+      value: 0.7560959
+      inSlope: 0.03815631
+      outSlope: 0.03815631
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 1
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

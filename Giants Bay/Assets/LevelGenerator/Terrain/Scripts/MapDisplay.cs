@@ -10,6 +10,8 @@ public class MapDisplay : MonoBehaviour {
     public MeshRenderer meshRenderer;
     public MeshCollider meshCollider;
 
+    public List<terrainTypes> terrains = new List<terrainTypes>();
+
     public Image sprite;
 
     public void DrawTexture(Texture2D texture)
@@ -31,7 +33,7 @@ public class MapDisplay : MonoBehaviour {
         int[] triangles = mesh.triangles;
         Vector3[] vertices = new Vector3[triangles.Length];
         //t
-        Color32[] colors = new Color32[vertices.Length];
+        Color[] colors = new Color[vertices.Length];
         
         for (int i = 0; i < triangles.Length; i++)
         {
@@ -40,9 +42,18 @@ public class MapDisplay : MonoBehaviour {
         }
 
         //t
-        for (int i = 0; i < colors.Length; i+=3)
+        for (int i = 0; i < vertices.Length; i+=3)
         {
-            colors[i] = new Color(Random.Range(0, 1), Random.Range(0, 1), Random.Range(0, 1));
+            for (int j = 0; j < terrains.Count; j++)
+            {
+                if(vertices[i].y > terrains[j].height || vertices[i + 1].y > terrains[j].height || vertices[i + 2].y > terrains[j].height)
+                {                    
+                    colors[i] = terrains[j].color;
+                    colors[i+1] = terrains[j].color;
+                    colors[i+2] = terrains[j].color;
+                }
+            }
+                        
         }
 
 
@@ -50,7 +61,7 @@ public class MapDisplay : MonoBehaviour {
         mesh.triangles = triangles;
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
-        mesh.colors32 = colors;
+        mesh.colors = colors;
 
         //apply new triangles
         meshCollider.sharedMesh = mesh;
@@ -59,5 +70,13 @@ public class MapDisplay : MonoBehaviour {
 
     }
 
+
+    [System.Serializable]
+    public class terrainTypes
+    {
+        public string name;
+        public float height;
+        public Color color;
+    }
 
 }
