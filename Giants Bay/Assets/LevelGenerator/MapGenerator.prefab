@@ -427,18 +427,18 @@ MonoBehaviour:
   meshRenderer: {fileID: 23393391692777194}
   meshCollider: {fileID: 64784392845166214}
   terrains:
-  - name: Alpha
-    height: 1
-    color: {r: 0, g: 0, b: 0, a: 1}
+  - name: Red
+    height: 0.8
+    color: {r: 1, g: 0, b: 0, a: 1}
   - name: Blue
     height: 1.6
-    color: {r: 0, g: 0, b: 1, a: 0}
+    color: {r: 0, g: 0, b: 1, a: 1}
   - name: Green
     height: 2.4
-    color: {r: 0, g: 1, b: 0, a: 0}
-  - name: Red
+    color: {r: 0, g: 1, b: 0, a: 1}
+  - name: Alpha
     height: 4.5
-    color: {r: 1, g: 0, b: 0, a: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
   sprite: {fileID: 0}
 --- !u!114 &114112056979819220
 MonoBehaviour:
