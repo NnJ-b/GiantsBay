@@ -23,6 +23,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - Texture2D_1CF6C1C2:
+        m_Texture: {fileID: 2800000, guid: 0c90a8873c80a2c4c98078728b91be0a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_209979C3:
+        m_Texture: {fileID: 2800000, guid: f7304431c1be7bd4d9b30fc1348ec223, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_22DE8FC9:
         m_Texture: {fileID: 2800000, guid: e23171e2adb129148b25bbe27cea92bd, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -49,6 +57,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - Texture2D_6F070637:
         m_Texture: {fileID: 2800000, guid: b3d5ad0b65701b544a47084d0646366c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_6FC268B5:
+        m_Texture: {fileID: 2800000, guid: e180e5d2d8a0bbb43bd6bc5790ce2ea5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_809D8FC5:
@@ -79,12 +91,24 @@ Material:
         m_Texture: {fileID: 2800000, guid: f7304431c1be7bd4d9b30fc1348ec223, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - Texture2D_B0A3D5BA:
+        m_Texture: {fileID: 2800000, guid: ad9802e1659585941bd5b25777a0cd18, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_B1E5B3E:
         m_Texture: {fileID: 2800000, guid: a69a80055b0ef324187b6dc442b46cdc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_C4746709:
         m_Texture: {fileID: 2800000, guid: f83467b705a3fe2438d97ea561dbdf6a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51CFD29:
+        m_Texture: {fileID: 2800000, guid: 0bd386a9310460d408a2bd279d0c8f18, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_CAE30AF:
+        m_Texture: {fileID: 2800000, guid: 1f82ece27b5a7d542b4d246f191f42ca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_D2F97EBB:
@@ -215,16 +239,20 @@ Material:
     - Vector1_31EAE0AA: 0.01
     - Vector1_3A16DA61: -0.86
     - Vector1_4BA5D2D2: 0.1
+    - Vector1_516F3F1E: 0.065
     - Vector1_520FDF52: -0.6
     - Vector1_6A0C4DEF: 0.623
     - Vector1_6C1398D7: 1
     - Vector1_6DC6158: 0
+    - Vector1_6E71B736: 14.2
     - Vector1_724A37EB: -6.5
     - Vector1_74F360C5: 1
     - Vector1_8B1D8563: -3.57
     - Vector1_8D4190AF: 1
     - Vector1_95AD5E18: 1
+    - Vector1_96C98F8E: 0
     - Vector1_9C13E43F: 0
+    - Vector1_9D57A980: 0
     - Vector1_9D69B15: 0.1
     - Vector1_9F1B24E1: 0.71
     - Vector1_A6566630: 0.5
@@ -234,9 +262,11 @@ Material:
     - Vector1_C5A4B2BE: 1
     - Vector1_DA9ABF95: 0
     - Vector1_E3D47313: 0.19
+    - Vector1_E705570D: 0
     - Vector1_E864FBDB: 0
     - Vector1_ED7DA8F: 0
     - Vector1_F1E88AF6: 1
+    - Vector1_F9ED9052: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BlendOp: 0
@@ -255,7 +285,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossinessSource: 0
     - _GlossyReflections: 1
-    - _LightingEnabled: 0
+    - _LightingEnabled: 1
     - _Metallic: 0
     - _Metallic0: 0
     - _Metallic1: 0
@@ -282,13 +312,20 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_15AE1E77: {r: 0.02037848, g: 0.6784314, b: 0, a: 0}
+    - Color_1FF82699: {r: 0.14657153, g: 0.49056602, b: 0, a: 0}
     - Color_3011A8A6: {r: 0.68396217, g: 1, b: 0.941917, a: 0}
     - Color_3E9A88FA: {r: 0.28109434, g: 0.5849056, b: 0.1682983, a: 0}
     - Color_527AFB86: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 0}
+    - Color_A2F23725: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 0}
     - Color_A5DA5B0D: {r: 0.7216981, g: 0.9677196, b: 1, a: 0}
     - Color_A9AB3F46: {r: 0.22641507, g: 0.22641507, b: 0.22641507, a: 0}
+    - Color_B64810AC: {r: 1, g: 1, b: 1, a: 0}
+    - Color_DE5D23BF: {r: 1, g: 0.8549688, b: 0, a: 0}
     - Vector2_471BFB4A: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_B18D44AA: {r: 1, g: 1, b: 0, a: 0}
+    - Vector4_6B7A64F9: {r: 0, g: 0, b: 0, a: 0}
+    - Vector4_D9C412D4: {r: 1, g: 0.8, b: 0.2, a: 0.2}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}

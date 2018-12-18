@@ -10,6 +10,8 @@ public class MapDisplay : MonoBehaviour {
     public MeshRenderer meshRenderer;
     public MeshCollider meshCollider;
 
+    public List<terrainTypes> terrains = new List<terrainTypes>();
+
     public Image sprite;
 
     public void DrawTexture(Texture2D texture)
@@ -29,28 +31,68 @@ public class MapDisplay : MonoBehaviour {
         //flat Shading
         Vector3[] oldVerts = mesh.vertices;
         int[] triangles = mesh.triangles;
-        Vector3[] vertices = new Vector3[triangles.Length];
-        //t
-        Color32[] colors = new Color32[vertices.Length];
-        
+        Vector3[] vertices = new Vector3[triangles.Length];        
         for (int i = 0; i < triangles.Length; i++)
         {
             vertices[i] = oldVerts[triangles[i]];
             triangles[i] = i;                
         }
 
-        //t
-        for (int i = 0; i < colors.Length; i+=3)
+        //Vertex Colors
+        Color[] colors = new Color[vertices.Length];
+
+        //perVertex
+        /*for (int i = 0; i < vertices.Length; i++)
         {
-            colors[i] = new Color(Random.Range(0, 1), Random.Range(0, 1), Random.Range(0, 1));
+            
+            for (int j = 0; j < terrains.Count; j++)
+            {
+                if(vertices[i].y < terrains[0].height)
+                {
+                    colors[i] = new Vector4(0,0,0,1);
+                }
+                else if (vertices[i].y >= terrains[j].height)
+                {
+                    colors[i] = terrains[j].color;
+                }
+            }
+          
+            
+        }*/
+
+        //perTriangle
+        for (int i = 0; i < vertices.Length; i+=3)
+        {
+            for (int j = 0; j < terrains.Count; j++)
+            {
+                if(vertices[i].y < terrains[0].height || vertices[i + 1].y < terrains[0].height || vertices[i + 2].y < terrains[0].height)
+                {
+                    colors[i] = new Vector4(0, 0, 0, 1);
+                    colors[i+1] = new Vector4(0, 0, 0, 1);
+                    colors[i+2] = new Vector4(0, 0, 0, 1);
+                }
+
+                //all verts
+                if (vertices[i].y >= terrains[j].height || vertices[i + 1].y > terrains[j].height || vertices[i + 2].y > terrains[j].height)
+                //average
+                //if((vertices[i].y + vertices[i+1].y + vertices[i+2].y) / 3 > terrains[j].height)                
+                {                    
+                    colors[i] = terrains[j].color;
+                    colors[i+1] = terrains[j].color;
+                    colors[i+2] = terrains[j].color;
+                }
+            }
+                        
         }
 
-
+        mesh.Clear();
+        mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
-        mesh.colors32 = colors;
+        mesh.colors = colors;
+        Debug.Log(mesh.vertexCount);
 
         //apply new triangles
         meshCollider.sharedMesh = mesh;
@@ -59,5 +101,13 @@ public class MapDisplay : MonoBehaviour {
 
     }
 
+
+    [System.Serializable]
+    public class terrainTypes
+    {
+        public string name;
+        public float height;
+        public Color color;
+    }
 
 }
