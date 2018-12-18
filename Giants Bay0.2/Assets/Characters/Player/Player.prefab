@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 5012880811514842350}
   - component: {fileID: 4296378886167723984}
   - component: {fileID: 243113877663985138}
+  - component: {fileID: 3690356706183224124}
+  - component: {fileID: 403649418}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -125,6 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motor: {fileID: 4296378886167723984}
+  inventory: {fileID: 3690356706183224124}
+  interact: {fileID: 243113877663985138}
 --- !u!114 &4296378886167723984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0610ff47c42861142acd5820ddb3cfc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 5012880811514842350}
   speed: 0.3
 --- !u!114 &243113877663985138
 MonoBehaviour:
@@ -150,7 +155,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9545af80936da44ca3c314363c9f6cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 5012880811514842350}
   interactableRange: 5
   mask:
     serializedVersion: 2
     m_Bits: 2147483648
+--- !u!114 &3690356706183224124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5012880811514842348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8344141c25473104092d9bdf9b3e4b4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 15
+  playerController: {fileID: 5012880811514842350}
+  inventoryItems: []
+--- !u!114 &403649418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5012880811514842348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4bd40c7d59856409a9f0ea57287216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

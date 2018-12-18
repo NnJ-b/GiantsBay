@@ -5,17 +5,17 @@ using UnityEngine;
 public class CanvasController : MonoBehaviour
 {
     [Header("References")]
-    public GameObject inventory;
+    public GameObject inventoryCanvas;
 
     public void InventoryToggle()
     {
-        if(inventory.activeSelf == false)
+        if(inventoryCanvas.activeSelf == false)
         {
-            inventory.SetActive(true);
+            inventoryCanvas.SetActive(true);
         }
         else
         {
-            inventory.SetActive(false);
+            inventoryCanvas.SetActive(false);
         }
     }
 
@@ -26,6 +26,6 @@ public class CanvasController : MonoBehaviour
 
     private void HideAll()
     {
-        inventory.SetActive(false);
+        inventoryCanvas.SetActive(false);
     }
 }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public Transform player;
+    public PlayerController player;
 
     public void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     public virtual void Interact()

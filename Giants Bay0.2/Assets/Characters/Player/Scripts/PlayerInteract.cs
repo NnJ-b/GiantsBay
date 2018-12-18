@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
+    public PlayerController playerController;
+
     [Header("Interactable")]
     public float interactableRange = 5f;
     public LayerMask mask;

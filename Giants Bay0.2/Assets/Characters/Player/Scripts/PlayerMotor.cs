@@ -6,6 +6,7 @@ public class PlayerMotor : MonoBehaviour
 {
     [Header("References")]
     private Rigidbody rb;
+    public PlayerController playerController;
 
     public float speed = 1f;
 
@@ -19,7 +20,7 @@ public class PlayerMotor : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(x, 0, y) * speed;
-        if(movement != Vector3.zero)
+        if(x != 0f || y != 0f)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15F);
         }
