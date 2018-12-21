@@ -6,12 +6,14 @@ public class CanvasController : MonoBehaviour
 {
     [Header("References")]
     public GameObject inventoryCanvas;
+    public InventoryUIController InventoryController;
 
     public void InventoryToggle()
     {
         if(inventoryCanvas.activeSelf == false)
         {
             inventoryCanvas.SetActive(true);
+            //InventoryController.UpdateUI();
         }
         else
         {

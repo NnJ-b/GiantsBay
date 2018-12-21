@@ -9,15 +9,28 @@ public class InventoryUIController : MonoBehaviour
 
     SlotController[] slots;
 
-    private void Start()
+    private void OnEnable()
+    {
+        start();
+    }
+
+    private void Awake()
+    {
+        start();
+    }
+
+    private void start()
     {
         inventory = PlayerInventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
 
         slots = itemsParent.GetComponentsInChildren<SlotController>();
+        UpdateUI();
     }
 
-    void UpdateUI()
+    
+
+    public void UpdateUI()
     {
         for (int i = 0; i < slots.Length; i++)
         {

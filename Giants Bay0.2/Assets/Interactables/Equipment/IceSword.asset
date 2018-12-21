@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30e02a59bd0f2e44c950ef77f18261f6, type: 3}
-  m_Name: BasicSword
+  m_Name: IceSword
   m_EditorClassIdentifier: 
-  Name: Basic Sword
-  icon: {fileID: 21300000, guid: 5d2ef1aded6b0eb42a1157e0a05e3c89, type: 3}
+  Name: Ice Sword
+  icon: {fileID: 21300000, guid: 4ff6e46fc4bec6b41a00964c537bdb1f, type: 3}
   weight: 5
   mesh: {fileID: 4300000, guid: f77e94b1dd2a8b74b928dcfe40278808, type: 3}
-  material: {fileID: 2100000, guid: 83d041863ea92bf4e905db9859736e42, type: 2}
+  material: {fileID: 2100000, guid: c6651668503f7ce449bfb765c82dcbaa, type: 2}
   equipmentSlot: 3
   armorMultiplyer: 0
-  damageMultiplyer: 3
+  damageMultiplyer: 5

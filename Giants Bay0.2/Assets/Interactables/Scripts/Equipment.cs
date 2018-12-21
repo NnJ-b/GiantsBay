@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Inventory/Equipment")]
 public class Equipment : Item
 {
+    public Mesh mesh;
+    public Material material;
     public EquipmentSlots equipmentSlot;
 
     public float armorMultiplyer;

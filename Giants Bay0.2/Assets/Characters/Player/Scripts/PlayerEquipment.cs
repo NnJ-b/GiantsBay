@@ -16,6 +16,8 @@ public class PlayerEquipment : MonoBehaviour
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
     public OnEquipmentChanged onEquipmentChangedCallBack;
 
+    public Transform[] playerItemAttachmentPoints;
+
     Equipment[] equipped;
     PlayerInventory inventory;
 
@@ -37,7 +39,7 @@ public class PlayerEquipment : MonoBehaviour
             inventory.RemoveFromInventory(newItem);
             if(inventory.AddToInventory(oldItem))
             {
-                equipped[slotIndex] = newItem;
+                EquipPassed(newItem, slotIndex);
                 if(onEquipmentChangedCallBack != null)
                 {
                     onEquipmentChangedCallBack.Invoke(newItem,oldItem);
@@ -50,13 +52,59 @@ public class PlayerEquipment : MonoBehaviour
         }
         else
         {
-            equipped[slotIndex] = newItem;
+            EquipPassed(newItem, slotIndex);
             inventory.RemoveFromInventory(newItem);
             if (onEquipmentChangedCallBack != null)
             {
                 onEquipmentChangedCallBack.Invoke(newItem, oldItem);
             }
         }
+    }
+
+    public void EquipPassed(Equipment newItem, int slotIndex)
+    {
+        equipped[slotIndex] = newItem;
+        if (newItem.mesh != null)
+        {
+            GameObject go = new GameObject();
+
+            GameObject instance = Instantiate(go);
+            Destroy(go);
+            MeshFilter filter = instance.AddComponent<MeshFilter>();
+            MeshRenderer renderer = instance.AddComponent<MeshRenderer>();
+            filter.mesh = newItem.mesh;
+            renderer.material = newItem.material;
+
+            Debug.Log(instance.transform.position);
+            
+
+            //canreach if unequiped or if item has no mesh
+            if (newItem.equipmentSlot == EquipmentSlots.PrimaryWeapon)
+            {
+                SetParent(newItem, 0, instance);
+            }
+            else if(newItem.equipmentSlot == EquipmentSlots.SecondaryWeapon)
+            {
+                SetParent(newItem, 1, instance);
+            }
+            
+            instance.transform.localPosition = Vector3.zero;
+            instance.transform.localRotation = Quaternion.identity;
+        }
+        
+    }
+
+    private void SetParent(Equipment newItem, int playerAtachmentSlot, GameObject instance)
+    {
+        int childcount = playerItemAttachmentPoints[playerAtachmentSlot].transform.childCount;
+        if (childcount > 0)
+        {
+            for (int i = 0; i < childcount; i++)
+            {
+                Destroy(playerItemAttachmentPoints[playerAtachmentSlot].transform.GetChild(i).gameObject);
+            }
+        }
+        instance.transform.parent = playerItemAttachmentPoints[0].transform;
     }
 
     public void Unequip(int slotIndex)
