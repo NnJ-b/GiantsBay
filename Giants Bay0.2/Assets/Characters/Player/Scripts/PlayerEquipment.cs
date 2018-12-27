@@ -78,7 +78,7 @@ public class PlayerEquipment : MonoBehaviour
             Debug.Log(instance.transform.position);
             
 
-            //canreach if unequiped or if item has no mesh
+            //cant reach if unequiped or if item has no mesh
             if (newItem.equipmentSlot == EquipmentSlots.PrimaryWeapon)
             {
                 SetParent(newItem, 0, instance);
@@ -104,7 +104,7 @@ public class PlayerEquipment : MonoBehaviour
                 Destroy(playerItemAttachmentPoints[playerAtachmentSlot].transform.GetChild(i).gameObject);
             }
         }
-        instance.transform.parent = playerItemAttachmentPoints[0].transform;
+        instance.transform.parent = playerItemAttachmentPoints[playerAtachmentSlot].transform;
     }
 
     public void Unequip(int slotIndex)

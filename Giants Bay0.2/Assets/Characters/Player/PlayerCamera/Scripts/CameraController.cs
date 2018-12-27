@@ -9,24 +9,19 @@ public class CameraController : MonoBehaviour
 
 
     [Header("Camera Location")]
+    private float YRotation;
+    public Vector3 defaultLocation;
     public float zoom;
     public Vector2 zoomLimits;
+    public Vector2 rotationLimits;
     public float zoomSpeed;
-    public Vector3 offset;   
-    [Range(0.0001f, 1)]
-    public float camSmooth = 1f;
-
-    //mouseRotation
-    public Transform cameraParent;
-    Vector3 mouseStart = Vector3.zero;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        transform.localPosition = defaultLocation * zoom;
     }
 
-
-    void Update()
+    void FixedUpdate()
     {
         //check for mousewheel for zoom
         if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
@@ -38,12 +33,14 @@ public class CameraController : MonoBehaviour
         {
             zoom -= zoomSpeed;
             ClampZoom();
-        }        
+        }
 
-        //maintain position with player
-        Vector3 newPos = player.transform.position + new Vector3(offset.x, offset.y, offset.z) * zoom;
-        transform.position = Vector3.Slerp(transform.position, newPos, camSmooth);
+        YRotation -= Input.GetAxis("Mouse Y");
+        ClampRotation();
+
+
         transform.LookAt(player.transform);
+
     }
 
 
@@ -58,5 +55,15 @@ public class CameraController : MonoBehaviour
         {
             zoom = zoomLimits.x;
         }
+
+        transform.localPosition = defaultLocation * zoom;
     }    
+
+    void ClampRotation()
+    {
+        YRotation = Mathf.Clamp(YRotation, rotationLimits.x, rotationLimits.y);
+        Debug.Log(YRotation);
+        player.transform.localEulerAngles= new Vector3(YRotation, 0, 0);
+        
+    }
 }
