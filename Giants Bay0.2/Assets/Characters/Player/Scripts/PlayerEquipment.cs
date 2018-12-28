@@ -18,7 +18,7 @@ public class PlayerEquipment : MonoBehaviour
 
     public Transform[] playerItemAttachmentPoints;
 
-    Equipment[] equipped;
+    public Equipment[] equipped;
     PlayerInventory inventory;
 
     private void Start()
@@ -115,6 +115,23 @@ public class PlayerEquipment : MonoBehaviour
             {
                 Equipment oldItem = equipped[slotIndex];
                 equipped[slotIndex] = null;
+
+                int playerAtachmentSlot = 0;
+                if(oldItem.equipmentSlot == EquipmentSlots.SecondaryWeapon)
+                {
+                    playerAtachmentSlot = 1;
+                }
+
+                int childcount = playerItemAttachmentPoints[playerAtachmentSlot].transform.childCount;
+                if (childcount > 0)
+                {
+                    for (int i = 0; i < childcount; i++)
+                    {
+                        Destroy(playerItemAttachmentPoints[playerAtachmentSlot].transform.GetChild(i).gameObject);
+                    }
+                }
+
+                oldItem.Unequiped();
                 if (onEquipmentChangedCallBack != null)
                 {
                     onEquipmentChangedCallBack.Invoke(null, oldItem);

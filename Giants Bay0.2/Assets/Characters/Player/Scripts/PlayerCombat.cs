@@ -27,19 +27,47 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.K))
         {
-            Attack();
+            AttackPrimary();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            AttackSecondary();
+            animator.SetBool("Fire", false);
+        }
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            animator.SetBool("Fire", true);
         }
     }
 
-    void Attack()
+    void AttackPrimary()
     {
-        animator.SetBool("StartAttack", true);
+        EquipmentSlots equipmentSlot = EquipmentSlots.PrimaryWeapon;
+        if (playerEquipment.equipped[(int)equipmentSlot] != null)
+        {
+            playerEquipment.equipped[(int)equipmentSlot].Attack(this, equipmentSlot);
+        }
     }
+    void AttackSecondary()
+    {
+        EquipmentSlots equipmentSlot = EquipmentSlots.SecondaryWeapon;
+        if (playerEquipment.equipped[(int)equipmentSlot] != null)
+        {
+            playerEquipment.equipped[(int)equipmentSlot].Attack(this, equipmentSlot);
+        }
+    }
+
 
     void UpdateStats(Equipment newItem, Equipment oldItem)
     {
         Debug.Log("Updating Stats in PlayerCombat Script");
+    }
+
+    public void ClearAnimatorBool()
+    {
+        animator.SetBool("MeleEquiped", false);
+        animator.SetBool("RangeEquiped", false);
     }
 }

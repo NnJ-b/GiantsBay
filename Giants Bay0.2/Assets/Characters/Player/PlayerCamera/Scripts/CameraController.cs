@@ -34,10 +34,10 @@ public class CameraController : MonoBehaviour
             zoom -= zoomSpeed;
             ClampZoom();
         }
+        
 
         YRotation -= Input.GetAxis("Mouse Y");
-        ClampRotation();
-
+        ClampRotation();        
 
         transform.LookAt(player.transform);
 
@@ -62,8 +62,6 @@ public class CameraController : MonoBehaviour
     void ClampRotation()
     {
         YRotation = Mathf.Clamp(YRotation, rotationLimits.x, rotationLimits.y);
-        Debug.Log(YRotation);
-        player.transform.localEulerAngles= new Vector3(YRotation, 0, 0);
-        
+        player.transform.localEulerAngles= new Vector3(YRotation, 0, 0);        
     }
 }

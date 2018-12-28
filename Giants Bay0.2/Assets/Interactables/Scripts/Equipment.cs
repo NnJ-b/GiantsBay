@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Weapon", menuName = "Inventory/Equipment")]
+[CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Equipment")]
 public class Equipment : Item
 {
     public Mesh mesh;
@@ -12,12 +12,23 @@ public class Equipment : Item
     public float armorMultiplyer;
     public float damageMultiplyer;
 
-    
+    PlayerCombat playerCombat;
+
 
     public override void Use()
     {
         base.Use();
+        playerCombat = PlayerCombat.instance;
         PlayerEquipment.instance.equip(this);
+    }
+
+    public virtual void Attack(PlayerCombat combat, EquipmentSlots slot)
+    {
+    }
+
+    public virtual void Unequiped()
+    {
+
     }
 }
 

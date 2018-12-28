@@ -1,0 +1,25 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "New RangeWeapon", menuName = "Inventory/RangeWeapon")]
+public class RangeWeapon : Equipment
+{
+    public override void Use()
+    {
+        base.Use();
+        PlayerCombat.instance.animator.SetBool("RangeEquiped", true);
+    }
+
+    public override void Attack(PlayerCombat combat, EquipmentSlots slot)
+    {
+        base.Attack(combat, slot);
+        combat.animator.SetBool("StartSecondaryAttack", true);
+    }
+
+    public override void Unequiped()
+    {
+        base.Unequiped();
+        PlayerCombat.instance.animator.SetBool("RangeEquiped", false);
+    }
+}
