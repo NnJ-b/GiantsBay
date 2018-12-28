@@ -7,10 +7,5 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerMotor motor;
     public PlayerInventory inventory;
-    public PlayerInteract interact;
-
-    private void Start()
-    {
-        
-    }
+    public PlayerInteract interact;    
 }
