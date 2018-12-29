@@ -21,8 +21,12 @@ public class Equipment : Item
         playerCombat = PlayerCombat.instance;
         PlayerEquipment.instance.equip(this);
     }
-
+    //used for primary hand and secondary hand
     public virtual void Attack(PlayerCombat combat, EquipmentSlots slot)
+    {
+    }
+    //used range weapons
+    public virtual void Fire()
     {
     }
 

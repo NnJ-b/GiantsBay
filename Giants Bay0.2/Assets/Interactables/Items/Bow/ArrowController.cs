@@ -9,38 +9,24 @@ public class ArrowController : MonoBehaviour
     public float speed;
 
 
-    int i = 0;
     private void Start()
     {
         transform.position = PlayerEquipment.instance.playerItemAttachmentPoints[1].position;
         transform.rotation = PlayerEquipment.instance.playerItemAttachmentPoints[1].rotation;
-        i = 0;
+
+        Destroy(gameObject, lifespan);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (fired)
         {
-            //StartCoroutine(Die());
-            transform.Translate(-Vector3.right * Time.deltaTime * speed, Space.Self);
+            transform.Translate(-Vector3.right * speed, Space.Self);
         }
         else
         {
             transform.position = PlayerEquipment.instance.playerItemAttachmentPoints[1].position;
             transform.rotation = PlayerEquipment.instance.playerItemAttachmentPoints[1].rotation;
         }
-    }
-
-    IEnumerator Die()
-    {
-        while(true)
-        {
-            if (i == 1)
-            {
-                Destroy(gameObject);
-            }
-            i++;
-            yield return new WaitForSeconds(lifespan);
-        }
-    }
+    }    
 }

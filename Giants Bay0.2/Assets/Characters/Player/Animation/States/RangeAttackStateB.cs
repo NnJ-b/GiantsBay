@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class RangeAttackStateB : StateMachineBehaviour
 {
-    public GameObject ArrowPrefab;
-    GameObject instance;
-
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        instance = Instantiate(ArrowPrefab.gameObject);
-    }
+    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //}
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -22,7 +18,6 @@ public class RangeAttackStateB : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Destroy(instance);
         PlayerCombat.instance.isAtacking = false;
     }
 

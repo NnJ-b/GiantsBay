@@ -91,5 +91,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fired: 0
-  lifespan: 50
-  speed: 5
+  lifespan: 2.5
+  speed: 1

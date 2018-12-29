@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class RangeAttackState : StateMachineBehaviour
 {
-    PlayerCombat playerCombat;
-
-    public GameObject ArrowPrefab;
-    GameObject instance;
+    PlayerCombat playerCombat;  
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -15,7 +12,6 @@ public class RangeAttackState : StateMachineBehaviour
     {
         playerCombat = PlayerCombat.instance;
         playerCombat.isAtacking = true;
-        instance = Instantiate(ArrowPrefab.gameObject);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -27,7 +23,6 @@ public class RangeAttackState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("StartSecondaryAttack", false);
-        Destroy(instance);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

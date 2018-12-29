@@ -38,6 +38,7 @@ public class PlayerCombat : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.L))
         {
+            FireSecondary();
             animator.SetBool("Fire", true);
         }
     }
@@ -56,6 +57,14 @@ public class PlayerCombat : MonoBehaviour
         if (playerEquipment.equipped[(int)equipmentSlot] != null)
         {
             playerEquipment.equipped[(int)equipmentSlot].Attack(this, equipmentSlot);
+        }
+    }
+    void FireSecondary()
+    {
+        EquipmentSlots equipmentSlot = EquipmentSlots.SecondaryWeapon;
+        if (playerEquipment.equipped[(int)equipmentSlot] != null)
+        {
+            playerEquipment.equipped[(int)equipmentSlot].Fire();
         }
     }
 
