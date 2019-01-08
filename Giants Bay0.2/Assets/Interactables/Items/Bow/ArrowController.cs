@@ -28,5 +28,13 @@ public class ArrowController : MonoBehaviour
             transform.position = PlayerEquipment.instance.playerItemAttachmentPoints[1].position;
             transform.rotation = PlayerEquipment.instance.playerItemAttachmentPoints[1].rotation;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("hit");
+        }
     }    
 }

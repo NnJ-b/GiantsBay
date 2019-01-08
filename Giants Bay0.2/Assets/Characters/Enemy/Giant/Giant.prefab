@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1193327638902258281}
   m_Layer: 0
   m_Name: Giant
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,10 +112,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Graphics
       objectReference: {fileID: 0}
-    - target: {fileID: 100022, guid: b8795c01fb3a8ac4ea8ca42bc7f47aab, type: 3}
-      propertyPath: m_Name
-      value: Mesh
-      objectReference: {fileID: 0}
     - target: {fileID: 400024, guid: b8795c01fb3a8ac4ea8ca42bc7f47aab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -160,14 +156,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: b8795c01fb3a8ac4ea8ca42bc7f47aab, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: fb208ebea9266ff4a8ca2aa6757a22f0, type: 2}
-    - target: {fileID: 9500000, guid: b8795c01fb3a8ac4ea8ca42bc7f47aab, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
+    - target: {fileID: 13700000, guid: b8795c01fb3a8ac4ea8ca42bc7f47aab, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: b8795c01fb3a8ac4ea8ca42bc7f47aab, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c273cc068266f9f4ba654f2814241529, type: 2}
     - target: {fileID: 13700000, guid: b8795c01fb3a8ac4ea8ca42bc7f47aab, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
