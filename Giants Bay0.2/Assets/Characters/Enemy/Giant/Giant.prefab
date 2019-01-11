@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2464371641973587715}
   - component: {fileID: 2464371641973587743}
+  - component: {fileID: 7110360817330924609}
   - component: {fileID: 2464371641973587740}
   - component: {fileID: 2464371641973587714}
   - component: {fileID: 1193327638902258281}
+  - component: {fileID: 8668440066296462404}
   m_Layer: 0
   m_Name: Giant
   m_TagString: Enemy
@@ -57,6 +59,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &7110360817330924609
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2464371641973587741}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.04, y: 3.97, z: 1.35}
+  m_Center: {x: 0, y: 1.97, z: -0.03}
 --- !u!114 &2464371641973587740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +116,18 @@ MonoBehaviour:
   motor: {fileID: 2464371641973587740}
   animator: {fileID: 3754996406542593570}
   animationSmoothTime: 0.1
+--- !u!114 &8668440066296462404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2464371641973587741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0864f7efd9b144245bc0bc840926cb2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3754996406533102402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,14 +183,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 13700000, guid: b8795c01fb3a8ac4ea8ca42bc7f47aab, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 13700000, guid: b8795c01fb3a8ac4ea8ca42bc7f47aab, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+    - target: {fileID: 9500000, guid: b8795c01fb3a8ac4ea8ca42bc7f47aab, type: 3}
+      propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 2100000, guid: c273cc068266f9f4ba654f2814241529, type: 2}
+      objectReference: {fileID: 9100000, guid: fb208ebea9266ff4a8ca2aa6757a22f0, type: 2}
     - target: {fileID: 13700000, guid: b8795c01fb3a8ac4ea8ca42bc7f47aab, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

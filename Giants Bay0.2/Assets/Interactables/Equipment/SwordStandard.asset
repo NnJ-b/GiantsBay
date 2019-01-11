@@ -19,4 +19,4 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 83d041863ea92bf4e905db9859736e42, type: 2}
   equipmentSlot: 3
   armorMultiplyer: 0
-  damageMultiplyer: 3
+  damageMultiplyer: 2

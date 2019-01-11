@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4470390924212515497}
   - component: {fileID: 6935089968948958116}
+  - component: {fileID: 5971652777821916207}
   - component: {fileID: 8321066336048033865}
   - component: {fileID: 3049239375299229847}
   - component: {fileID: 7937005554822599271}
   m_Layer: 0
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,6 +43,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8456126450030947587}
   m_Mesh: {fileID: 4300000, guid: 8d72f797fa689e94ead3a1a63b314455, type: 3}
+--- !u!54 &5971652777821916207
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8456126450030947587}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!136 &8321066336048033865
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -50,7 +67,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8456126450030947587}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.07
   m_Height: 1.17

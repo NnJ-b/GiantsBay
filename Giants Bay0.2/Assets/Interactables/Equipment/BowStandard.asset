@@ -19,6 +19,6 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: bb7ba175e9ef7a7488a908f532703c35, type: 2}
   equipmentSlot: 4
   armorMultiplyer: 0
-  damageMultiplyer: 5
+  damageMultiplyer: 2
   projectile: {fileID: 8456126450030947587, guid: 39268023d25b8ed48b2b8a04b71cd6c1,
     type: 3}

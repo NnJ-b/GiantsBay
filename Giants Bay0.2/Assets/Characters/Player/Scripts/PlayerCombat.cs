@@ -71,7 +71,18 @@ public class PlayerCombat : MonoBehaviour
 
     void UpdateStats(Equipment newItem, Equipment oldItem)
     {
-        Debug.Log("Updating Stats in PlayerCombat Script");
+        if(newItem != null)
+        {
+            PlayerStats.damage += newItem.damageMultiplyer;
+            PlayerStats.armor += newItem.armorMultiplyer;
+        }
+        if(oldItem != null)
+        {
+            PlayerStats.damage -= oldItem.damageMultiplyer;
+            PlayerStats.armor -= oldItem.armorMultiplyer;
+        }
+
+        Debug.Log("Damage: " + PlayerStats.damage.ToString() + "Armor: " + PlayerStats.armor.ToString());
     }
 
     public void ClearAnimatorBool()

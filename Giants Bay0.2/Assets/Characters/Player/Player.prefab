@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 243113877663985138}
   - component: {fileID: 3690356706183224124}
   - component: {fileID: 403649418}
+  - component: {fileID: 7426721422629264864}
   - component: {fileID: 8136947631048278867}
   m_Layer: 0
   m_Name: Player
@@ -441,6 +442,18 @@ MonoBehaviour:
   - {fileID: 8501042644375303505}
   - {fileID: 667930762751794809}
   equipped: []
+--- !u!114 &7426721422629264864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5012880811514842348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4fe08b5f1a63024fadb0e27097d9ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8136947631048278867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,8 +468,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 6906180237086164184}
   isAtacking: 0
-  ArrowPrefab: {fileID: 8456126450030947587, guid: 39268023d25b8ed48b2b8a04b71cd6c1,
-    type: 3}
 --- !u!1 &8111307536930374691
 GameObject:
   m_ObjectHideFlags: 0

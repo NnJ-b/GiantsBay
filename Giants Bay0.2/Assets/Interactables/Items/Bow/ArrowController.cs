@@ -7,12 +7,14 @@ public class ArrowController : MonoBehaviour
     public bool fired = false;
     public float lifespan = 5;
     public float speed;
+    public float damage;
 
 
     private void Start()
     {
         transform.position = PlayerEquipment.instance.playerItemAttachmentPoints[1].position;
         transform.rotation = PlayerEquipment.instance.playerItemAttachmentPoints[1].rotation;
+        damage = PlayerStats.damage;
 
         Destroy(gameObject, lifespan);
     }
@@ -34,7 +36,12 @@ public class ArrowController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("hit");
+            other.GetComponent<HealthController>().TakeDamage(damage);
+            Destroy(gameObject);
         }
-    }    
+        else if(other.gameObject.CompareTag("Solid"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
