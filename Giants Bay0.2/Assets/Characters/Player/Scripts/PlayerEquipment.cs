@@ -97,14 +97,20 @@ public class PlayerEquipment : MonoBehaviour
     private void SetParent(Equipment newItem, int playerAtachmentSlot, GameObject instance)
     {
         int childcount = playerItemAttachmentPoints[playerAtachmentSlot].transform.childCount;
+
         if (childcount > 0)
         {
             for (int i = 0; i < childcount; i++)
             {
-                Destroy(playerItemAttachmentPoints[playerAtachmentSlot].transform.GetChild(i).gameObject);
+                if(playerItemAttachmentPoints[playerAtachmentSlot].transform.GetChild(i).tag == "Equipment")
+                {
+                    Destroy(playerItemAttachmentPoints[playerAtachmentSlot].transform.GetChild(i).gameObject);
+                }
             }
         }
         instance.transform.parent = playerItemAttachmentPoints[playerAtachmentSlot].transform;
+
+        instance.tag = "Equipment";        
     }
 
     public void Unequip(int slotIndex)

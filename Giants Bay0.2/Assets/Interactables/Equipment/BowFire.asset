@@ -20,5 +20,7 @@ MonoBehaviour:
   equipmentSlot: 4
   armorMultiplyer: 0
   damageMultiplyer: 5
+  offset: {x: -0.013, y: -0.043, z: 0.014}
+  rotationOffset: {x: 72.5, y: 0, z: 0, w: 0}
   projectile: {fileID: 8456126450030947587, guid: 39268023d25b8ed48b2b8a04b71cd6c1,
     type: 3}

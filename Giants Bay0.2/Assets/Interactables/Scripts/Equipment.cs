@@ -14,6 +14,9 @@ public class Equipment : Item
 
     PlayerCombat playerCombat;
 
+    public Vector3 offset;
+    public Quaternion rotationOffset;
+
 
     public override void Use()
     {
