@@ -6,7 +6,7 @@ using UnityEngine;
 public class RangeWeapon : Equipment
 {
     public GameObject projectile;
-    GameObject projectileInstance;
+    GameObject projectileInstance = null;
 
     public override void Use()
     {
@@ -14,11 +14,10 @@ public class RangeWeapon : Equipment
         PlayerCombat.instance.animator.SetBool("RangeEquiped", true);
     }
 
-    public override void Attack(PlayerCombat combat, EquipmentSlots slot)
+    public override void Aim(PlayerCombat combat, EquipmentSlots slot, float angle)
     {
-        base.Attack(combat, slot);
-        combat.animator.SetBool("StartSecondaryAttack", true);
-        projectileInstance = Instantiate(projectile.gameObject);
+        base.Aim(combat, slot, angle);
+        Debug.Log(angle);
     }
 
     public override void Fire()

@@ -13,14 +13,22 @@ public class PlayerCombat : MonoBehaviour
     }
     #endregion
 
+    [Header("References")]
+    PlayerMotor playerMotor;
+
     PlayerEquipment playerEquipment;
     public Animator animator;
     public bool isAtacking;
+    [Range(0, 1)]
+    public float startAimSensitivity;
+
+    private Vector3 mouseStartPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         playerEquipment = PlayerEquipment.instance;
+        playerMotor = PlayerMotor.instance;
         playerEquipment.onEquipmentChangedCallBack += UpdateStats;
     }
 
@@ -31,16 +39,20 @@ public class PlayerCombat : MonoBehaviour
         {
             AttackPrimary();
         }
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetMouseButtonDown(1))
+        {            
+            mouseStartPosition = Input.mousePosition;
+        }
+        if(Input.GetMouseButton(1))
         {
-            AttackSecondary();
+            AimSecondary();
             animator.SetBool("Fire", false);
         }
-        if (Input.GetKeyUp(KeyCode.L))
+        if (Input.GetMouseButtonUp(1))
         {
             FireSecondary();
             animator.SetBool("Fire", true);
-        }
+        }        
     }
 
     void AttackPrimary()
@@ -51,12 +63,42 @@ public class PlayerCombat : MonoBehaviour
             playerEquipment.equipped[(int)equipmentSlot].Attack(this, equipmentSlot);
         }
     }
-    void AttackSecondary()
+    void AimSecondary()
     {
         EquipmentSlots equipmentSlot = EquipmentSlots.SecondaryWeapon;
         if (playerEquipment.equipped[(int)equipmentSlot] != null)
         {
-            playerEquipment.equipped[(int)equipmentSlot].Attack(this, equipmentSlot);
+            
+            //find angle
+            Vector3 mouseDelta = Input.mousePosition - mouseStartPosition;
+
+            if (mouseDelta.sqrMagnitude < startAimSensitivity)
+            {
+                return;            
+            }
+
+            float angle = Mathf.Atan2(mouseDelta.y, mouseDelta.x) * Mathf.Rad2Deg;
+            angle -= 90;
+            angle *= -1;
+            
+
+
+            float playerAngle = playerMotor.graphics.transform.localEulerAngles.y;
+
+            angle -= playerAngle;
+
+            while (angle > 180)
+            {
+                angle =  angle - 360;
+            }
+
+            while (angle < -180)
+            {
+                angle = angle + 360;
+            }
+
+            //send to Weapon
+            playerEquipment.equipped[(int)equipmentSlot].Aim(this, equipmentSlot, angle);
         }
     }
     void FireSecondary()
