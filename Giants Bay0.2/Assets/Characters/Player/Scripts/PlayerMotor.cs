@@ -13,6 +13,7 @@ public class PlayerMotor : MonoBehaviour
         instance = this;
     }
     #endregion
+
     [Header("References")]
     private Rigidbody rb;
     public PlayerController playerController;
@@ -28,6 +29,7 @@ public class PlayerMotor : MonoBehaviour
     public Vector3 movement;
     [HideInInspector]
     public Quaternion childSavedRotation;
+
     public bool moving = false;
 
     private void Start()
@@ -40,7 +42,14 @@ public class PlayerMotor : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-        float xRotation = Input.GetAxis("Mouse X");
+        float xRotation = 0f;
+
+        if (Input.GetMouseButton(0))
+        {
+            xRotation = Input.GetAxis("Mouse X");
+
+        }
+
         movement = new Vector3(x, 0, y) * speed;
 
 

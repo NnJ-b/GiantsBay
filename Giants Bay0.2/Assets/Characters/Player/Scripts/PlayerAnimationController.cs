@@ -13,6 +13,7 @@ public class PlayerAnimationController : MonoBehaviour
         instance = this;
     }
     #endregion
+
     public PlayerMotor playerMotor;
     public Rigidbody rb;
     public Animator animator;

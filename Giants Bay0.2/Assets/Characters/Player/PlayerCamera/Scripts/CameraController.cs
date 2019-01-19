@@ -35,8 +35,11 @@ public class CameraController : MonoBehaviour
             ClampZoom();
         }
         
+        if(Input.GetMouseButton(0))
+        {
+            YRotation -= Input.GetAxis("Mouse Y");
+        }
 
-        YRotation -= Input.GetAxis("Mouse Y");
         ClampRotation();        
 
         transform.LookAt(player.transform);
