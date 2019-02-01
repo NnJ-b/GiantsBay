@@ -219,15 +219,15 @@ GameObject:
   - component: {fileID: 7808678658654258145}
   - component: {fileID: 5012880811514842349}
   - component: {fileID: 5012880811514842350}
-  - component: {fileID: 4296378886167723984}
+  - component: {fileID: 4160800205230303977}
   - component: {fileID: 243113877663985138}
   - component: {fileID: 3690356706183224124}
   - component: {fileID: 403649418}
   - component: {fileID: 7426721422629264864}
   - component: {fileID: 8136947631048278867}
-  - component: {fileID: 7412704770162655091}
+  - component: {fileID: 59101315472804174}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerRootMotion
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,10 +277,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e714418e95ada47aa098ce21e0ad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motor: {fileID: 4296378886167723984}
+  motor: {fileID: 0}
   inventory: {fileID: 3690356706183224124}
   interact: {fileID: 243113877663985138}
---- !u!114 &4296378886167723984
+--- !u!114 &4160800205230303977
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,14 +289,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5012880811514842348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0610ff47c42861142acd5820ddb3cfc9, type: 3}
+  m_Script: {fileID: 11500000, guid: b8e9f72902c02bd4e8d3f2c263b01ef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 5012880811514842350}
   graphics: {fileID: 1363227798687940314}
-  animationController: {fileID: 7412704770162655091}
-  speed: 0.3
-  rotationSpeed: 0.4
+  animationController: {fileID: 0}
+  speed: 1
+  rotationSpeed: 0
   movement: {x: 0, y: 0, z: 0}
   childSavedRotation: {x: 0, y: 0, z: 0, w: 0}
   moving: 0
@@ -374,8 +374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 6313150850482993510}
   isAtacking: 0
-  startAimSensitivity: 0.125
---- !u!114 &7412704770162655091
+  startAimSensitivity: 0
+--- !u!114 &59101315472804174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1fc4770de681049a99f73eb23fca8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMotor: {fileID: 4296378886167723984}
+  playerMotor: {fileID: 4160800205230303977}
   rb: {fileID: 5012880811514842349}
   animator: {fileID: 6313150850482993510}
   angleDiff: 0
@@ -436,7 +436,7 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: 43a89ccb1c9e1554cb088d0c0b1cbb44, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 0ea7af35ed034234f95961e8c790c937, type: 2}
+      objectReference: {fileID: 9100000, guid: d8a9f1c8ec49e014d9758e7f70118c1e, type: 2}
     - target: {fileID: 400138, guid: 43a89ccb1c9e1554cb088d0c0b1cbb44, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -15,6 +15,7 @@ public class PlayerAnimationController : MonoBehaviour
     #endregion
 
     public PlayerMotor playerMotor;
+    //public PlayerMotorRootMotion playerMotor;
     public Rigidbody rb;
     public Animator animator;
 
