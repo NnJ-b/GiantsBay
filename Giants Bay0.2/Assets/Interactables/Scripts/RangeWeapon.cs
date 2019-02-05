@@ -23,7 +23,8 @@ public class RangeWeapon : Equipment
     public override void Fire()
     {
         base.Fire();
-        if(projectileInstance != null)
+        projectileInstance = Instantiate(projectile);
+        if (projectileInstance != null)
         {
             projectileInstance.GetComponent<ArrowController>().fired = true;
         }

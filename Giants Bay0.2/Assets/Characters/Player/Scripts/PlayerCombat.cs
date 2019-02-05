@@ -17,6 +17,7 @@ public class PlayerCombat : MonoBehaviour
     PlayerMotor playerMotor;
 
     PlayerEquipment playerEquipment;
+    public PlayerAnimationController playerAnimationController;
     public Animator animator;
     public bool isAtacking;
     [Range(0, 1)]
@@ -42,6 +43,7 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {            
             mouseStartPosition = Input.mousePosition;
+            playerAnimationController.ikActive = true;
         }
         if(Input.GetMouseButton(1))
         {
@@ -51,6 +53,8 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetMouseButtonUp(1))
         {
             FireSecondary();
+            playerAnimationController.ikActive = false;
+
             animator.SetBool("Fire", true);
         }        
     }
@@ -85,7 +89,7 @@ public class PlayerCombat : MonoBehaviour
 
             float playerAngle = playerMotor.graphics.transform.localEulerAngles.y;
 
-            angle -= playerAngle;
+            //angle -= playerAngle;
 
             while (angle > 180)
             {
@@ -96,7 +100,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 angle = angle + 360;
             }
-
+            playerAnimationController.IKAimLeftHand(angle);
             //send to Weapon
             playerEquipment.equipped[(int)equipmentSlot].Aim(this, equipmentSlot, angle);
         }

@@ -15,15 +15,18 @@ public class PlayerAnimationController : MonoBehaviour
     #endregion
 
     public PlayerMotor playerMotor;
-    //public PlayerMotorRootMotion playerMotor;
+    public GameObject bowAimRotationParent;
+    public GameObject bowAimTarget;
     public Rigidbody rb;
     public Animator animator;
+    public bool ikActive;
 
     public float angleDiff;
 
     private float maxMagnitude;
 
     public bool rotating;
+
 
     private void Start()
     {
@@ -53,8 +56,31 @@ public class PlayerAnimationController : MonoBehaviour
 
             angleDiff = Mathf.DeltaAngle(angleA, angleB);
 
-            animator.SetFloat("Rotation", angleDiff);
-            Debug.Log(angleDiff);
+            //animator.SetFloat("Rotation", angleDiff);
         }
+    }
+
+    public void IKAimLeftHand(float angle)
+    {
+        bowAimRotationParent.transform.eulerAngles = new Vector3(0, angle, 0);
+        
+    }
+
+    private void OnAnimatorIK(int layerIndex)
+    {
+        if(ikActive)
+        {
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+            animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
+            animator.SetIKPosition(AvatarIKGoal.LeftHand, bowAimTarget.transform.position);
+            animator.SetIKRotation(AvatarIKGoal.LeftHand, bowAimTarget.transform.rotation);
+        }
+        else
+        {
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0);
+            animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0);
+            animator.SetLookAtWeight(0);
+        }
+       
     }
 }
