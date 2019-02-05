@@ -22,7 +22,6 @@ public class PlayerCombat : MonoBehaviour
     public bool isAtacking;
     [Range(0, 1)]
     public float startAimSensitivity;
-
     private Vector3 mouseStartPosition;
 
     // Start is called before the first frame update
@@ -48,14 +47,12 @@ public class PlayerCombat : MonoBehaviour
         if(Input.GetMouseButton(1))
         {
             AimSecondary();
-            animator.SetBool("Fire", false);
         }
         if (Input.GetMouseButtonUp(1))
         {
             FireSecondary();
             playerAnimationController.ikActive = false;
 
-            animator.SetBool("Fire", true);
         }        
     }
 
@@ -87,9 +84,9 @@ public class PlayerCombat : MonoBehaviour
             
 
 
-            float playerAngle = playerMotor.graphics.transform.localEulerAngles.y;
+            float playerAngle = transform.localEulerAngles.y;
 
-            //angle -= playerAngle;
+            angle += playerAngle;
 
             while (angle > 180)
             {
@@ -100,6 +97,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 angle = angle + 360;
             }
+            Debug.Log(angle);
             playerAnimationController.IKAimLeftHand(angle);
             //send to Weapon
             playerEquipment.equipped[(int)equipmentSlot].Aim(this, equipmentSlot, angle);
@@ -131,9 +129,4 @@ public class PlayerCombat : MonoBehaviour
         Debug.Log("Damage: " + PlayerStats.damage.ToString() + "Armor: " + PlayerStats.armor.ToString());
     }
 
-    public void ClearAnimatorBool()
-    {
-        animator.SetBool("MeleEquiped", false);
-        animator.SetBool("RangeEquiped", false);
-    }
 }

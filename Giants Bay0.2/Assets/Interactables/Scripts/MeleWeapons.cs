@@ -15,7 +15,7 @@ public class MeleWeapons : Equipment
     public override void Attack(PlayerCombat combat, EquipmentSlots slot)
     {
         base.Attack(combat, slot);
-        combat.animator.SetBool("StartPrimaryAttack", true);
+        combat.animator.SetBool("MeleStart", true);
     }
 
     public override void Unequiped()

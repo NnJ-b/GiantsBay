@@ -74,6 +74,8 @@ public class PlayerAnimationController : MonoBehaviour
             animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
             animator.SetIKPosition(AvatarIKGoal.LeftHand, bowAimTarget.transform.position);
             animator.SetIKRotation(AvatarIKGoal.LeftHand, bowAimTarget.transform.rotation);
+            animator.SetLookAtPosition(bowAimTarget.transform.position);
+            animator.SetLookAtWeight(1);
         }
         else
         {
