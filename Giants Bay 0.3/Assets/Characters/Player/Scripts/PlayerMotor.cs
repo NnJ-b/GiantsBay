@@ -17,4 +17,10 @@ public class PlayerMotor
         float newRotation = currentRotation + rotationAmount;
         return newRotation;
     }
+
+    public Vector3 calculateInput()
+    {
+        //replace input.getaxis when calculating with joysticks
+        return new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
+    }
 }

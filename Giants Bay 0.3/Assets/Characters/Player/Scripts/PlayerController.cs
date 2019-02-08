@@ -19,41 +19,57 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Update()
-    {
+    {        
         animator.SetFloat("Velocity", rb.velocity.magnitude);
         MovementControlls();
         RotationControlls();
-        //animation
     }
 
     private void MovementControlls()
     {
-        //movement    replace input.getaxis when calculating with joysticks
-        rb.velocity = parent.transform.TransformDirection(motor.calculateVelocity(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), speed, rb));
-        //rb.MovePosition(parent.transform.position + motor.calculateMovement(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), speed) * Time.deltaTime);
+        //movement
+        rb.velocity = parent.transform.TransformDirection(motor.calculateVelocity(motor.calculateInput().x, motor.calculateInput().z, speed, rb) *Time.deltaTime);
     }
 
     private void RotationControlls()
     {
+        #region movingcheck
+        bool moving;
+        if(rb.velocity.magnitude >.1f)
+        {
+            moving = true;
+        }
+        else
+        {
+            moving = false;
+        }
+        #endregion
+
         if (Input.GetMouseButton(0))
         {
             //stationary controlls
-            if (rb.velocity.magnitude == 0)
+            Vector3 rotation = new Vector3();
+            if (!moving)
             {
-                Vector3 rotation = transform.eulerAngles;
-                float rotationAmount = Input.GetAxis("Mouse X");
-                parent.transform.localEulerAngles = new Vector3(0, motor.calculateRotation(parent.transform.eulerAngles.y, rotationAmount), 0);
-                transform.eulerAngles = rotation;
+                rotation = transform.eulerAngles;
             }
 
-            //moving controlls
-            else
+            float rotationAmount = Input.GetAxis("Mouse X");
+            parent.transform.localEulerAngles = new Vector3(0, motor.calculateRotation(parent.transform.eulerAngles.y, rotationAmount), 0);    
+
+            if(!moving)
             {
-                float rotationAmount = Input.GetAxis("Mouse X");
-                parent.transform.localEulerAngles = new Vector3(0, motor.calculateRotation(parent.transform.eulerAngles.y, rotationAmount), 0);
-            }            
+                transform.eulerAngles = rotation;
+            }
         }
-        //sets graphics rotation based on velocity
-        transform.localRotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+
+        if (moving)
+        {
+            //sets graphics rotation based on velocity
+            //transform.localRotation = Quaternion.LookRotation(transform.InverseTransformDirection(rb.velocity), Vector3.up);
+            transform.localRotation = Quaternion.LookRotation(new Vector3(motor.calculateInput().x, 0, motor.calculateInput().z), Vector3.up);
+            Debug.Log(rb.velocity);
+        }
+            
     }
 }
