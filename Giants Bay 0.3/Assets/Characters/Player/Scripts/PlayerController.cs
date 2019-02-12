@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     //movement
     public float speed = 3f;
+    public float lerpSpeed = .25f;
 
 
     private void Start()
@@ -21,29 +22,19 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {        
         animator.SetFloat("Velocity", rb.velocity.magnitude);
-        MovementControlls();
         RotationControlls();
+        MovementControlls();
     }
 
     private void MovementControlls()
     {
         //movement
-        rb.velocity = parent.transform.TransformDirection(motor.calculateVelocity(motor.calculateInput().x, motor.calculateInput().z, speed, rb) *Time.deltaTime);
+        rb.velocity = Vector3.Lerp(rb.velocity, parent.transform.TransformDirection(motor.calculateVelocity(motor.calculateInput().x, motor.calculateInput().z, speed, rb) * Time.deltaTime),lerpSpeed); //set velocity directly
     }
 
     private void RotationControlls()
     {
-        #region movingcheck
-        bool moving;
-        if(rb.velocity.magnitude >.1f)
-        {
-            moving = true;
-        }
-        else
-        {
-            moving = false;
-        }
-        #endregion
+        bool moving = motor.MovingCheck(rb);        
 
         if (Input.GetMouseButton(0))
         {

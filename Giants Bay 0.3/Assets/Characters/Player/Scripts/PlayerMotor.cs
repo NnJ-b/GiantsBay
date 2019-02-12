@@ -23,4 +23,16 @@ public class PlayerMotor
         //replace input.getaxis when calculating with joysticks
         return new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
     }
+
+    public bool MovingCheck(Rigidbody rb)
+    {
+        if (rb.velocity.magnitude > .1f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
