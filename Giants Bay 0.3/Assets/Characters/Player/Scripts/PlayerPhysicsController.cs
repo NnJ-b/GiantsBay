@@ -16,41 +16,119 @@ public class PlayerPhysicsController : MonoBehaviour
     public float collisionDistance;
     public float CollisionWidth;
     public LayerMask collisionTypes;
-
-    [Header("Movement")]
-    public float speed = .3f;
-
-    [Header("Animation")]
     public RaycastHit collisionHit;
     public bool colliding = false;
     public bool colShortAngleLeft = false;
+
+    [Header("Movement/Rotation")]
+    public float speed = .3f;
+    private float xRotation;
+    public float maxClimbableAngle = 45f;
+
+    [Header("Gravity Controls")]
+    public float footOffset;
+ 
 
     private PlayerInput input = new PlayerInput();
 
     public void Update()
     {
         Vector3 bestMovement = BestMovement();
+
         //set location and rotation
         LocRot(bestMovement);
 
-        //set animation
-        animationController.Anim(bestMovement,speed);
+        //apply gravity
+        ApplyGravity();
 
-        //temp mouse movement
-        if(Input.GetMouseButton(0))
+        //set animation
+        animationController.Anim(bestMovement, speed);
+
+        //TEMP mouse movement
+        if (Input.GetMouseButton(0))
         {
-            transform.Rotate(Vector3.up, Input.GetAxis("Mouse X"));
+            xRotation = Input.GetAxis("Mouse X");
         }
+        else
+        {
+            xRotation = 0f;
+        }        
     }
 
     void LocRot(Vector3 bestMovement)
     {
         //move character
         transform.Translate(bestMovement);
-        //rotate graphics
-        graphics.transform.localRotation = Quaternion.LookRotation(bestMovement, Vector3.up);
+       
+        //rotate camera
+        if(input.GetDesiredMovement(transform) == Vector3.zero) //stationary controlls
+        {
+            Quaternion graphicsSavedLocation = graphics.transform.rotation;
+            transform.Rotate(Vector3.up, xRotation);
+            graphics.transform.rotation = graphicsSavedLocation;         
+        }
+        else //moving
+        {            
+            transform.Rotate(Vector3.up, xRotation);
+            //rotate graphics in direction of movement
+            Vector3 noYMovement = bestMovement;
+            noYMovement.y = 0;
+            graphics.transform.localRotation = Quaternion.LookRotation(noYMovement, Vector3.up);
+        }  
+    }
+
+    void ApllyJump()
+    {
+
+    }
+
+    void ApplyGravity()
+    {
+        bool grounded = false;
+        RaycastHit hit;
+
+        //calculate if grounded
+        if(Physics.Raycast(transform.position, Vector3.down,out hit, footOffset, collisionTypes))
+        {
+            grounded = true;
+        }
+        //if underground
+        float distance = Vector3.Distance(transform.position, hit.point);
+        if (grounded && distance < footOffset) 
+        {
+            Debug.Log("Fuck");
+            Vector3 desiredPos = transform.position;
+            desiredPos.y += footOffset - distance;
+            transform.position = desiredPos;
+        }
+
+
+        //apply if in air
+        if(!grounded)
+        {
+            //if close to the ground (Used to fix jittering when running downhill)
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, footOffset * 1.3f, collisionTypes)) 
+            {
+                distance = Vector3.Distance(transform.position, hit.point);
+                if(distance > footOffset)
+                {
+                    Debug.Log("Shit");
+                    Vector3 desiredPos = transform.position;
+                    desiredPos.y -= distance - footOffset;
+                    transform.position = Vector3.Lerp(transform.position, desiredPos, .2f);
+                }                
+            }
+            else//falling
+            {
+                float gravity = 9.8f;
+                Vector3 position = transform.position;
+                position.y -= gravity * Time.deltaTime;
+                transform.position = position;
+            }
+            
+        }
         
-    }  
+    }
 
 
     Vector3 BestMovement()
@@ -60,48 +138,65 @@ public class PlayerPhysicsController : MonoBehaviour
         {
             Debug.DrawRay(transform.position, movementDirection, Color.green);
 
+
             //if Colision
-            //if(Physics.Raycast(transform.position, movementDirection,out collisionHit, collisionDistance, collisionTypes)) //replaced with Sphearcast
-            if (Physics.SphereCast(transform.position, CollisionWidth, movementDirection, out collisionHit, collisionDistance, collisionTypes,QueryTriggerInteraction.UseGlobal)) 
+            if (Physics.SphereCast(transform.position, CollisionWidth, movementDirection, out collisionHit, collisionDistance, collisionTypes, QueryTriggerInteraction.UseGlobal)) 
             {
-                //set collision bool
-                colliding = true;
-
-                //find end of colision left
-                Vector3 checkLeft = movementDirection;
-                RaycastHit lastHit;
-                //while (Physics.Raycast(transform.position, checkLeft, collisionDistance, collisionTypes))  //replaced with Sphearcast
-                while (Physics.SphereCast(transform.position, CollisionWidth, checkLeft, out lastHit, collisionDistance, collisionTypes, QueryTriggerInteraction.UseGlobal)) 
+                //check if can go up
+                RaycastHit upLocation;
+                Vector3 checkUp = Quaternion.LookRotation(movementDirection) * (Quaternion.AngleAxis(-maxClimbableAngle, Vector3.right) * Vector3.forward); ///
+                Debug.DrawRay(transform.position, checkUp, Color.blue); ///
+                if (!Physics.SphereCast(transform.position, CollisionWidth, checkUp, out upLocation, collisionDistance * 2, collisionTypes, QueryTriggerInteraction.UseGlobal)) 
                 {
-                    checkLeft = Quaternion.AngleAxis(-5f, Vector3.up) * checkLeft;
+                    int i = 5;
+                    checkUp = Quaternion.LookRotation(movementDirection) * (Quaternion.AngleAxis(-maxClimbableAngle + i, Vector3.right) * Vector3.forward); ///
+                    while (!Physics.SphereCast(transform.position, CollisionWidth, checkUp, out upLocation, collisionDistance * 2, collisionTypes, QueryTriggerInteraction.UseGlobal))
+                    {
+                        i += 5;
+                        checkUp = Quaternion.LookRotation(movementDirection) * (Quaternion.AngleAxis(-maxClimbableAngle + i, Vector3.right) * Vector3.forward); ; ///
+                    }
+                    return transform.InverseTransformDirection(checkUp * speed * Time.deltaTime);
                 }
-
-                //find end of colision right
-                Vector3 checkRight = movementDirection;
-                //while (Physics.Raycast(transform.position, checkRight, collisionDistance, collisionTypes))  //replaced with Sphearcast
-                while (Physics.SphereCast(transform.position, CollisionWidth, checkRight, out lastHit, collisionDistance, collisionTypes, QueryTriggerInteraction.UseGlobal)) 
+                else //cant go up
                 {
-                    checkRight = Quaternion.AngleAxis(5f, Vector3.up) * checkRight;
+                    //set collision bool
+                    colliding = true;
 
+                    //find end of colision left
+                    Vector3 checkLeft = movementDirection;
+                    RaycastHit lastHit;
+                    while (Physics.SphereCast(transform.position, CollisionWidth, checkLeft, out lastHit, collisionDistance, collisionTypes, QueryTriggerInteraction.UseGlobal))
+                    {
+                        checkLeft = Quaternion.AngleAxis(-5f, Vector3.up) * checkLeft;
+                    }
+
+                    //find end of colision right
+                    Vector3 checkRight = movementDirection;
+                    while (Physics.SphereCast(transform.position, CollisionWidth, checkRight, out lastHit, collisionDistance, collisionTypes, QueryTriggerInteraction.UseGlobal))
+                    {
+                        checkRight = Quaternion.AngleAxis(5f, Vector3.up) * checkRight;
+
+                    }
+
+                    //find shorter angle (left vs right)
+                    if (Vector3.Angle(checkLeft, input.GetDesiredMovement(transform)) <= Vector3.Angle(checkRight, input.GetDesiredMovement(transform)))
+                    {
+                        //animation state
+                        colShortAngleLeft = true;
+
+                        Debug.DrawRay(transform.position, checkLeft, Color.red);
+                        return transform.InverseTransformDirection(checkLeft * speed * Time.deltaTime);
+                    }
+                    else // if right is shorter
+                    {
+                        //animation state
+                        colShortAngleLeft = false;
+
+                        Debug.DrawRay(transform.position, checkRight, Color.red);
+                        return transform.InverseTransformDirection(checkRight * speed * Time.deltaTime);
+                    }
                 }
-
-                //find shorter angle (left vs right)
-                if (Vector3.Angle(checkLeft, input.GetDesiredMovement(transform)) <= Vector3.Angle(checkRight, input.GetDesiredMovement(transform)))
-                {
-                    //animation state
-                    colShortAngleLeft = true;
-
-                    Debug.DrawRay(transform.position, checkLeft, Color.red);
-                    return transform.InverseTransformDirection(checkLeft * speed * Time.deltaTime);
-                }
-                else // if right is shorter
-                {
-                    //animation state
-                    colShortAngleLeft = false;
-
-                    Debug.DrawRay(transform.position, checkRight, Color.red);
-                    return transform.InverseTransformDirection(checkRight * speed * Time.deltaTime);
-                }
+                
             }
             else //if no colision
             {
@@ -119,13 +214,20 @@ public class PlayerPhysicsController : MonoBehaviour
 
             return Vector3.zero;
         }
-    }    
+    }
 
     private void OnDrawGizmosSelected()
     {
+        //visualise coll distance
         Gizmos.color = Color.gray;
         Gizmos.DrawWireSphere(transform.position, collisionDistance);
+        //visualise coll width
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, CollisionWidth);
+        //visualise foot pos
+        Gizmos.color = Color.blue;
+        Vector3 footpos = transform.position;
+        footpos.y -= footOffset;
+        Gizmos.DrawLine(transform.position, footpos);
     }
 }

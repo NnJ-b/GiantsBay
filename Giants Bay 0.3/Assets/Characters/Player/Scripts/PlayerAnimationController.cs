@@ -9,6 +9,9 @@ public class PlayerAnimationController : MonoBehaviour
     public Animator animator;
     [Header("IK Controlls")]
     public float collIKWeight;
+    private float collIKLerpWeight;
+    [Range(0, 1)]
+    public float IKlerpSpeed;
 
 
 
@@ -24,18 +27,26 @@ public class PlayerAnimationController : MonoBehaviour
         {
             //if (true) //check for more important animations like combat
             //{
+
+                //lerp IK Weight
+                collIKLerpWeight= Mathf.Lerp(collIKLerpWeight, collIKWeight, IKlerpSpeed);
+
                 if (physicsController.colShortAngleLeft) //if moving Left from input
                 {
                     animator.SetIKPosition(AvatarIKGoal.RightHand, physicsController.collisionHit.point);
-                    animator.SetIKPositionWeight(AvatarIKGoal.RightHand, collIKWeight);
+                    animator.SetIKPositionWeight(AvatarIKGoal.RightHand, collIKLerpWeight);
                 }
                 else //if moving right from input
                 {
                     animator.SetIKPosition(AvatarIKGoal.LeftHand, physicsController.collisionHit.point);
-                    animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, collIKWeight);
+                    animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, collIKLerpWeight);
                 }
 
             //}
+        }
+        else //not colliding
+        {
+            collIKLerpWeight = Mathf.Lerp(collIKLerpWeight, 0, IKlerpSpeed);            
         }
     }
 }

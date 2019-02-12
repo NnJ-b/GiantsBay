@@ -45,7 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsController: {fileID: 3788147852034347947}
   animator: {fileID: 4657788848131094377}
-  collIKWeight: 0.8
+  collIKWeight: 0.7
+  IKlerpSpeed: 0.01
 --- !u!1 &4657788848929731556
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,13 +72,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4657788848929731556}
-  m_LocalRotation: {x: 0.20603332, y: -0, z: -0, w: 0.978545}
-  m_LocalPosition: {x: 0.00051083934, y: 3.27, z: -4.43}
+  m_LocalRotation: {x: 0.50083107, y: 0, z: 0, w: 0.8655451}
+  m_LocalPosition: {x: 0.00051083934, y: 6.03, z: -2.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5643238484725803693}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 23.78, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60.11, y: 0, z: 0}
 --- !u!20 &4657788848929731558
 Camera:
   m_ObjectHideFlags: 0
@@ -178,13 +179,15 @@ MonoBehaviour:
   graphics: {fileID: 4657788848123692323}
   cam: {fileID: 4002135452563966556}
   collisionDistance: 1
-  CollisionWidth: 0.5
+  CollisionWidth: 0.8
   collisionTypes:
     serializedVersion: 2
     m_Bits: 4294967295
-  speed: 5
   colliding: 0
   colShortAngleLeft: 0
+  speed: 5
+  maxClimbableAngle: 30
+  footOffset: 1
 --- !u!1001 &4657788848123789833
 PrefabInstance:
   m_ObjectHideFlags: 0
