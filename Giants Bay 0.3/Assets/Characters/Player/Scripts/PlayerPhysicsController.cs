@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerPhysicsController : MonoBehaviour
 {
+    [Header("References")]
+    public Animator animator;
+
     [Header("Children")]
     public GameObject graphics;
     public GameObject cam;
@@ -21,8 +24,10 @@ public class PlayerPhysicsController : MonoBehaviour
     {
         //set location and rotation
         LocRot();
-        
+
         //temp animation
+        animator.SetFloat("Velocity", BestMovement().magnitude / speed / Time.deltaTime);
+        Debug.Log(BestMovement().magnitude/speed/Time.deltaTime);
 
         //temp mouse movement
         if(Input.GetMouseButton(0))
@@ -87,7 +92,7 @@ public class PlayerPhysicsController : MonoBehaviour
         }
     }    
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.gray;
         Gizmos.DrawWireSphere(transform.position, collisionDistance);        

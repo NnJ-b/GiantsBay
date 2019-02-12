@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba23cf2e675c37429b1329a14e18876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4657788848131094377}
   graphics: {fileID: 4657788848123692323}
   cam: {fileID: 4002135452563966556}
   collisionDistance: 1
@@ -235,6 +236,12 @@ GameObject:
 --- !u!4 &4657788848124188931 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400138, guid: ae2d1574d5c0b0e4b81743935f0acbfe,
+    type: 3}
+  m_PrefabInstance: {fileID: 4657788848123789833}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4657788848131094377 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: ae2d1574d5c0b0e4b81743935f0acbfe,
     type: 3}
   m_PrefabInstance: {fileID: 4657788848123789833}
   m_PrefabAsset: {fileID: 0}
