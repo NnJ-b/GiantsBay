@@ -31,6 +31,21 @@ Transform:
   m_Father: {fileID: 4657788849552160713}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8786382030889445118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4657788848123692323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11de0c58317b3344b874cdb8f949a15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicsController: {fileID: 3788147852034347947}
+  animator: {fileID: 4657788848131094377}
+  collIKWeight: 0.8
 --- !u!1 &4657788848929731556
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,13 +174,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4657788848131094377}
+  animationController: {fileID: 8786382030889445118}
   graphics: {fileID: 4657788848123692323}
   cam: {fileID: 4002135452563966556}
   collisionDistance: 1
+  CollisionWidth: 0.5
   collisionTypes:
     serializedVersion: 2
     m_Bits: 4294967295
   speed: 5
+  colliding: 0
+  colShortAngleLeft: 0
 --- !u!1001 &4657788848123789833
 PrefabInstance:
   m_ObjectHideFlags: 0
