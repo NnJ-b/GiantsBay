@@ -18,12 +18,13 @@ public class PlayerPhysicsController : MonoBehaviour
     public LayerMask collisionTypes;
     public RaycastHit collisionHit;
     public bool colliding = false;
-    public bool colShortAngleLeft = false;
+    public bool colShortAngleLeft = true;
 
     [Header("Movement/Rotation")]
     public float speed = .3f;
     private float xRotation;
     public float maxClimbableAngle = 45f;
+    public bool moveable = true;
 
     [Header("Gravity Controls")]
     public float footOffset;
@@ -57,11 +58,15 @@ public class PlayerPhysicsController : MonoBehaviour
 
     void LocRot(Vector3 bestMovement)
     {
-        //move character
-        transform.Translate(bestMovement);
+        if(moveable)
+        {
+            //move character
+            transform.Translate(bestMovement);
+        }
+        
        
         //rotate camera
-        if(input.GetDesiredMovement(transform) == Vector3.zero) //stationary controlls
+        if(input.GetDesiredMovement(transform) == Vector3.zero || !moveable) //stationary controlls
         {
             Quaternion graphicsSavedLocation = graphics.transform.rotation;
             transform.Rotate(Vector3.up, xRotation);
@@ -87,12 +92,13 @@ public class PlayerPhysicsController : MonoBehaviour
         bool grounded = false;
         RaycastHit hit;
 
-        //calculate if grounded
+        //grounded
         if(Physics.Raycast(transform.position, Vector3.down,out hit, footOffset, collisionTypes))
         {
             grounded = true;
+            animationController.setFallLanging(grounded);
         }
-        //if underground
+        //underground
         float distance = Vector3.Distance(transform.position, hit.point);
         if (grounded && distance < footOffset) 
         {
@@ -103,10 +109,10 @@ public class PlayerPhysicsController : MonoBehaviour
         }
 
 
-        //apply if in air
+        //in air
         if(!grounded)
         {
-            //if close to the ground (Used to fix jittering when running downhill)
+            //Close to the ground (Used to fix jittering when running downhill)
             if (Physics.Raycast(transform.position, Vector3.down, out hit, footOffset * 1.3f, collisionTypes)) 
             {
                 distance = Vector3.Distance(transform.position, hit.point);
@@ -115,7 +121,7 @@ public class PlayerPhysicsController : MonoBehaviour
                     Debug.Log("Shit");
                     Vector3 desiredPos = transform.position;
                     desiredPos.y -= distance - footOffset;
-                    transform.position = Vector3.Lerp(transform.position, desiredPos, .2f);
+                    transform.position = desiredPos;
                 }                
             }
             else//falling
@@ -124,9 +130,10 @@ public class PlayerPhysicsController : MonoBehaviour
                 Vector3 position = transform.position;
                 position.y -= gravity * Time.deltaTime;
                 transform.position = position;
+                animationController.setFallLanging(grounded);
             }
-            
         }
+        Debug.Log(grounded);
         
     }
 

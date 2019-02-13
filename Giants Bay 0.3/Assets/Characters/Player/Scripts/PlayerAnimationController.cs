@@ -21,6 +21,11 @@ public class PlayerAnimationController : MonoBehaviour
         animator.SetFloat("Velocity", bestMovement.magnitude / speed / Time.deltaTime);
     }
 
+    public void setFallLanging(bool grounded)
+    {
+        animator.SetBool("Grounded", grounded);
+    }
+
     private void OnAnimatorIK(int layerIndex)
     {
         if (physicsController.colliding)

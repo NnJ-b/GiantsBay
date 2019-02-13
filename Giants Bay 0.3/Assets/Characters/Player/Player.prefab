@@ -187,6 +187,7 @@ MonoBehaviour:
   colShortAngleLeft: 0
   speed: 5
   maxClimbableAngle: 30
+  moveable: 1
   footOffset: 1
 --- !u!1001 &4657788848123789833
 PrefabInstance:
