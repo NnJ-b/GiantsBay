@@ -186,7 +186,7 @@ MonoBehaviour:
   colliding: 0
   colShortAngleLeft: 0
   speed: 5
-  maxClimbableAngle: 30
+  maxClimbableAngle: 35
   moveable: 1
   footOffset: 1
 --- !u!1001 &4657788848123789833

@@ -21,7 +21,7 @@ public class PlayerAnimationController : MonoBehaviour
         animator.SetFloat("Velocity", bestMovement.magnitude / speed / Time.deltaTime);
     }
 
-    public void setFallLanging(bool grounded)
+    public void setFallLanding(bool grounded)
     {
         animator.SetBool("Grounded", grounded);
     }

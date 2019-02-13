@@ -96,21 +96,22 @@ public class PlayerPhysicsController : MonoBehaviour
         if(Physics.Raycast(transform.position, Vector3.down,out hit, footOffset, collisionTypes))
         {
             grounded = true;
-            animationController.setFallLanging(grounded);
+            animationController.setFallLanding(grounded);
         }
         //underground
         float distance = Vector3.Distance(transform.position, hit.point);
         if (grounded && distance < footOffset) 
         {
-            Debug.Log("Fuck");
+            grounded = true;
             Vector3 desiredPos = transform.position;
             desiredPos.y += footOffset - distance;
             transform.position = desiredPos;
+            animationController.setFallLanding(grounded);
         }
 
 
         //in air
-        if(!grounded)
+        if (!grounded)
         {
             //Close to the ground (Used to fix jittering when running downhill)
             if (Physics.Raycast(transform.position, Vector3.down, out hit, footOffset * 1.3f, collisionTypes)) 
@@ -118,7 +119,8 @@ public class PlayerPhysicsController : MonoBehaviour
                 distance = Vector3.Distance(transform.position, hit.point);
                 if(distance > footOffset)
                 {
-                    Debug.Log("Shit");
+                    grounded = true;
+                    animationController.setFallLanding(grounded);
                     Vector3 desiredPos = transform.position;
                     desiredPos.y -= distance - footOffset;
                     transform.position = desiredPos;
@@ -130,11 +132,9 @@ public class PlayerPhysicsController : MonoBehaviour
                 Vector3 position = transform.position;
                 position.y -= gravity * Time.deltaTime;
                 transform.position = position;
-                animationController.setFallLanging(grounded);
+                animationController.setFallLanding(grounded);
             }
-        }
-        Debug.Log(grounded);
-        
+        }        
     }
 
 

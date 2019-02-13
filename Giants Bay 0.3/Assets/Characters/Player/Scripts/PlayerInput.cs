@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerInput
 {
-
     public Vector3 GetDesiredMovement(Transform player)
     {
         Quaternion rotation = Quaternion.Euler(0, player.eulerAngles.y, 0);
