@@ -45,15 +45,9 @@ public class PlayerPhysicsController : MonoBehaviour
         //set animation
         animationController.Anim(bestMovement, speed);
 
-        //TEMP mouse movement
-        if (Input.GetMouseButton(0))
-        {
-            xRotation = Input.GetAxis("Mouse X");
-        }
-        else
-        {
-            xRotation = 0f;
-        }        
+        
+        xRotation = input.MouseDelta(true).x;
+           
     }
 
     void LocRot(Vector3 bestMovement)
@@ -80,11 +74,6 @@ public class PlayerPhysicsController : MonoBehaviour
             noYMovement.y = 0;
             graphics.transform.localRotation = Quaternion.LookRotation(noYMovement, Vector3.up);
         }  
-    }
-
-    void ApllyJump()
-    {
-
     }
 
     void ApplyGravity()
