@@ -1,6 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{92A1CA6A-5A44-4F25-8D5E-C83DC8E4DE12}" SchemaVersion="89">
-	<SoundcasterSessions>
-		<WorkUnit Name="Default Work Unit" ID="{92A1CA6A-5A44-4F25-8D5E-C83DC8E4DE12}" PersistMode="Standalone"/>
-	</SoundcasterSessions>
-</WwiseDocument>
+version https://git-lfs.github.com/spec/v1
+oid sha256:8d29498b8006d9a0ea4dda3bdd81707e4a9757366b6f66c14cad3d54180b6a40
+size 306

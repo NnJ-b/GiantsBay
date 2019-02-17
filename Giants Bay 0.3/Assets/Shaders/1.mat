@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GridLarge
+  m_Name: 1
   m_Shader: {fileID: 4800000, guid: ee3380951bce4e2419e492e31cd68ee2, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,10 +20,8 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - Vector1_13B571: 15
-    - Vector1_2881DC51: 0.04
-    - Vector1_5D6EEC07: 0.1
-    - Vector1_AAB67709: 10
+    - Vector1_13B571: 1
+    - Vector1_2881DC51: 0.4
+    - Vector1_5D6EEC07: 1
     m_Colors:
-    - Color_58802AE0: {r: 0, g: 0, b: 0, a: 0}
-    - Color_7D8ADC31: {r: 1, g: 1, b: 1, a: 0}
+    - Color_58802AE0: {r: 0.15686277, g: 0.15686277, b: 0.15686277, a: 0}
