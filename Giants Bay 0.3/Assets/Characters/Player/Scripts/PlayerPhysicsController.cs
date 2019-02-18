@@ -11,6 +11,7 @@ public class PlayerPhysicsController : MonoBehaviour
     [Header("Children")]
     public GameObject graphics;
     public GameObject cam;
+    public Vector3 camDefaultPosition;
 
     [Header("Colision Detection")]
     public float collisionDistance;
@@ -45,9 +46,11 @@ public class PlayerPhysicsController : MonoBehaviour
         //set animation
         animationController.Anim(bestMovement, speed);
 
-        
-        xRotation = input.MouseDelta(true).x;
-           
+        //camera Movement
+        xRotation = input.MouseDeltaPerFrame(true,Input.GetMouseButton(0)).x;
+        cam.transform.localPosition = camDefaultPosition * input.cameraZoom();
+        cam.transform.LookAt(transform);
+        Debug.Log(input.cameraZoom());
     }
 
     void LocRot(Vector3 bestMovement)

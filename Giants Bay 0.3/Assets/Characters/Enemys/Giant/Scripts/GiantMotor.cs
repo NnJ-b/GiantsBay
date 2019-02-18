@@ -21,10 +21,19 @@ public class GiantMotor : MonoBehaviour
         StartCoroutine(MoveToPlayer());
     }
 
+    private void Update()
+    {
+        AnimationState();
+    }
+
     private IEnumerator MoveToPlayer()
     {
-        navMeshAgent.SetDestination(player.position);
-        yield return new WaitForSeconds(navUpdateTime);
+        while(true)
+        {
+            navMeshAgent.SetDestination(player.position);
+            yield return new WaitForSeconds(navUpdateTime);
+        }
+        
     }
 
     private void AnimationState()

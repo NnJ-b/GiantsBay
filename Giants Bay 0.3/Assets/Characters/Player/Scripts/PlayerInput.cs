@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerInput
 {
+    private float camZoom = 1f;
+
+
     public Vector3 GetDesiredMovement(Transform player)
     {
         Quaternion rotation = Quaternion.Euler(0, player.eulerAngles.y, 0);
@@ -11,11 +14,11 @@ public class PlayerInput
         return desiredMovement;
     }
 
-    public Vector2 MouseDelta(bool clickDependent)
+    public Vector2 MouseDeltaPerFrame(bool trigerDependent, bool triger)
     {
-        if(clickDependent)
+        if(trigerDependent)
         {
-            if(Input.GetMouseButton(0))
+            if(triger)
             {
                 return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
             }
@@ -28,5 +31,20 @@ public class PlayerInput
         {
             return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         }
+    }
+
+    public float cameraZoom()
+    {
+        camZoom += Input.GetAxis("Mouse ScrollWheel");
+        if(camZoom <.6f)
+        {
+            camZoom = .6f;
+        }
+        if(camZoom > 3f)
+        {
+            camZoom = 3f;
+        }
+        return camZoom;
+
     }
 }
