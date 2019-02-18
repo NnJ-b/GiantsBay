@@ -3,30 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class GiantMotor : MonoBehaviour
+public class GiantMotor
 {
-    [Header("References")]
-    public NavMeshAgent navMeshAgent;
-    public Animator animator;
-    [Header("AI Controlls")]
-    public float navUpdateTime;
-
-
-    private Transform player;
-
-    private void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        StartCoroutine(MoveToPlayer());
-    }
-
-    private void Update()
-    {
-        AnimationState();
-    }
-
-    private IEnumerator MoveToPlayer()
+    public IEnumerator MoveToPlayer(NavMeshAgent navMeshAgent, Transform player, float navUpdateTime)
     {
         while(true)
         {
@@ -36,7 +15,7 @@ public class GiantMotor : MonoBehaviour
         
     }
 
-    private void AnimationState()
+    public void AnimationState(Animator animator, NavMeshAgent navMeshAgent)
     {
         animator.SetFloat("Speed", navMeshAgent.velocity.magnitude / navMeshAgent.speed);
     }
