@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GiantAttack : MonoBehaviour
+public class GiantAttack
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool PlayerInRange(Transform player, Transform enemy, float range)
     {
-        
+        if(Vector3.Distance(player.position, enemy.position) < range)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class GiantMotor
 {
+    float navSpeed;
+
     public IEnumerator MoveToPlayer(NavMeshAgent navMeshAgent, Transform player, float navUpdateTime)
     {
         while(true)
@@ -18,6 +20,17 @@ public class GiantMotor
     public void AnimationState(Animator animator, NavMeshAgent navMeshAgent)
     {
         animator.SetFloat("Speed", navMeshAgent.velocity.magnitude / navMeshAgent.speed);
+    }
+
+    public void StopNavAgent(NavMeshAgent navMeshAgent)
+    {
+        navSpeed = navMeshAgent.speed;
+        navMeshAgent.speed = 0f;    
+        
+    }
+    public void StartNavAgent(NavMeshAgent navMeshAgent)
+    {
+        navMeshAgent.speed = navSpeed;
     }
 
 }
