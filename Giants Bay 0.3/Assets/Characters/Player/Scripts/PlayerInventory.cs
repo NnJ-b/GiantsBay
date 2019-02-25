@@ -21,7 +21,7 @@ public class PlayerInventory : MonoBehaviour
     public OnInventoryChange onInventoryChangeCallBack; //used on inventoryChange
     [Header("Inventory")]
     [SerializeField]
-    List<Item> items = new List<Item>();
+    public List<Item> items = new List<Item>();
     public int strength;
     [Header("Interaction")]
     public float interactableRange;
@@ -89,7 +89,14 @@ public class PlayerInventory : MonoBehaviour
             }
             return true;
         }
-
     }
 
+    public void RemoveFromInventory(Item item)
+    {
+        items.Remove(item);
+        if(onInventoryChangeCallBack != null)
+        {
+            onInventoryChangeCallBack.Invoke();
+        }
+    }
 }
