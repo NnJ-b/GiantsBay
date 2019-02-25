@@ -108,6 +108,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4657788849552160713}
   - component: {fileID: 3788147852034347947}
+  - component: {fileID: 377395651994574929}
+  - component: {fileID: 5634116821878826313}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -152,13 +154,43 @@ MonoBehaviour:
   CollisionWidth: 0.8
   collisionTypes:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1073741824
   colliding: 0
   colShortAngleLeft: 0
   speed: 5
   maxClimbableAngle: 35
   moveable: 1
   footOffset: 1
+--- !u!114 &377395651994574929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4657788849552160712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5967ff9d69b1d424cbddf4fbdbec6a24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!114 &5634116821878826313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4657788849552160712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e78aab87df06b34898fe8b5a1039523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 10
+  interactableRange: 4
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 2147483648
 --- !u!1001 &4657788848123789833
 PrefabInstance:
   m_ObjectHideFlags: 0

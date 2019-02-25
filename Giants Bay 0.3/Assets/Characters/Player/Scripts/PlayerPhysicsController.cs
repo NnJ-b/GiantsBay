@@ -50,7 +50,6 @@ public class PlayerPhysicsController : MonoBehaviour
         xRotation = input.MouseDeltaPerFrame(true,Input.GetMouseButton(0)).x;
         cam.transform.localPosition = camDefaultPosition * input.cameraZoom();
         cam.transform.LookAt(transform);
-        Debug.Log(input.cameraZoom());
     }
 
     void LocRot(Vector3 bestMovement)

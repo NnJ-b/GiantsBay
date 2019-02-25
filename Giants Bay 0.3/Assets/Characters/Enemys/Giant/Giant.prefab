@@ -70,6 +70,8 @@ MonoBehaviour:
   navMeshAgent: {fileID: 6914091183650839632}
   animator: {fileID: 5391320315737963976}
   navUpdateTime: 0.2
+  damageAmount: 10
+  attackRange: 5
 --- !u!1001 &5391320315730626728
 PrefabInstance:
   m_ObjectHideFlags: 0

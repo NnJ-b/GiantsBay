@@ -16,5 +16,9 @@ public class GiantAttack
         }
     }
 
+    public void HitPlayer(Transform player, float damageAmount)
+    {
+        player.GetComponent<PlayerStats>().TakeDamage(damageAmount);
+    }
 
 }

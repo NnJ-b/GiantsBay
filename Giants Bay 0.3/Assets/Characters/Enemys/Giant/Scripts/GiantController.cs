@@ -11,8 +11,12 @@ public class GiantController : MonoBehaviour
     public Animator animator;
     [Header("AI Controlls")]
     public float navUpdateTime;
+    [Header("Attacking")]
+    public float damageAmount;
     public float attackRange;
     private bool attacking;
+
+
 
     private GiantMotor motor = new GiantMotor();
     private GiantAttack attack = new GiantAttack();
@@ -56,5 +60,10 @@ public class GiantController : MonoBehaviour
     {
         motor.StartNavAgent(navMeshAgent);
         attacking = false;
+        if (attack.PlayerInRange(player, transform, attackRange))
+        {
+            attack.HitPlayer(player, damageAmount);
+
+        }
     }
 }
