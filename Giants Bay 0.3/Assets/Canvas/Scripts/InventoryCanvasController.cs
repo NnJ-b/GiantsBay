@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InventoryCanvasController : MonoBehaviour
 {
-    private PlayerInventory playerInventory = PlayerInventory.instance;
+    private PlayerInventory playerInventory;
 
     public Transform slotHolder;
     private SlotController[] slots;
@@ -21,6 +21,8 @@ public class InventoryCanvasController : MonoBehaviour
 
     private void start()
     {
+        playerInventory = PlayerInventory.instance;
+
         playerInventory.onInventoryChangeCallBack += UpdateUI;
 
         slots = slotHolder.GetComponentsInChildren<SlotController>();

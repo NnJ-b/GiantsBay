@@ -6,8 +6,16 @@ public class Equipment : Item
 {
     public EquipmentType equipmentType;
 
+    public override void Use()
+    {
+        base.Use();
+        Equip();
+    }
+
+
     public virtual void Equip()
     {
+        Debug.Log("Equiped: " + Name);
     }
 }
 

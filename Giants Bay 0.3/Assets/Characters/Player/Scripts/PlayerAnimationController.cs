@@ -39,62 +39,7 @@ public class PlayerAnimationController : MonoBehaviour
                 if (physicsController.colShortAngleLeft) //if moving Left from input
                 {
                     animator.SetIKPosition(AvatarIKGoal.RightHand, physicsController.collisionHit.point);
-                    animator.SetIKPositionWeight(AvatarIKGoal.RightHand, collIKLerpW
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        +
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        eight);
+                    animator.SetIKPositionWeight(AvatarIKGoal.RightHand, collIKLerpWeight);
                 }
                 else //if moving right from input
                 {

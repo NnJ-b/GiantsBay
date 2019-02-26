@@ -51,7 +51,7 @@ public class PlayerInventory : MonoBehaviour
             if (closestObject != null)
             {
                 //Give choice of interacting
-                closestObject.gameObject.GetComponent<Interactable>().Interact();
+                closestObject.gameObject.GetComponent<Inventoryable>().Interact();
             }
             yield return new WaitForSeconds(.4f);
         }
