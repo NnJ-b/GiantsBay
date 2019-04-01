@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Equipment : Item
 {
+    public Mesh mesh;
+    public Material material;
     public EquipmentType equipmentType;
 
     public override void Use()
@@ -15,6 +17,7 @@ public class Equipment : Item
 
     public virtual void Equip()
     {
+        PlayerEquipment.instance.EquipItem(this);
         Debug.Log("Equiped: " + Name);
     }
 }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Projectile
+  - Equipment
   layers:
   - Default
   - TransparentFX
