@@ -18,3 +18,5 @@ MonoBehaviour:
   mesh: {fileID: 4300000, guid: eade6aa70e2f4d14fa506c936d8c4bc9, type: 3}
   material: {fileID: 2100000, guid: a27d30653558bc64085c8823dc5b6efe, type: 2}
   equipmentType: 2
+  armor: 0
+  attack: 5

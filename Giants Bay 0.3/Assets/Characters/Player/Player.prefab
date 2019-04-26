@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971167724824114477}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.088, y: -0.0434, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.1239, y: -0.0285, z: 0.008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4657788848124188889}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &3285025209095292000
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,6 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4657788849552160713}
   - component: {fileID: 3788147852034347947}
+  - component: {fileID: 226240303519925625}
   - component: {fileID: 377395651994574929}
   - component: {fileID: 2705643705218975440}
   - component: {fileID: 5634116821878826313}
@@ -222,6 +223,19 @@ MonoBehaviour:
   maxClimbableAngle: 35
   moveable: 1
   footOffset: 1
+--- !u!114 &226240303519925625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4657788849552160712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff5727eaaccc55c45a425415716565f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  switchToRangeSensativity: 10
 --- !u!114 &377395651994574929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +249,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  armor: 0
+  attack: 0
 --- !u!114 &2705643705218975440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
-  strength: 10
+  strength: 24
   interactableRange: 4
   interactableMask:
     serializedVersion: 2

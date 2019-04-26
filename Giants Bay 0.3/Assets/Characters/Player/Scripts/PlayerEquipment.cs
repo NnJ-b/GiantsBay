@@ -28,7 +28,6 @@ public class PlayerEquipment : MonoBehaviour
         equiped = new Equipment[System.Enum.GetNames(typeof(EquipmentType)).Length];
         inventory = PlayerInventory.instance;
         onEquipmentChangedCallBack += changeGraphics;
-
     }
 
     public void EquipItem(Equipment newItem)

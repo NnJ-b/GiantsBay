@@ -8,6 +8,8 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField]
     private float health;
+    public float armor;
+    public float attack;
 
     public void Start()
     {
@@ -22,6 +24,18 @@ public class PlayerStats : MonoBehaviour
 
     public void UpdateStats(Equipment newItem, Equipment oldItem)
     {
-        //subtract old stats add new stats;
+        //attack
+        if(oldItem != null)
+        {
+            attack -= oldItem.attack;
+            attack += newItem.attack;
+        }
+
+        //armor
+        if(oldItem != null)
+        {
+            armor -= oldItem.armor;
+            armor += oldItem.armor;
+        }
     }
 }

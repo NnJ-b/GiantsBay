@@ -8,6 +8,9 @@ public class Equipment : Item
     public Material material;
     public EquipmentType equipmentType;
 
+    public float armor;
+    public float attack;
+
     public override void Use()
     {
         base.Use();
