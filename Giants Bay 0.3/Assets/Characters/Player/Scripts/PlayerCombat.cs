@@ -7,6 +7,11 @@ public class PlayerCombat : MonoBehaviour
     PlayerStats stats;
     PlayerEquipment equipment;
 
+    public GameObject aimPointParent;
+    public GameObject aimPoint;
+
+    public bool aiming;
+
     private enum AttackType {Mele,Range};
     private AttackType attackType;
 
@@ -27,9 +32,11 @@ public class PlayerCombat : MonoBehaviour
         }
         if(Input.GetMouseButton(1)) //aiming
         {
-            if(mouseDelta(mousePos,Input.mousePosition)> switchToRangeSensativity)
+            if(mouseDelta(mousePos,Input.mousePosition)> switchToRangeSensativity && equipment.equiped[(int)EquipmentType.SecondaryWeapon])
             {
                 attackType = AttackType.Range;
+                aiming = true;
+                aimRange(mousePos, Input.mousePosition);
             }
             else
             {
@@ -38,18 +45,19 @@ public class PlayerCombat : MonoBehaviour
         }
         if(Input.GetMouseButtonUp(1)) //Attack
         {
+            aiming = false;
             if(attackType == AttackType.Mele)
             {
-                if(equipment.equiped[(int)EquipmentType.PrimaryWeapon])
+                if (equipment.equiped[(int)EquipmentType.PrimaryWeapon])
                 {
-                    Debug.Log("Mele Attack");
+                    equipment.equiped[(int)EquipmentType.PrimaryWeapon].Attack();
                 }
             }
             if(attackType == AttackType.Range)
             {
                 if (equipment.equiped[(int)EquipmentType.SecondaryWeapon])
                 {
-                    Debug.Log("Range Attack");
+                    equipment.equiped[(int)EquipmentType.SecondaryWeapon].Attack();
                 }
             }
         }
@@ -58,5 +66,37 @@ public class PlayerCombat : MonoBehaviour
     private float mouseDelta(Vector2 mouseDownPos, Vector2 mouseUpPos)
     {
         return Vector2.Distance(mouseDownPos, mouseUpPos);
+    }
+
+    private void aimRange(Vector2 mouseDownPos, Vector2 mouseCurentPos)
+    {
+        //find angle
+        Vector2 mouseDelta = mouseCurentPos - mouseDownPos;
+
+        float angle = Mathf.Atan2(mouseDelta.y, mouseDelta.x) * Mathf.Rad2Deg;
+        angle -= 90;
+        angle *= -1;
+
+
+
+        float playerAngle = transform.localEulerAngles.y;
+
+        angle += playerAngle;
+
+        while (angle > 180)
+        {
+            angle = angle - 360;
+        }
+
+        while (angle < -180)
+        {
+            angle = angle + 360;
+        }
+        Debug.Log(angle);
+
+        aimPointParent.transform.eulerAngles = new Vector3(0, angle, 0);
+
+        //send to Weapon
+        //playerEquipment.equipped[(int)equipmentSlot].Aim(this, equipmentSlot, angle);
     }
 }

@@ -23,6 +23,11 @@ public class Equipment : Item
         PlayerEquipment.instance.EquipItem(this);
         Debug.Log("Equiped: " + Name);
     }
+
+    public virtual void Attack()
+    {
+
+    }
 }
 
 public enum EquipmentType { Helmet, Vest, PrimaryWeapon, SecondaryWeapon};

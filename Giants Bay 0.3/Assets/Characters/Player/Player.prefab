@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &490562054991370486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4583562036055653920}
+  m_Layer: 0
+  m_Name: RangeAimPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4583562036055653920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490562054991370486}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.22, z: 0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7324145966578957447}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &971167724824114477
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,6 +60,37 @@ Transform:
   m_Father: {fileID: 4657788848124188889}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1028987308589101170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7324145966578957447}
+  m_Layer: 0
+  m_Name: rangeAimPointParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7324145966578957447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028987308589101170}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4583562036055653920}
+  m_Father: {fileID: 4657788849552160713}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3285025209095292000
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,6 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsController: {fileID: 3788147852034347947}
   animator: {fileID: 4657788848131094377}
+  playerCombat: {fileID: 226240303519925625}
   collIKWeight: 0.7
   IKlerpSpeed: 0.01
 --- !u!1 &4657788848929731556
@@ -192,6 +254,7 @@ Transform:
   m_Children:
   - {fileID: 4657788848929731559}
   - {fileID: 4657788848124188931}
+  - {fileID: 7324145966578957447}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -235,6 +298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5727eaaccc55c45a425415716565f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aimPointParent: {fileID: 1028987308589101170}
+  aimPoint: {fileID: 490562054991370486}
+  aiming: 0
   switchToRangeSensativity: 10
 --- !u!114 &377395651994574929
 MonoBehaviour:

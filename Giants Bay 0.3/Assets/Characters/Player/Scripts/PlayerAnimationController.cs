@@ -7,6 +7,7 @@ public class PlayerAnimationController : MonoBehaviour
     [Header("References")]
     public PlayerPhysicsController physicsController;
     public Animator animator;
+    public PlayerCombat playerCombat;
     [Header("IK Controlls")]
     public float collIKWeight;
     private float collIKLerpWeight;
@@ -30,8 +31,8 @@ public class PlayerAnimationController : MonoBehaviour
     {
         if (physicsController.colliding)
         {
-            //if (true) //check for more important animations like combat
-            //{
+            if (!playerCombat.aiming) //check for more important animations like combat
+            {
 
                 //lerp IK Weight
                 collIKLerpWeight= Mathf.Lerp(collIKLerpWeight, collIKWeight, IKlerpSpeed);
@@ -47,11 +48,27 @@ public class PlayerAnimationController : MonoBehaviour
                     animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, collIKLerpWeight);
                 }
 
-            //}
+            }
         }
         else //not colliding
         {
             collIKLerpWeight = Mathf.Lerp(collIKLerpWeight, 0, IKlerpSpeed);            
+        }
+
+        if (playerCombat.aiming)
+        {
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+            animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
+            animator.SetIKPosition(AvatarIKGoal.LeftHand, playerCombat.aimPoint.transform.position);
+            animator.SetIKRotation(AvatarIKGoal.LeftHand, playerCombat.aimPoint.transform.rotation);
+            animator.SetLookAtPosition(playerCombat.aimPoint.transform.position);
+            animator.SetLookAtWeight(1);
+        }
+        else
+        {
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0);
+            animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0);
+            animator.SetLookAtWeight(0);
         }
     }
 }
