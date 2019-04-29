@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Inventory/Weapon")]
 public class Weapons : Equipment
 {
+    public GameObject projectile;
+
     public override void Attack()
     {
         base.Attack();
@@ -25,6 +27,7 @@ public class Weapons : Equipment
 
     public void RangeAttack()
     {
+        GameObject instance = Instantiate(projectile);
         Debug.Log("Range Attack");
     }
 }
