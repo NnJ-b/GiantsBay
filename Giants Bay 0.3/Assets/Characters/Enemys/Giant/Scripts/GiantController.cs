@@ -14,6 +14,7 @@ public class GiantController : MonoBehaviour
     [Header("Attacking")]
     public float damageAmount;
     public float attackRange;
+    public float health = 100;
     private bool attacking;
 
 
@@ -64,6 +65,16 @@ public class GiantController : MonoBehaviour
         {
             attack.HitPlayer(player, damageAmount);
 
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Triger: " + other.gameObject.name);
+        if (other.gameObject.tag == "Projectile")
+        {
+            health -= other.gameObject.GetComponent<ProjectileColision>().damage;
+            Destroy(other.gameObject);
         }
     }
 }

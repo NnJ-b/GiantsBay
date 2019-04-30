@@ -7229,11 +7229,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Giant
       objectReference: {fileID: 0}
-    - target: {fileID: 7269566965014141653, guid: 09b6632e73405624c842670ae654a28f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2563957598644361430, guid: 09b6632e73405624c842670ae654a28f,
         type: 3}
       propertyPath: m_LocalPosition.x
