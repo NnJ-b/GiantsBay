@@ -8,7 +8,6 @@ public class Inventoryable : MonoBehaviour
 
     public virtual void Interact()
     {
-        Debug.Log("Interacted With: " + transform.name);
         bool sucess = PlayerInventory.instance.AddToInventory(item);
         if(sucess)
         {

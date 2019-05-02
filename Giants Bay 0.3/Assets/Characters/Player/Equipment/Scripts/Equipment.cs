@@ -21,7 +21,6 @@ public class Equipment : Item
     public virtual void Equip()
     {
         PlayerEquipment.instance.EquipItem(this);
-        Debug.Log("Equiped: " + Name);
     }
 
     public virtual void Attack()

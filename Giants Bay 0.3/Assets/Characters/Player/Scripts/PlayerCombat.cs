@@ -92,7 +92,6 @@ public class PlayerCombat : MonoBehaviour
         {
             angle = angle + 360;
         }
-        Debug.Log(angle);
 
         aimPointParent.transform.eulerAngles = new Vector3(0, angle, 0);
 

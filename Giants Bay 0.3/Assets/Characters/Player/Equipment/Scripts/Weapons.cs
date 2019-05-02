@@ -29,7 +29,6 @@ public class Weapons : Equipment
     {
         GameObject instance = Instantiate(projectile);
         instance.GetComponent<ProjectileColision>().damage = attack;
-        Debug.Log("Range Attack");
     }
 }
 

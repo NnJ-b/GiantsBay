@@ -6,6 +6,9 @@ public class ProjectileMovement : MonoBehaviour
 {
     public float lifespan;
     public float speed;
+    public float minHightFromGround;
+    public float maxHeightFromGround;
+    public Rigidbody rb;
 
     public void Start()
     {
@@ -17,6 +20,21 @@ public class ProjectileMovement : MonoBehaviour
 
     public void FixedUpdate()
     {
-        transform.Translate(-Vector3.right * speed, Space.Self);
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 15f)) //check for ground/move up
+        {
+            float distance = Vector3.Distance(transform.position, hit.point);
+            Debug.Log(distance);
+            if (distance < minHightFromGround)
+            {
+                Debug.DrawRay(transform.position, Vector3.down * 15f);
+                transform.position = new Vector3(transform.position.x, transform.position.y + (minHightFromGround - distance), transform.position.z);
+            }
+            else if(distance > maxHeightFromGround)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y - (distance - maxHeightFromGround), transform.position.z);
+            }
+        }
+        rb.MovePosition(transform.position + transform.right * speed * -Time.deltaTime); //Move
     }
 }

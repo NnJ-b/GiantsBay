@@ -76,8 +76,6 @@ public class PlayerEquipment : MonoBehaviour
             filter.mesh = newItem.mesh;
             renderer.material = newItem.material;
 
-            Debug.Log(instance.transform.position);
-
 
             //cant reach if unequiped or if item has no mesh
             if (newItem.equipmentType == EquipmentType.PrimaryWeapon)
