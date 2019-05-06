@@ -300,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimPointParent: {fileID: 1028987308589101170}
   aimPoint: {fileID: 490562054991370486}
+  anim: {fileID: 4657788848131094377}
   aiming: 0
   switchToRangeSensativity: 10
 --- !u!114 &377395651994574929

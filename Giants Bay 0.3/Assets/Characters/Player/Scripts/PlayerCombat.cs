@@ -9,6 +9,7 @@ public class PlayerCombat : MonoBehaviour
 
     public GameObject aimPointParent;
     public GameObject aimPoint;
+    public Animator anim;
 
     public bool aiming;
 
@@ -30,16 +31,17 @@ public class PlayerCombat : MonoBehaviour
         {
             mousePos = Input.mousePosition;
         }
-        if(Input.GetMouseButton(1)) //aiming
+        if (Input.GetMouseButton(1)) //aiming
         {
-            if(mouseDelta(mousePos,Input.mousePosition)> switchToRangeSensativity && equipment.equiped[(int)EquipmentType.SecondaryWeapon])
+            if (mouseDelta(mousePos, Input.mousePosition) > switchToRangeSensativity && equipment.equiped[(int)EquipmentType.SecondaryWeapon]) //Range
             {
                 attackType = AttackType.Range;
                 aiming = true;
                 aimRange(mousePos, Input.mousePosition);
             }
-            else
+            else //Mele
             {
+                anim.SetBool("aimingMele", true);
                 attackType = AttackType.Mele;
             }
         }
@@ -50,6 +52,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 if (equipment.equiped[(int)EquipmentType.PrimaryWeapon])
                 {
+                    anim.SetBool("attackingMele", true);
                     equipment.equiped[(int)EquipmentType.PrimaryWeapon].Attack();
                 }
             }
