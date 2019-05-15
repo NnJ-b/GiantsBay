@@ -41,7 +41,7 @@ public class PlayerCombat : MonoBehaviour
             }
             else //Mele
             {
-                anim.SetBool("aimingMele", true);
+                //anim.SetBool("aimingMele", true);  //needs a weapon check
                 attackType = AttackType.Mele;
             }
         }
@@ -52,6 +52,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 if (equipment.equiped[(int)EquipmentType.PrimaryWeapon])
                 {
+                    anim.SetBool("aimingMele", true);
                     anim.SetBool("attackingMele", true);
                     equipment.equiped[(int)EquipmentType.PrimaryWeapon].Attack();
                 }
