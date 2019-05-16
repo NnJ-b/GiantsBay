@@ -378,3 +378,27 @@ public static class Noise
 
 }
 
+public class MinMax
+{
+    public float min;
+    public float max;
+
+    public MinMax()
+    {
+        min = float.MaxValue;
+        max = float.MinValue;
+    }
+
+    public void add(float v)
+    {
+        if(v > max)
+        {
+            max = v;
+        }
+        if(v < min)
+        {
+            min = v;
+        }
+    }
+}
+

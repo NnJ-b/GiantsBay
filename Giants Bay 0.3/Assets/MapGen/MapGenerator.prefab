@@ -150,7 +150,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ef2509ddc24e9604ebac270d32bc3c49, type: 2}
+  - {fileID: 2100000, guid: 310a63dcea6a18b45a35223d450b2fd6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -424,7 +424,7 @@ MonoBehaviour:
   octives: 4
   persistance: 0.085
   lacunarity: 2
-  seed: 115
+  seed: 124
   offset: {x: 0, y: 0}
   useFalloff: 1
   meshHeightMultiplyer: 12
@@ -521,10 +521,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e56588786ce0dcc4cabf416c7eeb0589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flatMat: {fileID: 2100000, guid: ef2509ddc24e9604ebac270d32bc3c49, type: 2}
+  smoothMat: {fileID: 2100000, guid: 5e10d8ce7113f9c4abe72d06c51632b0, type: 2}
   textureRenderer: {fileID: 6735393960984649672}
   meshFilter: {fileID: 6735393960978673439}
   meshRenderer: {fileID: 6735393960978673438}
   meshCollider: {fileID: 6735393960978673408}
+  flatShadding: 0
   terrains:
   - name: Red
     height: 0.6

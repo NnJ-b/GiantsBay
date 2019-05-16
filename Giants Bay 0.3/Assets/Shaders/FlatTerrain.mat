@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FlatTerrain
+  m_Shader: {fileID: 4800000, guid: 5f126718a8e6d444489046b1d96708a5, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_90E1E0A9:
+        m_Texture: {fileID: 2800000, guid: e180e5d2d8a0bbb43bd6bc5790ce2ea5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_129CEC87: 0
+    - Vector1_22E56D4: 0
+    - Vector1_BF966864: 0.065
+    - Vector1_CDF62E86: 14.2
+    m_Colors:
+    - Color_868BC4A9: {r: 0.14509805, g: 0.4901961, b: 0, a: 0}
+    - Color_AF7241AA: {r: 1, g: 1, b: 1, a: 0}
+    - Color_B93C838B: {r: 1, g: 0.854902, b: 0, a: 0}
+    - Color_CE2EE19F: {r: 0.019607844, g: 0.6784314, b: 0, a: 0}
+    - Color_E7E8B695: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 0}
+    - Vector4_CC1950BC: {r: 1, g: 0.8, b: 0.2, a: 0.2}
+    - Vector4_F26E76D: {r: 0, g: 0, b: 0, a: 0}

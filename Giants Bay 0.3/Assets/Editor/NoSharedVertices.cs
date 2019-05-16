@@ -31,7 +31,7 @@ public class NoSharedVertices : EditorWindow
 
     void NoShared()
     {
-        Transform curr = Selection.activeTransform;
+       Transform curr = Selection.activeTransform;
 
         if (curr == null)
         {
