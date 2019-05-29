@@ -150,7 +150,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e10d8ce7113f9c4abe72d06c51632b0, type: 2}
+  - {fileID: 2100000, guid: ef2509ddc24e9604ebac270d32bc3c49, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -527,7 +527,7 @@ MonoBehaviour:
   meshFilter: {fileID: 6735393960978673439}
   meshRenderer: {fileID: 6735393960978673438}
   meshCollider: {fileID: 6735393960978673408}
-  flatShadding: 0
+  flatShadding: 1
   gradient:
     serializedVersion: 2
     key0: {r: 0.9622642, g: 0.8140291, b: 0.37673548, a: 1}
