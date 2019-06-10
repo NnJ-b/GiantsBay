@@ -11,15 +11,14 @@ GameObject:
   - component: {fileID: 2563957598644361430}
   - component: {fileID: 6914091183650839632}
   - component: {fileID: 981339747705931603}
-  - component: {fileID: 942480736591038487}
-  - component: {fileID: 3407857681821112015}
+  - component: {fileID: 4205645332237434482}
   m_Layer: 0
   m_Name: Giant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2563957598644361430
 Transform:
   m_ObjectHideFlags: 0
@@ -71,7 +70,7 @@ CapsuleCollider:
   m_Height: 3.92
   m_Direction: 1
   m_Center: {x: 0, y: 1.5, z: 0}
---- !u!114 &942480736591038487
+--- !u!114 &4205645332237434482
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,19 +79,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7269566965014141653}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b8e3e6e7ec60742a92eb256fffdca6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3407857681821112015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7269566965014141653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f938fbed3ca3d3c429ecc1691fa5e8f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fc0fcd897acf884f81927f2fb00bed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 6914091183650839632}

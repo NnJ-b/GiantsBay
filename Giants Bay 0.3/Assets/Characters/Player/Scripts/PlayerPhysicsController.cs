@@ -16,6 +16,7 @@ public class PlayerPhysicsController : MonoBehaviour
     [Header("Colision Detection")]
     public float collisionDistance;
     public float CollisionWidth;
+    public float collisionCheckLength;
     public LayerMask collisionTypes;
     public RaycastHit collisionHit;
     public bool colliding = false;
@@ -169,7 +170,7 @@ public class PlayerPhysicsController : MonoBehaviour
                     }
 
                     //find end of colision right
-                    Vector3 checkRight = movementDirection;
+                    Vector3 checkRight = movementDirection ;
                     while (Physics.SphereCast(transform.position, CollisionWidth, checkRight, out lastHit, collisionDistance, collisionTypes, QueryTriggerInteraction.UseGlobal))
                     {
                         checkRight = Quaternion.AngleAxis(5f, Vector3.up) * checkRight;
